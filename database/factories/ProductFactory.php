@@ -22,8 +22,7 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->sentence(),
-            'manufacturer' => $this->faker->domainName
+            'name' => $this->faker->domainWord(),
         ];
     }
 }

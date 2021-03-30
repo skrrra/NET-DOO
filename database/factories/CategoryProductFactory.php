@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\SubCategory;
+use App\Models\CategoryProduct;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SubCategoryFactory extends Factory
+class CategoryProductFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = SubCategory::class;
+    protected $model = CategoryProduct::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,8 @@ class SubCategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->sentence(),
-            'category_id' => \App\Models\Category::all()->random()->id
+            'category_id' => \App\Models\Category::all()->random()->id,
+            'product_id' => \App\Models\Product::all()->random()->id
         ];
     }
 }
