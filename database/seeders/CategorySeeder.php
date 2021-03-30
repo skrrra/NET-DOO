@@ -14,18 +14,17 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->truncate();
+        DB::table('categories')->delete();
 
         $categories = [
-            ['name' => 'Računari'],
-            ['name' => 'Oprema za računare'],
-            ['name' => 'Laptopi'],
-            ['name' => 'Oprema za laptope'],
-            ['name' => 'Tableti'],
-            ['name' => 'Oprema za tableta'],
-            ['name' => 'Mobiteli'],
-            ['name' => 'Oprema za mobitele'],
-            ['name' => 'Gaming'],
+
+            // RACUNARI
+            ['name' => 'Računari', 'root' => 1],
+
+            // GAMING
+            ['name' => 'Gaming', 'root' => 1],
+            ['name' => 'Gaming miševi', 'root' => 0],
+            ['name' => 'Gaming računari', 'root' => 0],
         ];
 
         DB::table('categories')->insert($categories);
