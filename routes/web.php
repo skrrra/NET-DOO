@@ -20,4 +20,12 @@ Route::get('/', function () {
     ]);
 });
 
+// ADMIN DASHBOARD
+Route::middleware(['auth'])->group(function(){
+
+    Route::get('/admin-panel', function(){
+        return view('admin-panel');
+    });
+});
+
 require __DIR__.'/auth.php';
