@@ -18,17 +18,24 @@
         </div>
 
         <div class="bg-blue-100 min-h-full lg:w-9/12 xl:w-10/12">
-            {{-- @foreach ($categories as $category)
+            @foreach ($categories as $category)
                 <div>
-                    <h3 class="mb-4">Category name: {{ $category->name }}</h3>
-                    @foreach ($category->products as $product)
-                        <div class="ml-6 mb-2">
-                            <p>Product ID: {{ $product->id }}</p>
-                            <p>Product Name: {{ $product->name }}</p>
-                        </div>
-                    @endforeach
+                    <h3 class="text-2xl">{{ $category->name }}</h3>
+                    <div>
+                        @foreach ($category->categories as $childCategories)
+                            <h4 class="ml-6 text-lg">{{ $childCategories->name }}</h4>
+                            <div class="ml-12">
+                                @foreach ($childCategories->products as $product)
+                                    <div class="text-sm flex">
+                                        <p>{{ $product->id }}</p>
+                                        <p class="ml-2">{{ $product->name }}</p>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-            @endforeach --}}
+            @endforeach
         </div>
 
     </div>
