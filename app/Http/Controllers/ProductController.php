@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class ProductController extends Controller
 {
@@ -26,12 +27,19 @@ class ProductController extends Controller
             'name' => 'required|unique:products|max:255',
             'price' => 'required',
             'amount' => 'required',
-            'state' => 'required'
+            'state' => 'required',
+            'image_url' => 'required|image|mimes:jpeg,png,jpg,svg|max:1024'
         ]);
 
+        $imageName = '/images/image-' . strtolower('netdoo') . '-' . date('Y') . '-' . time() . '.' . request()->image_url->extension();
+
+        request()->image_url->move(public_path('images'), $imageName);
+
+        $validated['image_url'] = $imageName;
+        
         $product = new \App\Models\Product($validated);
         $product->save();
-
+        
         $productCategoryAttributes = [
             'category_id' => (int)$request->category,
             'product_id' => (int)$product->id
