@@ -33,12 +33,12 @@
         
         <div class="bg-gray-100 min-h-screen xl:w-9/12 xl:px-10 2xl:w-10/12 self-end">
 
-            <div class="h-screen bg-gray-100 w-full">
+            <div class="min-h-screen bg-gray-100 w-full">
                 
                 <div class="xl:py-10">
                     <a href="/admin-panel/products/create" class="text-base w-40 border flex border-gray-200 shadow-sm  py-2 px-2 bg-gray-50 rounded-md hover:bg-blue-600 hover:text-gray-50">
                         <div class="mr-2 flex">
-                            <x-icons.add size="20"></x-icons.add>
+                            <x-icons.add size="18"></x-icons.add>
                         </div>
                         Dodaj proizvod
                     </a>
@@ -72,44 +72,7 @@
                               </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                              {{-- START OF ITEMS --}}
-                              <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                  <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                      <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
-                                    </div>
-                                    <div class="ml-4">
-                                      <div class="text-sm font-medium text-gray-900">
-                                        Jane Cooper
-                                      </div>
-                                      <div class="text-sm text-gray-500">
-                                        jane.cooper@example.com
-                                      </div>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                  <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                                  <div class="text-sm text-gray-500">Optimization</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    Active
-                                  </span>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                  Admin
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                  Admin
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                  <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                </td>
-                              </tr>
-                              {{-- END OF ITEM --}}
-
+                              
                               @foreach ($products as $product)
                                 <tr>
                                   <td class="px-6 py-4 whitespace-nowrap">
@@ -134,7 +97,7 @@
                                   </td>
                                   <td class="px-6 py-4 whitespace-nowrap">
                                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                      Active
+                                      Aktivan
                                     </span>
                                   </td>
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -144,7 +107,7 @@
                                     {{ $product->amount }}
                                   </td>
                                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    <a href="#" class="text-blue-600 hover:text-indigo-900">Edit</a>
                                   </td>
                                 </tr>
                               @endforeach

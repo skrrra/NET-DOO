@@ -38,7 +38,7 @@
                 <div class="xl:py-10">
                     <a href="/admin-panel/products/create" class="text-base w-40 border flex border-gray-200 shadow-sm  py-2 px-2 bg-gray-50 rounded-md hover:bg-blue-600 hover:text-gray-50">
                         <div class="mr-2 flex">
-                            <x-icons.add size="20"></x-icons.add>
+                            <x-icons.add size="18"></x-icons.add>
                         </div>
                         Dodaj proizvod
                     </a>
