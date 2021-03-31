@@ -29,6 +29,15 @@ class ProductController extends Controller
 
         $product = new \App\Models\Product($validated);
         $product->save();
-        dd($request);
+
+        $productCategoryAttributes = [
+            'category_id' => (int)$request->category,
+            'product_id' => (int)$product->id
+        ];
+
+        $productCategory = new \App\Models\CategoryProduct($productCategoryAttributes);
+        $productCategory->save();
+
+        return redirect()->back()->with('Success', 'Product created!');
     }
 }

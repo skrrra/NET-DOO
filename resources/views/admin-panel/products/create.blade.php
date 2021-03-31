@@ -33,9 +33,9 @@
         
         <div class="bg-gray-100 min-h-screen xl:w-9/12 xl:px-10 2xl:w-10/12 self-end">
 
-            <div class="h-screen bg-gray-100 w-full">
+            <div class="min-h-screen bg-gray-200 w-full">
                 
-                <div class="xl:py-12">
+                <div class="xl:py-10">
                     <a href="/admin-panel/products/create" class="text-base w-40 border flex border-gray-200 shadow-sm  py-2 px-2 bg-gray-50 rounded-md hover:bg-blue-600 hover:text-gray-50">
                         <div class="mr-2 flex">
                             <x-icons.add size="20"></x-icons.add>
@@ -44,37 +44,68 @@
                     </a>
                 </div>
 
-                <div>
-                    <form action="/admin-panel/products" method="POST">
+                <div class="bg-gray-300">
+                    @if (session()->has('Success'))
+                        <div>
+                            <p>{{ session()->get('Success') }}</p>
+                        </div>
+                    @endif
+
+                    <form action="/admin-panel/products" method="POST" class="grid">
                         @csrf
                         @method('POST')
 
-                        <div>
-                            <label for="">Naziv proizvoda *</label>
-                            <input type="text" name="name">
+                        <div class="bg-gray-400 flex">
+                            <div class="flex flex-col">
+                                <label for="">Naziv proizvoda *</label>
+                                <input type="text" name="name">
+                                @error('name')
+                                    <div>
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="">Cijena</label>
+                                <input type="number" name="price" step="0.01" placeholder="0.00">
+                                @error('price')
+                                    <div>
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="">Kolicina</label>
+                                <input type="text" name="amount">
+                                @error('amount')
+                                    <div>
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div>
-                            <label for="">Cijena</label>
-                            <input type="number" name="price" step="0.01" placeholder="0.00">
+                        <div class="bg-gray-500 flex">
+                            <div class="flex flex-col">
+                                <label for="">Stanje</label>
+                                <select name="state" id="">
+                                    <option value="0">Novo</option>
+                                    <option value="1">Polovno</option>
+                                    <option value="2">Refurbished</option>
+                                </select>
+                            </div>
+                            
+                            <div class="flex flex-col">
+                                <label for="">Kategorija</label>
+                                <select name="category" id="">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-
-                        <div>
-                            <label for="">Kolicina</label>
-                            <input type="text" name="amount">
-                        </div>
-
-                        <select name="state" id="">
-                            <option value="0">Novo</option>
-                            <option value="1">Polovno</option>
-                            <option value="2">Refurbished</option>
-                        </select>
-
-                        <select name="category" id="">
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
 
                         <button type="submit">Spasi proizvod</button>
                     </form>
