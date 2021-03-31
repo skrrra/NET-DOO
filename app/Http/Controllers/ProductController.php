@@ -8,7 +8,9 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        return view('admin-panel.products.index');
+        return view('admin-panel.products.index', [
+            'products' => \App\Models\Product::with('categories')->get()
+        ]);
     }
 
     public function create(Request $request)
@@ -38,6 +40,6 @@ class ProductController extends Controller
         $productCategory = new \App\Models\CategoryProduct($productCategoryAttributes);
         $productCategory->save();
 
-        return redirect()->back()->with('Success', 'Product created!');
+        return redirect()->back()->with('Success', 'Proizvod spašen!');
     }
 }
