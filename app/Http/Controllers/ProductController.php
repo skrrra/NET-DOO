@@ -17,4 +17,18 @@ class ProductController extends Controller
             'categories' => \App\Models\Category::all()
         ]);
     }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|unique:products|max:255',
+            'price' => 'required',
+            'amount' => 'required',
+            'state' => 'required'
+        ]);
+
+        $product = new \App\Models\Product($validated);
+        $product->save();
+        dd($request);
+    }
 }

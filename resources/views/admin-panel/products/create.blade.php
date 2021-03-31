@@ -56,7 +56,7 @@
 
                         <div>
                             <label for="">Cijena</label>
-                            <input type="number" name="price">
+                            <input type="number" name="price" step="0.01" placeholder="0.00">
                         </div>
 
                         <div>
@@ -65,9 +65,9 @@
                         </div>
 
                         <select name="state" id="">
-                            <option value="">Novo</option>
-                            <option value="">Polovno</option>
-                            <option value="">Refurbished</option>
+                            <option value="0">Novo</option>
+                            <option value="1">Polovno</option>
+                            <option value="2">Refurbished</option>
                         </select>
 
                         <select name="category" id="">

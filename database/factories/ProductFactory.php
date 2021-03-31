@@ -23,6 +23,9 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->domainWord(),
+            'price' => $this->faker->randomFloat(2),
+            'amount' => $this->faker->numberBetween(1, 999),
+            'state' => $this->faker->numberBetween(0,2)
         ];
     }
 }
