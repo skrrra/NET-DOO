@@ -15,7 +15,7 @@
                     <x-icons.truck size="20"></x-icons.truck>
                 </x-admin-panel.side-menu.item>
 
-                <x-admin-panel.side-menu.item href="/" text="Proizvodi">
+                <x-admin-panel.side-menu.item href="/admin-panel/products" text="Proizvodi">
                     <x-icons.tv size="20"></x-icons.tv>
                 </x-admin-panel.side-menu.item>
 
