@@ -54,17 +54,17 @@
 
                     <div class="mb-12 flex">
                         <x-icons.tv size="32"></x-icons.tv>
-                        <h1 class="font-semibold text-3xl ml-2">Dodaj novi proizvod</h1>
+                        <h1 class="font-semibold text-3xl ml-2">Uredi proizvod</h1>
                     </div>
 
-                    <form action="/admin-panel/products" method="POST" class="grid" enctype="multipart/form-data" class="">
+                    <form action="/admin-panel/products/{{ $product->id }}" method="POST" class="grid" enctype="multipart/form-data" class="">
                         @csrf
-                        @method('POST')
+                        @method('PATCH')
 
                         <div class=" grid grid-cols-3 gap-6">
                             <div class="flex flex-col">
                                 <label for="" class="mb-2">Naziv proizvoda *</label>
-                                <input type="text" name="name" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100" placeholder="Samsung Galaxy A5">
+                                <input value="{{ $product->name }}" type="text" name="name" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100" placeholder="Samsung Galaxy A5">
                                 @error('name')
                                     <div class="mt-2">
                                         <p class="text-sm text-red-400">{{ $message }}</p>
@@ -74,7 +74,7 @@
 
                             <div class="flex flex-col">
                                 <label for="" class="mb-2">Cijena *</label>
-                                <input type="number" name="price" step="0.01" placeholder="0.00" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
+                                <input value="{{ $product->price }}" type="number" name="price" step="0.01" placeholder="0.00" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
                                 @error('price')
                                     <div class="mt-2">
                                         <p class="text-sm text-red-400">{{ $message }}</p>
@@ -84,7 +84,7 @@
 
                             <div class="flex flex-col">
                                 <label for="" class="mb-2">Kolicina *</label>
-                                <input type="text" name="amount" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100" placeholder="12">
+                                <input value="{{ $product->amount }}" type="text" name="amount" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100" placeholder="12">
                                 @error('amount')
                                     <div class="mt-2">
                                         <p class="text-sm text-red-400">{{ $message }}</p>
@@ -97,9 +97,25 @@
                             <div class="flex flex-col">
                                 <label for="" class="mb-2">Stanje</label>
                                 <select name="state" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
-                                    <option value="0">Novo</option>
-                                    <option value="1">Polovno</option>
-                                    <option value="2">Refurbished</option>
+                                    @switch($product->state)
+                                        @case(0)
+                                            <option value="0" class="bg-blue-600 text-white">Novo</option>
+                                            <option value="1">Polovno</option>
+                                            <option value="2">Refurbished</option>
+                                            @break
+                                        @case(1)
+                                            <option value="1" class="bg-blue-600 text-white">Polovno</option>
+                                            <option value="0">Novo</option>
+                                            <option value="2">Refurbished</option>
+                                            @break
+                                        @case(2)
+                                            <option value="2" class="bg-blue-600 text-white">Refurbished</option>
+                                            <option value="0">Novo</option>
+                                            <option value="1">Polovno</option>
+                                            @break
+                                        @default
+                                            
+                                    @endswitch
                                 </select>
                             </div>
                             

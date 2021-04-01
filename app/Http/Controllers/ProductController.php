@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         return view('admin-panel.products.index', [
             'products' => \App\Models\Product::with('categories')->get()
         ]);
     }
 
-    public function create(Request $request)
+    public function create()
     {
         return view('admin-panel.products.create', [
             'categories' => \App\Models\Category::all()
@@ -49,5 +51,58 @@ class ProductController extends Controller
         $productCategory->save();
 
         return redirect()->back()->with('Success', 'Proizvod spašen!');
+    }
+
+    public function edit($id)
+    {
+        return view('admin-panel.products.edit', [
+            'product' => \App\Models\Product::find($id)->load('categories'),
+            'categories' => \App\Models\Category::all(),
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        if(!isset($request->image_url))
+        {
+            $product = Product::find($id);
+            $validated = request()->validate([
+                'name' => [
+                    'required',
+                    'max:255',
+                    Rule::unique('products')->ignore($product)
+                ],
+                'price' => 'required',
+                'amount' => 'required',
+                'state' => 'required',
+            ]);
+
+            $product->update($validated);
+            return redirect("/admin-panel/products/$product->id/edit")->with('Success', 'Promjene spasene!');
+        }else{
+
+            $product = Product::find($id);
+            $validated = request()->validate([
+                'name' => [
+                    'required',
+                    'max:255',
+                    Rule::unique('products')->ignore($product)
+                ],
+                'price' => 'required',
+                'amount' => 'required',
+                'state' => 'required',
+                'image_url' => 'required|image|mimes:jpeg,png,jpg,svg|max:1024'
+            ]);
+
+            $imageName = '/images/image-' . strtolower('net-doo') . '-' . date('Y') . '-' . time() . '.' . request()->image_url->extension();
+
+            request()->image_url->move(public_path('images'), $imageName);
+
+            $validated['image_url'] = $imageName;
+
+            $product->update($validated);
+
+            return redirect("/admin-panel/products/$product->id/edit")->with('Success', 'Promjene spasene!');
+        }
     }
 }
