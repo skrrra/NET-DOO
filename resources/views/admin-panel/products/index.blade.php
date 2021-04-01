@@ -85,7 +85,19 @@
                                           {{ $product->name }}
                                         </div>
                                         <div class="text-sm text-gray-500">
-                                          jane.cooper@example.com
+                                          @switch($product->state)
+                                              @case(0)
+                                                Novo
+                                                  @break
+                                              @case(1)
+                                                Polovno
+                                                  @break
+                                              @case(2)
+                                                Refurbished
+                                                  @break
+                                              @default
+                                                  
+                                          @endswitch
                                         </div>
                                       </div>
                                     </div>
@@ -119,6 +131,16 @@
                       </div>
                     </div>
                   </div>
+
+                  {{-- END OF ITEMS --}}
+
+                  @if (count($products) > 0)
+                    @if ($products->links())
+                      <div class="mt-10 pb-10">
+                        {{ $products->links() }}
+                      </div>
+                    @endif
+                  @endif
 
             </div>
 
