@@ -53,7 +53,7 @@
                     @endif
 
                     <div class="mb-12 flex">
-                        <x-icons.tv size="32"></x-icons.tv>
+                        <x-icons.edit size="32"></x-icons.edit>
                         <h1 class="font-semibold text-3xl ml-2">Uredi proizvod</h1>
                     </div>
 
