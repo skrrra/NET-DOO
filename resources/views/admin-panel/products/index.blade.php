@@ -40,7 +40,7 @@
             <div class="min-h-screen bg-gray-100 w-full">
                 
                 <div class="xl:py-10">
-                    <a href="/admin-panel/products/create" class="text-base w-40 border flex border-gray-200 shadow-sm  py-2 px-2 bg-gray-50 rounded-md hover:bg-blue-600 hover:text-gray-50 justify-center">
+                    <a href="/admin-panel/products/create" class="text-base w-40 border flex border-gray-200 shadow-sm  py-2 px-2 bg-white rounded-md hover:text-blue-600 justify-center">
                         <div class="mr-1.5 flex">
                             <x-icons.add size="16"></x-icons.add>
                         </div>
