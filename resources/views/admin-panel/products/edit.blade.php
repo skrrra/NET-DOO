@@ -19,6 +19,10 @@
                     <x-icons.tv size="20"></x-icons.tv>
                 </x-admin-panel.side-menu.item>
 
+                <x-admin-panel.side-menu.item href="/" text="Kategorije">
+                    <x-icons.list size="20"></x-icons.list>
+                </x-admin-panel.side-menu.item>
+
                 <x-admin-panel.side-menu.item href="/" text="Akcije u toku">
                     <x-icons.precent size="20"></x-icons.precent>
                 </x-admin-panel.side-menu.item>
@@ -113,8 +117,7 @@
                                             <option value="0">Novo</option>
                                             <option value="1">Polovno</option>
                                             @break
-                                        @default
-                                            
+                                        @default    
                                     @endswitch
                                 </select>
                             </div>
@@ -123,8 +126,16 @@
                                 <label for="" class="mb-2">Kategorija</label>
                                 <select name="category" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>  
                                     @endforeach
+                                </select>
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="" class="mb-2">Aktivnost</label>
+                                <select name="active" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
+                                    <option value="0">Neaktivan</option>
+                                    <option value="1">Aktivan</option>
                                 </select>
                             </div>
 

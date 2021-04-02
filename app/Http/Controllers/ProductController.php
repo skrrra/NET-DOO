@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('admin-panel.products.create', [
-            'categories' => \App\Models\Category::all()
+            'categories' => \App\Models\Category::where('root', 0)->get()
         ]);
     }
 
@@ -30,6 +30,7 @@ class ProductController extends Controller
             'price' => 'required',
             'amount' => 'required',
             'state' => 'required',
+            'active' => 'required',
             'image_url' => 'required|image|mimes:jpeg,png,jpg,svg|max:1024'
         ]);
 
@@ -75,6 +76,7 @@ class ProductController extends Controller
                 'price' => 'required',
                 'amount' => 'required',
                 'state' => 'required',
+                'active' => 'required'
             ]);
 
             $product->update($validated);

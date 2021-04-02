@@ -19,6 +19,10 @@
                     <x-icons.tv size="20"></x-icons.tv>
                 </x-admin-panel.side-menu.item>
 
+                <x-admin-panel.side-menu.item href="/" text="Kategorije">
+                  <x-icons.list size="20"></x-icons.list>
+                </x-admin-panel.side-menu.item>
+
                 <x-admin-panel.side-menu.item href="/" text="Akcije u toku">
                     <x-icons.precent size="20"></x-icons.precent>
                 </x-admin-panel.side-menu.item>
@@ -108,9 +112,15 @@
                                     @endforeach
                                   </td>
                                   <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                      Aktivan
-                                    </span>
+                                    @if ($product->active)
+                                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        Aktivan
+                                      </span>
+                                    @else
+                                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                        Neaktivan
+                                      </span>
+                                    @endif
                                   </td>
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $product->price }} BAM

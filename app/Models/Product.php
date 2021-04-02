@@ -14,6 +14,7 @@ class Product extends Model
         'price',
         'amount',
         'state',
+        'active',
         'image_url'
     ];
 
