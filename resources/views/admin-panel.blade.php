@@ -1,40 +1,37 @@
 @extends('layouts.app')
 
 @section('content')    
-    <div class="w-full min-h-full flex flex-col">
+{{-- Able to extend itself  --}}
+    <div class="w-full min-h-screen">
+        {{-- Able to extend itself  --}}
+        <div class="bg-white py-4 px-4 flex justify-between items-center border-b border-gray-200">
 
-        <div class="bg-gray-300 h-screen fixed top-0 left-0 xl:w-3/12 xl:bg-gray-50 2xl:w-2/12 border-r-2 border-gray-200 ">
-
-            <div class="xl:py-12 xl:px-10 font-semibold">
-                <h3 class="text-2xl">Admin panel</h3>
+            <div>
+                <a href="/admin-panel" class="">Admin panel</a>
             </div>
 
-            <div class="text-base">
-
-                <x-admin-panel.side-menu.item href="/" text="Narudzbe">
-                    <x-icons.truck size="20"></x-icons.truck>
-                </x-admin-panel.side-menu.item>
-
-                <x-admin-panel.side-menu.item href="/admin-panel/products" text="Proizvodi">
-                    <x-icons.tv size="20"></x-icons.tv>
-                </x-admin-panel.side-menu.item>
-
-                <x-admin-panel.side-menu.item href="/" text="Akcije u toku">
-                    <x-icons.precent size="20"></x-icons.precent>
-                </x-admin-panel.side-menu.item>
-
-                <x-admin-panel.side-menu.item href="/" text="Logout">
-                    <x-icons.logout size="20"></x-icons.logout>
-                </x-admin-panel.side-menu.item>
-
+            <div>
+                <x-icons.hamburger size="20"></x-icons.hamburger>
             </div>
 
         </div>
 
-        <div class="bg-gray-100 min-h-screen xl:w-9/12 2xl:w-10/12 self-end">
+        <div class="bg-white py-4 px-4 fixed flex items-center justify-between bottom-0 left-0 w-full border-t border-gray-200">
 
             <div>
+                <x-icons.truck size="20"></x-icons.truck>
+            </div>
 
+            <div>
+                <x-icons.precent size="20"></x-icons.precent>
+            </div>
+            
+            <div>
+                <x-icons.tv size="20"></x-icons.tv>
+            </div>
+            
+            <div>
+                <x-icons.list size="20"></x-icons.list>
             </div>
 
         </div>

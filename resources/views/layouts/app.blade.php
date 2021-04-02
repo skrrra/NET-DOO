@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <div class="h-screen w-full bg-gray-100">
+    <div class="min-h-screen w-full bg-gray-50 font-base">
         @yield('content')
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
