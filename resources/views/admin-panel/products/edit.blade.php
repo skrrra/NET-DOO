@@ -11,7 +11,7 @@
 
             <div class="text-base">
 
-                <x-admin-panel.side-menu.item href="/" text="Narudzbe">
+                <x-admin-panel.side-menu.item href="/" text="Narudžbe">
                     <x-icons.truck size="20"></x-icons.truck>
                 </x-admin-panel.side-menu.item>
 

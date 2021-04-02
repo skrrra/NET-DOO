@@ -11,7 +11,7 @@
 
             <div class="text-base">
 
-                <x-admin-panel.side-menu.item href="/" text="Narudzbe">
+                <x-admin-panel.side-menu.item href="/" text="Narudžbe">
                     <x-icons.truck size="20"></x-icons.truck>
                 </x-admin-panel.side-menu.item>
 
@@ -78,7 +78,7 @@
                                   <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center">
                                       <div class="flex-shrink-0 h-14 w-14">
-                                        <img class="h-14 w-14" src="{{ $product->image_url }}" alt="">
+                                        <img class="h-14 w-14 rounded-md" src="{{ $product->image_url }}" alt="">
                                       </div>
                                       <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">
