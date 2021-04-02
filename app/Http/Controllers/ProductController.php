@@ -107,4 +107,11 @@ class ProductController extends Controller
             return redirect("/admin-panel/products/$product->id/edit")->with('Success', 'Promjene spasene!');
         }
     }
+
+    public function destroy($id)
+    {
+        $product = Product::find($id);
+        $product->delete();
+        return redirect('/admin-panel/products')->with('delete-success', 'Proizvod izbrisan');
+    }
 }

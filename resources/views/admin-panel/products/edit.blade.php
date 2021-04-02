@@ -39,13 +39,24 @@
 
             <div class="min-h-screen w-full">
                 
-                <div class="xl:py-10">
+                <div class="xl:py-10 flex">
                     <a href="/admin-panel/products/create" class="text-base w-40 border flex border-gray-200 shadow-sm  py-2 px-2 bg-white rounded-md hover:text-blue-600">
                         <div class="mr-2 flex">
                             <x-icons.add size="18"></x-icons.add>
                         </div>
                         Dodaj proizvod
                     </a>
+
+                    <form action="/admin-panel/products/{{ $product->id }}" method="POST" class="ml-6">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-base w-40 border flex border-gray-200 shadow-sm  py-2 px-2 bg-white rounded-md hover:text-red-600">
+                            <div class="mr-2 flex self-center">
+                                <x-icons.trash size="18"></x-icons.trash>
+                            </div>
+                            Izbrisi proizvod
+                        </button>
+                    </form>
                 </div>
 
                 <div class="px-6 py-6 rounded-md border border-gray-200 shadow-sm bg-white">

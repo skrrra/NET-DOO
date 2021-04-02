@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/admin-panel/products', 'App\Http\Controllers\ProductController@store');
     Route::get('/admin-panel/products/create', 'App\Http\Controllers\ProductController@create');
     Route::patch('/admin-panel/products/{id}', 'App\Http\Controllers\ProductController@update');
+    Route::delete('/admin-panel/products/{id}', 'App\Http\Controllers\ProductController@destroy');
     Route::get('/admin-panel/products/{id}/edit', 'App\Http\Controllers\ProductController@edit');
 
 });
