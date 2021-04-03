@@ -25,7 +25,9 @@ class ProductFactory extends Factory
             'name' => $this->faker->domainWord(),
             'price' => $this->faker->randomFloat(2),
             'amount' => $this->faker->numberBetween(1, 999),
-            'state' => $this->faker->numberBetween(0,2)
+            'state' => $this->faker->numberBetween(0,2),
+            'image_url' => '/images/image-net-doo-2021-1617352735.jpg',
+            'active' => 1
         ];
     }
 }

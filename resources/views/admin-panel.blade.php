@@ -4,24 +4,49 @@
 {{-- Able to extend itself  --}}
     <div class="w-full min-h-screen">
         {{-- Able to extend itself  --}}
-        <div class="bg-white py-4 px-4 flex justify-between items-center border-b border-gray-200">
+
+        {{-- Mobile navigation with hamburger start --}}
+        
+        <div class="w-full bg-white py-4 px-4 fixed top-0 left-0 flex justify-between items-center border-b border-gray-200">
 
             <div>
-                <a href="/admin-panel" class="">Admin panel</a>
+                <a href="/admin-panel" class="font-medium">Admin panel</a>
             </div>
-
+            
             <div>
                 <x-icons.hamburger size="20"></x-icons.hamburger>
             </div>
-
+            
         </div>
 
-        <div class="bg-white py-4 px-4 fixed flex items-center justify-between bottom-0 left-0 w-full border-t border-gray-200">
+        {{-- Mobile navigation with hamburger end --}}
 
+        <div class="h-screen min-h-screen w-full mt-14 px-4 py-4">
+
+            <div>
+
+            </div>
+
+            <div></div>
+
+            <div></div>
+
+            
+
+        </div>
+        
+        {{-- Mobile user action menu start --}}
+        
+        <div class="w-full bg-white py-4 px-4 fixed bottom-0 left-0 flex items-center justify-between border-t border-gray-200">
+            
+            <div>
+                <x-icons.bell size="20"></x-icons.bell>
+            </div>
+            
             <div>
                 <x-icons.truck size="20"></x-icons.truck>
             </div>
-
+            
             <div>
                 <x-icons.precent size="20"></x-icons.precent>
             </div>
@@ -33,7 +58,9 @@
             <div>
                 <x-icons.list size="20"></x-icons.list>
             </div>
-
+            
         </div>
+
+        {{-- Mobile user action menu end --}}
     </div>
-@endsection
+    @endsection
