@@ -24,68 +24,77 @@
         <div class="min-h-screen w-full mt-14 px-4 py-8">
 
           @foreach ($products as $product)
-              <div class="bg-white border border-gray-200 pb-6">
 
-                <div class="flex justify-end py-2 px-4">
-                  <x-icons.edit size="22"></x-icons.edit>
+              <div class="bg-white border border-gray-200 mb-8">
+
+                <div class="flex justify-between px-4 py-4">
+
+                  <div class="flex items-center">
+                    @switch($product)
+
+                        @case($product->amount == 0)
+                            <div class="bg-red-600 rounded-full h-2.5 w-2.5 mr-1.5"></div>
+                            <p class="text-sm">{{ $product->amount }} na stanju</p>
+                            @break
+
+                        @case($product->amount > 0 && $product->amount < 10)
+                            <div class="bg-yellow-600 rounded-full h-2.5 w-2.5 mr-1.5"></div>
+                            <p class="text-sm">{{ $product->amount }} na stanju</p>                        
+                            @break
+                            
+                        @case($product->amount > 10)
+                            <div class="bg-green-600 rounded-full h-2.5 w-2.5 mr-1.5"></div>
+                            <p class="text-xs">{{ $product->amount }} na stanju</p> 
+                            @break  
+                        @default
+
+                    @endswitch
+                  </div>
+
+                  <div class="flex">
+                    <x-icons.edit size="18"></x-icons.edit>
+                  </div>
                 </div>
 
                 <div class="border-t border-b">
                   <img src="{{ $product->image_url }}">
                 </div>
 
-                <div class="py-2 px-4 flex justify-between items-center">
-                  <h3 class="font-medium text-lg">
-                    {{ ucfirst($product->name) }}
-                  </h3>
-                  <h3 class="font-medium">
-                    {{ $product->price }}
-                    BAM
-                  </h3>
+                <div class="px-4 py-4 w-full text-center">
+                  <h3 class="font-semibold text-lg">asjdasjdjasjdjasjd jasdjas jsadasd asdasdasdas</h3>
                 </div>
 
-                <div class="flex justify-between">
-                  <div>
+                <div class="px-4 py-4 flex justify-between text-sm">
 
-                    @foreach ($product->categories as $category)
-                    <div class="w-10/12">
-                      <p class="px-4 text-sm">
-                        {{ $category->name }} 
-                      </p>
-                    </div>
-                    @endforeach
+                  <div class="self-center">
+                    <p>{{ $product->price }} BAM</p>
                   </div>
-                    <div class="">
-                    <p class="">
-                      @switch($product->state)
-                          @case(0)
-                            <div class="">
-                              {{ $product->state }}
-                            </div>
-                            @break
-                          @case(1)
-                              <div class="bg-yellow-400 mr-4 text-white py-1 px-2 rounded-md">
-                                <p>Polovno</p>
-                              </div>
-                              @break
-                              @case(2)
-                              <div>
-                                {{ $product->state }}
 
-                              </div>
-                              @break
-                          @default
-                              
-                      @endswitch
-                    </p>
-                  </div>
+                  @switch($product->state)
+                      @case(0)
+                          <div class="bg-green-600 rounded-md text-white px-4 py-1 font-medium">
+                            <p>Novo</p>
+                          </div>
+                          @break
+                      @case(1)
+                          <div class="bg-yellow-600 rounded-md text-white px-4 py-1 font-medium">
+                            <p>Polovno</p>
+                          </div>
+                          @break
+                      @case(2)
+                          <div class="bg-blue-600 rounded-md text-white px-4 py-1 font-medium">
+                            <p>Refurbished</p>
+                          </div>
+                          @break
+                      @default
+                          
+                  @endswitch
                 </div>
 
-                <div>
-
-                </div>
+              
 
               </div>
+
               @if ($loop->last)
                   <div class="mb-8">
                   </div>
