@@ -118,6 +118,7 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
+
         if(intval($request->category) === 0)
         {
             return view('admin-panel.products.index', [
@@ -130,7 +131,8 @@ class ProductController extends Controller
 
         return view('admin-panel.products.index', [
             'products' => \App\Models\Product::whereIn('id', $categoryProducts)->with('categories')->paginate(3),
-            'categories' => \App\Models\Category::all()
+            'categories' => \App\Models\Category::all()->except($request->category),
+            'currentCategory' => \App\Models\Category::find($request->category)
         ]);
     }
 }
