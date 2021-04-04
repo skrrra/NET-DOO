@@ -23,7 +23,7 @@
 
         <div class="min-h-screen w-full mt-14 px-4 py-8">
 
-          <div class="mb-8">
+          {{-- <div class="mb-8">
             <form action="/admin-panel/products/search" method="POST">
                 @csrf
                 @method('GET')
@@ -44,18 +44,15 @@
                   
                 <button type="submit" class="bg-blue-600 py-2 px-4 text-white rounded-md w-full mt-4">Trazi</button>
             </form>
-          </div>
+          </div> --}}
 
-          @foreach ($products as $product)
+          <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 lg:mb-8 xl:grid-cols-5 xl:gap-6 xl:mb-0 2xl:grid-cols-6">
 
           
-          @foreach ($product->categories as $productCategory)
-            <div>
-              {{ $productCategory->name }}
-            </div>
-          @endforeach
+          {{-- PRODUCT COMPONENT START --}}
+          @foreach ($products as $product)
 
-              <div class="bg-white border border-gray-200 mb-8 rounded-md shadow-sm">
+              <div class="bg-white border border-gray-200  rounded-md shadow-sm">
 
                 <div class="flex justify-between px-4 py-4">
 
@@ -86,17 +83,17 @@
                   </div>
                 </div>
 
-                <div>
-                  <img src="{{ $product->image_url }}">
+                <div class="flex px-4">
+                  <img src="{{ $product->image_url }}" class="inline-block h-52 bg-green-300 mx-auto rounded-md">
                 </div>
 
-                <div class="px-4 py-4 w-full">
+                <div class="px-4 pt-4 pb-2 w-full">
                   <h3 class="font-semibold text-xl">{{ ucwords($product->name) }}</h3>
                 </div>
 
                 <div class="px-4 pb-4 flex justify-between text-sm">
 
-                  <div class="self-center">
+                  <div>
                     <p>{{ $product->price }} BAM</p>
                   </div>
 
@@ -126,10 +123,14 @@
               </div>
 
               @if ($loop->last)
-                  <div class="mb-8">
+                  <div class="sm:mb-4">
                   </div>
               @endif
           @endforeach
+          {{-- PRODUCT COMPONENT END --}}
+
+        </div>
+
 
           @if ($products->links())
               <div class="mb-12">

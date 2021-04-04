@@ -12,15 +12,17 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         return view('admin-panel.products.index', [
-            'products' => \App\Models\Product::with('categories')->paginate(30),
-            'categories' => \App\Models\Category::all()
+            'products' => \App\Models\Product::with(['categories' => function($query){
+                $query->select('category_id','product_id');
+            }])->paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active', 'image_url']),
+            'categories' => \App\Models\Category::all(['id', 'name'])
         ]);
     }
 
     public function create()
     {
         return view('admin-panel.products.create', [
-            'categories' => \App\Models\Category::where('root', 0)->get()
+            'categories' => \App\Models\Category::where('root', 0)->get(['id', 'name'])
         ]);
     }
 
