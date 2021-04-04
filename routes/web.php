@@ -30,6 +30,9 @@ Route::middleware(['auth'])->group(function(){
     // ADMIN DASHBOARD -> PRODUCTS
     Route::get('/admin-panel/products', 'App\Http\Controllers\ProductController@index');
     Route::post('/admin-panel/products', 'App\Http\Controllers\ProductController@store');
+
+    Route::post('/admin-panel/products/search', 'App\Http\Controllers\ProductController@search');
+    
     Route::get('/admin-panel/products/create', 'App\Http\Controllers\ProductController@create');
     Route::patch('/admin-panel/products/{id}', 'App\Http\Controllers\ProductController@update');
     Route::delete('/admin-panel/products/{id}', 'App\Http\Controllers\ProductController@destroy');

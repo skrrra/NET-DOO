@@ -9,10 +9,11 @@ use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         return view('admin-panel.products.index', [
-            'products' => \App\Models\Product::with('categories')->paginate(30)
+            'products' => \App\Models\Product::with('categories')->paginate(30),
+            'categories' => \App\Models\Category::all()
         ]);
     }
 
@@ -113,5 +114,15 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
         return redirect('/admin-panel/products')->with('delete-success', 'Proizvod izbrisan');
+    }
+
+    public function search(Request $request)
+    {
+        $categoryProducts = \App\Models\CategoryProduct::where('category_id', $request->category)->get()->pluck('product_id');
+
+        return view('admin-panel.products.index', [
+            'products' => \App\Models\Product::whereIn('id', $categoryProducts)->with('categories')->paginate(30),
+            'categories' => \App\Models\Category::all()
+        ]);
     }
 }

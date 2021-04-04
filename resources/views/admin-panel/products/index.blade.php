@@ -23,9 +23,32 @@
 
         <div class="min-h-screen w-full mt-14 px-4 py-8">
 
+          <div class="mb-8">
+            <form action="/admin-panel/products/search" method="POST">
+                @csrf
+                @method('POST')
+
+                <select name="category" id="" class="w-full rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent">
+                  <option value="0">Svi</option>
+                  @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>                      
+                  @endforeach
+                </select>
+                  
+                <button type="submit" class="bg-blue-600 py-2 px-4 text-white rounded-md w-full mt-4">Trazi</button>
+            </form>
+          </div>
+
           @foreach ($products as $product)
 
-              <div class="bg-white border border-gray-200 mb-8">
+          
+          @foreach ($product->categories as $productCategory)
+            <div>
+              {{ $productCategory->name }}
+            </div>
+          @endforeach
+
+              <div class="bg-white border border-gray-200 mb-8 rounded-md shadow-sm">
 
                 <div class="flex justify-between px-4 py-4">
 
@@ -37,7 +60,7 @@
                             <p class="text-sm">{{ $product->amount }} na stanju</p>
                             @break
 
-                        @case($product->amount > 0 && $product->amount < 10)
+                        @case($product->amount > 0 && $product->amount <= 10)
                             <div class="bg-yellow-600 rounded-full h-2.5 w-2.5 mr-1.5"></div>
                             <p class="text-sm">{{ $product->amount }} na stanju</p>                        
                             @break
@@ -56,15 +79,15 @@
                   </div>
                 </div>
 
-                <div class="border-t border-b">
+                <div>
                   <img src="{{ $product->image_url }}">
                 </div>
 
-                <div class="px-4 py-4 w-full text-center">
-                  <h3 class="font-semibold text-lg">asjdasjdjasjdjasjd jasdjas jsadasd asdasdasdas</h3>
+                <div class="px-4 py-4 w-full">
+                  <h3 class="font-semibold text-xl">{{ ucwords("Samsung Galaxy A51") }}</h3>
                 </div>
 
-                <div class="px-4 py-4 flex justify-between text-sm">
+                <div class="px-4 pb-4 flex justify-between text-sm">
 
                   <div class="self-center">
                     <p>{{ $product->price }} BAM</p>
@@ -72,17 +95,17 @@
 
                   @switch($product->state)
                       @case(0)
-                          <div class="bg-green-600 rounded-md text-white px-4 py-1 font-medium">
+                          <div>
                             <p>Novo</p>
                           </div>
                           @break
                       @case(1)
-                          <div class="bg-yellow-600 rounded-md text-white px-4 py-1 font-medium">
+                          <div>
                             <p>Polovno</p>
                           </div>
                           @break
                       @case(2)
-                          <div class="bg-blue-600 rounded-md text-white px-4 py-1 font-medium">
+                          <div>
                             <p>Refurbished</p>
                           </div>
                           @break
@@ -126,7 +149,9 @@
             </div>
             
             <div>
+              <a href="/admin-panel/products" class="text-blue-600">
                 <x-icons.tv size="20"></x-icons.tv>
+              </a>
             </div>
             
             <div>
