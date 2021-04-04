@@ -118,10 +118,18 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
+        if(intval($request->category) === 0)
+        {
+            return view('admin-panel.products.index', [
+                'products' => \App\Models\Product::with('categories')->paginate(30),
+                'categories' => \App\Models\Category::all()
+            ]);
+        }
+
         $categoryProducts = \App\Models\CategoryProduct::where('category_id', $request->category)->get()->pluck('product_id');
 
         return view('admin-panel.products.index', [
-            'products' => \App\Models\Product::whereIn('id', $categoryProducts)->with('categories')->paginate(30),
+            'products' => \App\Models\Product::whereIn('id', $categoryProducts)->with('categories')->paginate(3),
             'categories' => \App\Models\Category::all()
         ]);
     }

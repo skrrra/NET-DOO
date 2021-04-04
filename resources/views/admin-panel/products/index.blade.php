@@ -26,7 +26,7 @@
           <div class="mb-8">
             <form action="/admin-panel/products/search" method="POST">
                 @csrf
-                @method('POST')
+                @method('GET')
 
                 <select name="category" id="" class="w-full rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent">
                   <option value="0">Svi</option>
@@ -126,7 +126,7 @@
 
           @if ($products->links())
               <div class="mb-12">
-                {{ $products->links() }}
+                {{ $products->appends(['category' => request()->category])->links() }}
               </div>
           @endif
 
