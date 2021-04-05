@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Validation\Rule;
@@ -121,20 +122,25 @@ class ProductController extends Controller
     public function search(Request $request)
     {
 
-        if(intval($request->category) === 0)
-        {
-            return view('admin-panel.products.index', [
-                'products' => \App\Models\Product::with('categories')->paginate(30),
-                'categories' => \App\Models\Category::all()
-            ]);
-        }
+        $order = $request->order;
+        $order = explode(',', $order);
 
-        $categoryProducts = \App\Models\CategoryProduct::where('category_id', $request->category)->get()->pluck('product_id');
+        // if(intval($request->category) === 0)
+        // {
+        //     return view('admin-panel.products.index', [
+        //         'products' => \App\Models\Product::with('categories')->paginate(30, ['id', 'price', 'amount', 'state', 'active', 'image_url']),
+        //         'categories' => \App\Models\Category::all('id', 'name')
+        //     ]);
+        // }
+
+        $categoryProducts = \App\Models\CategoryProduct::where('category_id', $request->category)->get(['product_id'])->pluck('product_id');
+
+        $products = Product::whereIn('id', $categoryProducts)->orderBy($order[0], $order[1])->paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active', 'image_url']);
 
         return view('admin-panel.products.index', [
-            'products' => \App\Models\Product::whereIn('id', $categoryProducts)->with('categories')->paginate(3),
-            'categories' => \App\Models\Category::all()->except($request->category),
-            'currentCategory' => \App\Models\Category::find($request->category)
+            'products' => $products,
+            'currentCategory' => Category::find($request->category),
+            'categories' => \App\Models\Category::all('id', 'name')->except($request->category),
         ]);
     }
 }

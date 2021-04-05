@@ -21,30 +21,40 @@
 
         {{-- Mobile navigation with hamburger end --}}
 
+
         <div class="min-h-screen w-full mt-14 px-4 py-8">
 
-          {{-- <div class="mb-8">
-            <form action="/admin-panel/products/search" method="POST">
+          <div class="mb-8">
+            <form action="/admin-panel/products/search" method="POST" class="flex flex-col">
                 @csrf
                 @method('GET')
 
-                <select name="category" id="" class="w-full rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent">
+                <div class="flex">
+                  <select name="category" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent">
 
-                  @isset($currentCategory)
-                    <option value="{{ $currentCategory }}">{{ $currentCategory->name }}</option>
-                  @endisset
+                    @isset($currentCategory)
+                      <option value="{{ $currentCategory->id }}">{{ $currentCategory->name }}</option>
+                    @endisset
+  
+                      <option value="0">Svi</option>  
+  
+                    @foreach ($categories as $category)
+                      <option value="{{ $category->id }}">{{ $category->name }}</option>                      
+                    @endforeach
+  
+                  </select>
+  
+                  <select name="order" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent">
+                    <option value="created_at,DESC">Najnovije</option>
+                    <option value="created_at,ASC">Najstarije</option>
+                    <option value="price,DESC">Cijena najvisa</option>
+                    <option value="price,ASC">Cijena najniza</option>
+                  </select>
+                </div>
 
-                    <option value="0">Svi</option>  
-
-                  @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>                      
-                  @endforeach
-
-                </select>
-                  
                 <button type="submit" class="bg-blue-600 py-2 px-4 text-white rounded-md w-full mt-4">Trazi</button>
             </form>
-          </div> --}}
+          </div>
 
           <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 lg:mb-8 xl:grid-cols-5 xl:gap-6 xl:mb-0 2xl:grid-cols-6">
 
@@ -61,15 +71,15 @@
 
                         @case($product->amount == 0)
                             <div class="bg-red-600 rounded-full h-2.5 w-2.5 mr-1.5"></div>
-                            <p class="text-sm">{{ $product->amount }} na stanju</p>
+                            <p class="text-xs">{{ $product->amount }} na stanju</p>
                             @break
 
-                        @case($product->amount > 0 && $product->amount <= 10)
+                        @case($product->amount > 0 && $product->amount <= 3)
                             <div class="bg-yellow-600 rounded-full h-2.5 w-2.5 mr-1.5"></div>
-                            <p class="text-sm">{{ $product->amount }} na stanju</p>                        
+                            <p class="text-xs">{{ $product->amount }} na stanju</p>                        
                             @break
                             
-                        @case($product->amount > 10)
+                        @case($product->amount > 3)
                             <div class="bg-green-600 rounded-full h-2.5 w-2.5 mr-1.5"></div>
                             <p class="text-xs">{{ $product->amount }} na stanju</p> 
                             @break  
@@ -91,7 +101,7 @@
                   <h3 class="font-semibold text-xl">{{ ucwords($product->name) }}</h3>
                 </div>
 
-                <div class="px-4 pb-4 flex justify-between text-sm">
+                <div class="px-4 pb-4 pt-2 flex justify-between text-md">
 
                   <div>
                     <p>{{ $product->price }} BAM</p>
