@@ -7,7 +7,7 @@
 
         {{-- Mobile navigation with hamburger start --}}
         
-        <div class="w-full bg-white py-4 px-4 fixed top-0 left-0 flex justify-between items-center border-b border-gray-200">
+        <div class="w-full bg-white py-4 px-4 fixed top-0 left-0 flex justify-between items-center border-b border-gray-200 md:hidden">
 
             <div>
                 <a href="/admin-panel" class="font-medium">Admin panel</a>
@@ -24,72 +24,68 @@
        
 
 
-        <div class="min-h-screen w-full mt-14 px-4 py-8">
-
+        <div class="min-h-screen w-full px-4 py-20">
+          {{-- SEARCH FORM START --}}
           <div class="mb-8">
             <form action="/admin-panel/products/search" method="POST" class="flex flex-col">
                 @csrf
                 @method('GET')
 
-                <div class="flex">
-                  <select name="category" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent">
-
+                <div class="flex flex-col">
+                  <select name="category" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2">
                     @isset($currentCategory)
                       <option value="{{ $currentCategory->id }}">{{ $currentCategory->name }}</option>
                     @endisset
-  
-                      <option value="0">Svi</option>  
-  
+                      <option value="0">Sve kategorije</option>  
                     @foreach ($categories as $category)
                       <option value="{{ $category->id }}">{{ $category->name }}</option>                      
                     @endforeach
   
                   </select>
   
-                  <select name="order" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent">
+                  <select name="order" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2">
                     <option value="created_at,DESC">Najnovije</option>
                     <option value="created_at,ASC">Najstarije</option>
                     <option value="price,DESC">Cijena najvisa</option>
                     <option value="price,ASC">Cijena najniza</option>
                   </select>
+                  
+                  <select name="perPage" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-4">
+                    <option value="10">Po 10</option>
+                    <option value="30">Po 30</option>
+                    <option value="60">Po 60</option>
+                    <option value="90">Po 90</option>
+                  </select>
                 </div>
 
-                <button type="submit" class="bg-blue-600 py-2 px-4 text-white rounded-md w-full mt-4">Trazi</button>
+                <button type="submit" class="bg-blue-600 py-2 text-white font-semibold rounded-md w-full">Trazi</button>
             </form>
           </div>
+          {{-- SEARCH FORM END --}}
 
+          {{-- PRODUCTS LISTING START --}}
           <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 lg:mb-8 xl:grid-cols-5 xl:gap-6 xl:mb-0 2xl:grid-cols-6">
 
           
           {{-- PRODUCT COMPONENT START --}}
           @foreach ($products as $product)
-
-         
-
               <div class="bg-white border border-gray-200  rounded-md shadow-sm">
-              
-
                 <div class="flex justify-between px-4 py-4">
-
                   <div class="flex items-center">
                     @switch($product)
-
                         @case($product->amount == 0)
                             <div class="bg-red-600 rounded-full h-2.5 w-2.5 mr-1.5"></div>
                             <p class="text-xs">{{ $product->amount }} na stanju</p>
                             @break
-
                         @case($product->amount > 0 && $product->amount <= 3)
                             <div class="bg-yellow-600 rounded-full h-2.5 w-2.5 mr-1.5"></div>
                             <p class="text-xs">{{ $product->amount }} na stanju</p>                        
                             @break
-                            
                         @case($product->amount > 3)
                             <div class="bg-green-600 rounded-full h-2.5 w-2.5 mr-1.5"></div>
                             <p class="text-xs">{{ $product->amount }} na stanju</p> 
                             @break  
                         @default
-
                     @endswitch
                   </div>
 
@@ -107,7 +103,6 @@
                 </div>
 
                 <div class="px-4 pb-4 pt-2 flex justify-between text-md">
-
                   <div>
                     <p>{{ $product->price }} BAM</p>
                   </div>
@@ -132,9 +127,6 @@
                           
                   @endswitch
                 </div>
-
-              
-
               </div>
 
               @if ($loop->last)
@@ -145,19 +137,22 @@
           {{-- PRODUCT COMPONENT END --}}
 
         </div>
+        {{-- PRODUCTS LISTING START --}}
 
 
-          @if ($products->links())
-              <div class="mb-12">
-                {{ $products->appends(['category' => request()->category, 'order' => request()->order])->links() }}
-              </div>
-          @endif
-
+        {{-- PAGINATION LINKS START --}}
+        @if ($products->links())
+          <div>
+              {{ $products->appends(['category' => request()->category, 'order' => request()->order, 'perPage' => request()->perPage])->links() }}
+            </div>
+        @endif
+        {{-- PAGINATION LINKS START --}}
+              
         </div>
         
         {{-- Mobile user action menu start --}}
         
-        <div class="w-full bg-white py-4 px-4 fixed bottom-0 left-0 flex items-center justify-between border-t border-gray-200">
+        <div class="w-full bg-white py-4 px-4 fixed bottom-0 left-0 flex items-center justify-between border-t border-gray-200 md:hidden">
             
             <div>
                 <x-icons.bell size="20"></x-icons.bell>

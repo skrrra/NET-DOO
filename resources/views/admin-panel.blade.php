@@ -7,7 +7,7 @@
 
         {{-- Mobile navigation with hamburger start --}}
         
-        <div class="w-full bg-white py-4 px-4 fixed top-0 left-0 flex justify-between items-center border-b border-gray-200">
+        <div class="w-full  py-4 px-4 fixed top-0 left-0 flex justify-between items-center border-b border-gray-200">
 
             <div>
                 <a href="/admin-panel" class="font-medium">Admin panel</a>
@@ -21,13 +21,13 @@
 
         {{-- Mobile navigation with hamburger end --}}
 
-        <div class="h-screen min-h-screen w-full mt-14 px-4 py-4">
+        <div class="min-h-screen w-full pt-14 pb-14 px-4 py-4 bg-red-300">
 
-            <div>
+            <div class="bg-green-400 h-screen">
 
             </div>
 
-            <div></div>
+            <div class="bg-yellow-500 h-screen"></div>
 
             <div></div>
 
@@ -37,7 +37,7 @@
         
         {{-- Mobile user action menu start --}}
         
-        <div class="w-full bg-white py-4 px-4 fixed bottom-0 left-0 flex items-center justify-between border-t border-gray-200">
+        <div class="w-full  py-4 px-4 fixed bottom-0 left-0 flex items-center justify-between border-t border-gray-200">
             
             <div>
                 <x-icons.bell size="20"></x-icons.bell>

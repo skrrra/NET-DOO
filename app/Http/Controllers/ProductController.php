@@ -121,7 +121,6 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
-
         // GET request ordering parameters
         $order = $request->order;
         $order = explode(',', $order);
@@ -130,14 +129,14 @@ class ProductController extends Controller
         if(intval($request->category) === 0)
         {
             return view('admin-panel.products.index', [
-                'products' => Product::paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active', 'image_url']),
+                'products' => Product::orderBy($order[0], $order[1])->paginate(intval($request->perPage), ['id', 'name', 'price', 'amount', 'state', 'active', 'image_url']),
                 'categories' => \App\Models\Category::all('id', 'name')
             ]);
         }
 
         // If the request contains a category return category products
         return view('admin-panel.products.index', [
-            'products' => Category::find($request->category)->products()->orderBy($order[0], $order[1])->paginate(30),
+            'products' => Category::find($request->category)->products()->orderBy($order[0], $order[1])->paginate(intval($request->perPage)),
             'currentCategory' => Category::find($request->category),
             'categories' => \App\Models\Category::all('id', 'name')->except($request->category),
         ]);
