@@ -122,23 +122,22 @@ class ProductController extends Controller
     public function search(Request $request)
     {
 
+        // GET request ordering parameters
         $order = $request->order;
         $order = explode(',', $order);
 
-        // if(intval($request->category) === 0)
-        // {
-        //     return view('admin-panel.products.index', [
-        //         'products' => \App\Models\Product::with('categories')->paginate(30, ['id', 'price', 'amount', 'state', 'active', 'image_url']),
-        //         'categories' => \App\Models\Category::all('id', 'name')
-        //     ]);
-        // }
+        // If the request does not contain a category id return all products
+        if(intval($request->category) === 0)
+        {
+            return view('admin-panel.products.index', [
+                'products' => Product::paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active', 'image_url']),
+                'categories' => \App\Models\Category::all('id', 'name')
+            ]);
+        }
 
-        $categoryProducts = \App\Models\CategoryProduct::where('category_id', $request->category)->get(['product_id'])->pluck('product_id');
-
-        $products = Product::whereIn('id', $categoryProducts)->orderBy($order[0], $order[1])->paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active', 'image_url']);
-
+        // If the request contains a category return category products
         return view('admin-panel.products.index', [
-            'products' => $products,
+            'products' => Category::find($request->category)->products()->orderBy($order[0], $order[1])->paginate(30),
             'currentCategory' => Category::find($request->category),
             'categories' => \App\Models\Category::all('id', 'name')->except($request->category),
         ]);

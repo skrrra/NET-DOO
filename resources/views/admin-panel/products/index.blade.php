@@ -21,6 +21,8 @@
 
         {{-- Mobile navigation with hamburger end --}}
 
+       
+
 
         <div class="min-h-screen w-full mt-14 px-4 py-8">
 
@@ -62,7 +64,10 @@
           {{-- PRODUCT COMPONENT START --}}
           @foreach ($products as $product)
 
+         
+
               <div class="bg-white border border-gray-200  rounded-md shadow-sm">
+              
 
                 <div class="flex justify-between px-4 py-4">
 
@@ -144,7 +149,7 @@
 
           @if ($products->links())
               <div class="mb-12">
-                {{ $products->appends(['category' => request()->category])->links() }}
+                {{ $products->appends(['category' => request()->category, 'order' => request()->order])->links() }}
               </div>
           @endif
 
