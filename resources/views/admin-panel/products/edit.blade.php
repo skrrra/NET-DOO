@@ -145,8 +145,13 @@
                             <div class="flex flex-col">
                                 <label for="" class="mb-2">Aktivnost</label>
                                 <select name="active" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
+                                @if ($product->active == 0)
                                     <option value="0">Neaktivan</option>
                                     <option value="1">Aktivan</option>
+                                @else
+                                    <option value="1">Aktivan</option>
+                                    <option value="0">Neaktivan</option>
+                                @endif
                                 </select>
                             </div>
 
