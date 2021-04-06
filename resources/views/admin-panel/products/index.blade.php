@@ -47,12 +47,49 @@
           </div>
         @endif
 
-        <div>
-          <a href="/admin-panel/products/create" class="text-base w-40 border flex border-gray-200 shadow-sm  py-2 px-2 bg-white rounded-md hover:text-blue-600 justify-center">
-              <div class="mr-1.5 flex">
-                  <x-icons.add size="16"></x-icons.add>
+        <div class="flex justify-between">
+          <form action="/admin-panel/products/search" method="POST" class="flex flex-col md:flex-row">
+            @csrf
+            @method('GET')
+
+            <div class="flex flex-col md:flex-row">
+              <select name="category" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2 md:mb-0 md:mr-2">
+                @isset($currentCategory)
+                  <option value="{{ $currentCategory->id }}">{{ $currentCategory->name }}</option>
+                @endisset
+                  <option value="0">Sve kategorije</option>  
+                @foreach ($categories as $category)
+                  <option value="{{ $category->id }}">{{ $category->name }}</option>                      
+                @endforeach
+              </select>
+  
+              <select name="order" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2 md:mb-0 md:mr-2">
+                <option value="created_at,DESC">Najnovije</option>
+                <option value="created_at,ASC">Najstarije</option>
+                <option value="price,DESC">Cijena najvisa</option>
+                <option value="price,ASC">Cijena najniza</option>
+              </select>
+                  
+              <select name="perPage" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-4 md:mb-0 md:mr-4">
+                <option value="30">Po 30</option>
+                <option value="60">Po 60</option>
+                <option value="90">Po 90</option>
+              </select>
+            </div>
+
+            <button type="submit" class="bg-blue-600 py-2 text-white font-semibold rounded-md w-full flex flex-1 md:max-w-xs xl:px-6 hover:bg-blue-700">
+              <div class="mx-auto flex items-center">
+                <p class="mr-1">Traži</p>
+                <x-icons.search size="16"></x-icons.search>
               </div>
-              Dodaj proizvod
+            </button>
+          </form>
+
+          <a href="/admin-panel/products/create" class="text-base w-40 border flex border-gray-200 shadow-sm  py-2 px-2 bg-white rounded-md hover:text-blue-600 justify-center">
+            <div class="mr-1.5 flex">
+                <x-icons.add size="16"></x-icons.add>
+            </div>
+            Dodaj proizvod
           </a>
         </div>
 
@@ -89,14 +126,14 @@
                       <tr>
                         <td class="px-6 py-4 whitespace-nowrap">
                           <div class="flex items-center">
-                            <div class="flex-shrink-0 lg:h-10 lg:w-10">
-                              <img class="lg:h-10 lg:w-10 rounded-md" src="{{ $product->image_url }}" alt="">
+                            <div class="flex-shrink-0 xl:h-14 xl:w-14 2xl:h-16 2xl:w-16">
+                              <img class="xl:h-14 xl:w-14 2xl:h-16 2xl:w-16 rounded-md" src="{{ $product->image_url }}" alt="">
                             </div>
                             <div class="lg:ml-2 xl:ml-4">
-                              <div class="text-xs font-medium text-gray-900">
+                              <div class="text-sm font-medium text-gray-900">
                                 {{ $product->name }}
                               </div>
-                              <div class="text-xs text-gray-500">
+                              <div class="text-sm text-gray-500">
                                 @switch($product->state)
                                     @case(0)
                                       Novo
@@ -116,28 +153,33 @@
                         </td>
                         <td class="px-4 py-2 xl:px-6 xl:py-4 whitespace-nowrap">
                           @foreach ($product->categories as $category)
-                            <div class="text-xs text-gray-900">{{ $category->name }}</div>  
+                            <div class="text-sm text-gray-900">{{ $category->name }}</div>  
                           @endforeach
                         </td>
                         <td class="px-4 py-2 xl:px-6 xl:py-4 whitespace-nowrap">
                           @if ($product->active)
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                            <span class="px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                               Aktivan
                             </span>
                           @else
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                            <span class="px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                               Neaktivan
                             </span>
                           @endif
                         </td>
-                        <td class="px-4 py-2 xl:px-6 xl:py-4 whitespace-nowrap text-xs text-gray-500">
+                        <td class="px-4 py-2 xl:px-6 xl:py-4 whitespace-nowrap text-sm text-gray-500">
                           {{ $product->price }} BAM
                         </td>
-                        <td class="px-4 py-2 xl:px-6 xl:py-4 whitespace-nowrap text-xs text-gray-500">
+                        <td class="px-4 py-2 xl:px-6 xl:py-4 whitespace-nowrap text-sm text-gray-500">
                           {{ $product->amount }}
                         </td>
                         <td class="px-4 py-2 xl:px-6 xl:py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <a href="/admin-panel/products/{{ $product->id }}/edit" class="text-blue-600 hover:text-indigo-900 text-xs">Uredi</a>
+                          <a href="/admin-panel/products/{{ $product->id }}/edit" class="text-blue-600 flex hover:text-indigo-900">
+                            <div class="flex mx-auto">
+                              <x-icons.edit size="14"></x-icons.edit>
+                              <p class="ml-1">Uredi</p>
+                            </div>
+                          </a>
                         </td>
                       </tr>
                     @endforeach
@@ -175,13 +217,13 @@
       {{-- PRE INSERT DIV START --}}
       <div class="min-h-screen w-full px-4 py-20 xl:hidden">
         {{-- SEARCH FORM START --}}
-        <div class="mb-8">
-          <form action="/admin-panel/products/search" method="POST" class="flex flex-col">
+        <div class="mb-8 md:mt-2">
+          <form action="/admin-panel/products/search" method="POST" class="flex flex-col md:flex-row">
             @csrf
             @method('GET')
 
-            <div class="flex flex-col">
-              <select name="category" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2">
+            <div class="flex flex-col md:flex-row">
+              <select name="category" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2 md:mb-0 md:mr-2">
                 @isset($currentCategory)
                   <option value="{{ $currentCategory->id }}">{{ $currentCategory->name }}</option>
                 @endisset
@@ -191,22 +233,26 @@
                 @endforeach
               </select>
   
-              <select name="order" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2">
+              <select name="order" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2 md:mb-0 md:mr-2">
                 <option value="created_at,DESC">Najnovije</option>
                 <option value="created_at,ASC">Najstarije</option>
                 <option value="price,DESC">Cijena najvisa</option>
                 <option value="price,ASC">Cijena najniza</option>
               </select>
                   
-              <select name="perPage" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-4">
-                <option value="10">Po 10</option>
+              <select name="perPage" id="" class="rounded-md border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-4 md:mb-0 md:mr-4">
                 <option value="30">Po 30</option>
                 <option value="60">Po 60</option>
                 <option value="90">Po 90</option>
               </select>
             </div>
 
-            <button type="submit" class="bg-blue-600 py-2 text-white font-semibold rounded-md w-full">Trazi</button>
+            <button type="submit" class="bg-blue-600 py-2 text-white font-semibold rounded-md w-full flex flex-1 md:max-w-xs">
+              <div class="mx-auto flex items-center">
+                <p class="mr-1">Traži</p>
+                <x-icons.search size="16"></x-icons.search>
+              </div>
+            </button>
           </form>
         </div>
         {{-- SEARCH FORM END --}}
@@ -248,7 +294,7 @@
                 <h3 class="font-semibold text-xl">{{ ucwords($product->name) }}</h3>
               </div>
 
-              <div class="px-4 pb-4 pt-2 flex justify-between text-md">
+              <div class="px-4 pb-4 pt-2 flex justify-between text-sm">
                 <div>
                   <p>{{ $product->price }} BAM</p>
                 </div>
@@ -288,7 +334,7 @@
 
         {{-- PAGINATION LINKS START --}}
         @if ($products->links())
-          <div>
+          <div class="md:mt-8">
             {{ $products->appends(['category' => request()->category, 'order' => request()->order, 'perPage' => request()->perPage])->links() }}
           </div>
         @endif

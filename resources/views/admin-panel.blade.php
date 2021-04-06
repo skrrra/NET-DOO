@@ -21,18 +21,8 @@
 
         {{-- Mobile navigation with hamburger end --}}
 
-        <div class="min-h-screen w-full pt-14 pb-14 px-4 py-4 bg-red-300">
-
-            <div class="bg-green-400 h-screen">
-
-            </div>
-
-            <div class="bg-yellow-500 h-screen"></div>
-
-            <div></div>
-
-            
-
+        <div class="min-h-screen w-full pt-14 pb-14 px-4 py-4">
+            {{-- MAIN CONTENT --}}
         </div>
         
         {{-- Mobile user action menu start --}}
