@@ -3,7 +3,7 @@
 ])
 
 <div>
-    <label for="select" class="text-sm font-semibold">Kategorije *</label>
+    <label for="select" class="text-sm font-semibold">Kategorije <span class="text-blue-600">*</span></label>
     <select x-cloak id="select">
         @foreach ($items as $item)
             <option value="{{ $item->id }}">{{ $item->name }}</option>

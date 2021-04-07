@@ -174,7 +174,7 @@
                           {{ $product->amount }}
                         </td>
                         <td class="px-4 py-2 xl:px-6 xl:py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <a href="/admin-panel/products/{{ $product->id }}/edit" class="text-blue-600 flex hover:text-indigo-900">
+                          <a href="/admin-panel/product/{{ $product->id }}/edit" class="text-blue-600 flex hover:text-indigo-900">
                             <div class="flex mx-auto">
                               <x-icons.edit size="14"></x-icons.edit>
                               <p class="ml-1">Uredi</p>
@@ -355,7 +355,7 @@
           <x-icons.precent size="20"></x-icons.precent>
         </div>
         <div>
-          <a href="/admin-panel/products" class="text-blue-600">
+          <a href="/admin-panel/product" class="text-blue-600">
             <x-icons.tv size="20"></x-icons.tv>
           </a>
         </div>
