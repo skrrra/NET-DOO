@@ -34,11 +34,11 @@ TODO
 
     FACTORIES
 
-        1. Not finished | Create an factory that automaticly selects a random image from available ( start today )
+        1. FINISHED | Create an factory that automaticly selects a random image from available ( start today )
 
     MIGRATIONS
 
-        1. Not finished | Tied to the model change improve the general structure depending on the model change  ( start today )
+        1. FINISHED | Tied to the model change improve the general structure depending on the model change  ( start today )
 
     SEEDERS
 
@@ -86,6 +86,3 @@ EXECUTION
             2. Android
 
         2. Other
-
-
-    MODELS

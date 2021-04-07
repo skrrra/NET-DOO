@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('amount');
             $table->integer('state');
             $table->boolean('active');
-            $table->string('image_url')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

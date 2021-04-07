@@ -15,7 +15,7 @@ class ProductController extends Controller
         return view('admin-panel.products.index', [
             'products' => \App\Models\Product::with(['categories' => function($query){
                 $query->select('name');
-            }])->paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active', 'image_url']),
+            }])->paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active', 'image']),
             'categories' => \App\Models\Category::all(['id', 'name'])
         ]);
     }
@@ -30,19 +30,19 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|unique:products|max:255',
-            'price' => 'required',
-            'amount' => 'required',
-            'state' => 'required',
-            'active' => 'required',
-            'image_url' => 'required|image|mimes:jpeg,png,jpg,svg|max:1024'
+            'name' => 'bail|required|unique:products|max:255',
+            'price' => 'bail|required',
+            'amount' => 'bail|required',
+            'state' => 'bail|required',
+            'active' => 'bail|required',
+            'image' => 'bail|required|image|mimes:jpeg,png,jpg,svg|max:1024'
         ]);
 
-        $imageName = '/images/image-' . strtolower('netdoo') . '-' . date('Y') . '-' . time() . '.' . request()->image_url->extension();
+        $imageName = '/images/image-' . strtolower('netdoo') . '-' . date('Y') . '-' . time() . '.' . request()->image->extension();
 
-        request()->image_url->move(public_path('images'), $imageName);
+        request()->image->move(public_path('images'), $imageName);
 
-        $validated['image_url'] = $imageName;
+        $validated['image'] = $imageName;
         
         $product = new \App\Models\Product($validated);
         $product->save();
@@ -68,7 +68,7 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        if(!isset($request->image_url))
+        if(!isset($request->image))
         {
             $product = Product::find($id);
             $validated = request()->validate([
@@ -97,14 +97,14 @@ class ProductController extends Controller
                 'price' => 'required',
                 'amount' => 'required',
                 'state' => 'required',
-                'image_url' => 'required|image|mimes:jpeg,png,jpg,svg|max:1024'
+                '_url' => 'required|image|mimes:jpeg,png,jpg,svg|max:1024'
             ]);
 
-            $imageName = '/images/image-' . strtolower('net-doo') . '-' . date('Y') . '-' . time() . '.' . request()->image_url->extension();
+            $imageName = '/images/image-' . strtolower('net-doo') . '-' . date('Y') . '-' . time() . '.' . request()->_url->extension();
 
-            request()->image_url->move(public_path('images'), $imageName);
+            request()->_url->move(public_path('images'), $imageName);
 
-            $validated['image_url'] = $imageName;
+            $validated['_url'] = $imageName;
 
             $product->update($validated);
 
@@ -129,7 +129,7 @@ class ProductController extends Controller
         if(intval($request->category) === 0)
         {
             return view('admin-panel.products.index', [
-                'products' => Product::orderBy($order[0], $order[1])->with('categories')->paginate(intval($request->perPage), ['id', 'name', 'price', 'amount', 'state', 'active', 'image_url']),
+                'products' => Product::orderBy($order[0], $order[1])->with('categories')->paginate(intval($request->perPage), ['id', 'name', 'price', 'amount', 'state', 'active', '_url']),
                 'categories' => \App\Models\Category::all('id', 'name')
             ]);
         }

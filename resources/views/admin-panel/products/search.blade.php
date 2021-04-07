@@ -127,7 +127,7 @@
                         <td class="px-6 py-4 whitespace-nowrap">
                           <div class="flex items-center">
                             <div class="flex-shrink-0 xl:h-14 xl:w-14 2xl:h-16 2xl:w-16">
-                              <img class="xl:h-14 xl:w-14 2xl:h-16 2xl:w-16 rounded-md" src="{{ $product->image }}" alt="">
+                              <img class="xl:h-14 xl:w-14 2xl:h-16 2xl:w-16 rounded-md" src="{{ $product->image_url }}" alt="">
                             </div>
                             <div class="lg:ml-2 xl:ml-4">
                               <div class="text-sm font-medium text-gray-900">
@@ -287,7 +287,7 @@
               </div>
 
               <div class="flex px-4">
-                <img src="{{ $product->image }}" class="inline-block h-52 bg-green-300 mx-auto rounded-md">
+                <img src="{{ $product->image_url }}" class="inline-block h-52 bg-green-300 mx-auto rounded-md">
               </div>
 
               <div class="px-4 pt-4 pb-2 w-full">

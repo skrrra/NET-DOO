@@ -3,7 +3,7 @@
 @section('content')    
     <div class="w-full min-h-full flex flex-col">
 
-        <div class="bg-gray-300 h-screen fixed top-0 left-0 xl:w-3/12 xl:bg-gray-50 2xl:w-2/12 border-r-2 border-gray-200 ">
+        <div class="bg-white h-screen fixed top-0 left-0 xl:w-3/12 2xl:w-2/12 border-r-2 border-gray-200 ">
 
             <div class="xl:py-12 xl:px-10 font-semibold">
                 <h3 class="text-2xl">Admin panel</h3>
@@ -37,140 +37,138 @@
         
         <div class="min-h-screen xl:w-9/12 xl:px-10 2xl:w-10/12 self-end">
 
-            <div class="min-h-screen w-full">
-                
-                <div class="xl:py-10">
-                    <a href="/admin-panel/products/create" class="text-base w-40 border flex border-gray-200 shadow-sm  py-2 px-2 bg-white rounded-md hover:text-blue-600">
-                        <div class="mr-2 flex">
-                            <x-icons.add size="18"></x-icons.add>
-                        </div>
-                        Dodaj proizvod
-                    </a>
-                </div>
+            <div class="min-h-screen w-full pt-10">
 
-                <div class="px-6 py-6 rounded-md border border-gray-200 shadow-sm bg-white">
+                <div class="px-8 py-8 rounded-md border border-gray-200 shadow-sm bg-white">
                     @if (session()->has('Success'))
-                        <div class="bg-green-400 border border-gray-200 text-white absolute top-8 right-10 font-semibold py-2 px-4 rounded-md flex">
+                        <div class="bg-green-600 border border-gray-200 text-white absolute top-18 right-14 font-semibold py-2 px-4 rounded-md flex">
                             <p class="mr-2">{{ session()->get('Success') }}</p>
                             <x-icons.check size="18"></x-icons.check>
                         </div>
                     @endif
 
                     <div class="mb-12 flex">
+                        <h1 class="font-semibold text-2xl mr-2">Dodaj novi proizvod</h1>
                         <x-icons.tv size="32"></x-icons.tv>
-                        <h1 class="font-semibold text-3xl ml-2">Dodaj novi proizvod</h1>
                     </div>
 
-                    <form action="/admin-panel/products" method="POST" class="grid" enctype="multipart/form-data" class="">
+                    <form action="/admin-panel/products" method="POST" class="grid" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
 
-                        <div class=" grid grid-cols-3 gap-6">
-                            <div class="flex flex-col">
-                                <label for="" class="mb-2">Naziv proizvoda *</label>
-                                <input type="text" name="name" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100" placeholder="Samsung Galaxy A5">
-                                @error('name')
-                                    <div class="mt-2">
-                                        <p class="text-sm text-red-400">{{ $message }}</p>
+                        <div class="flex flex-row">
+                            <div class="w-8/12">
+                                <div class=" grid grid-cols-3 gap-6">
+                                    <div class="flex flex-col">
+                                        <label for="" class="mb-2 text-sm font-semibold">Naziv proizvoda *</label>
+                                        <x-forms.input
+                                            type="text"
+                                            name="name"
+                                            placeholder="Samsung Galaxy A5"
+                                        ></x-forms.input>
                                     </div>
-                                @enderror
-                            </div>
 
-                            <div class="flex flex-col">
-                                <label for="" class="mb-2">Cijena *</label>
-                                <input type="number" name="price" step="0.01" placeholder="0.00" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
-                                @error('price')
-                                    <div class="mt-2">
-                                        <p class="text-sm text-red-400">{{ $message }}</p>
+                                    <div class="flex flex-col">
+                                        <label for="" class="mb-2 text-sm font-semibold">Cijena *</label>
+                                        <x-forms.input
+                                            type="number"
+                                            name="price"
+                                            placeholder="123.99"
+                                            step="0.01"
+                                        ></x-forms.input>
                                     </div>
-                                @enderror
-                            </div>
 
-                            <div class="flex flex-col">
-                                <label for="" class="mb-2">Kolicina *</label>
-                                <input type="text" name="amount" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100" placeholder="12">
-                                @error('amount')
-                                    <div class="mt-2">
-                                        <p class="text-sm text-red-400">{{ $message }}</p>
+                                    <div class="flex flex-col">
+                                        <label for="" class="mb-2 text-sm font-semibold">Količina *</label>
+                                        <x-forms.input
+                                            type="number"
+                                            name="amount"
+                                            placeholder="3"
+                                        ></x-forms.input>
                                     </div>
-                                @enderror
-                            </div>
-                        </div>
+                                </div>
 
-                        <div class="grid grid-cols-3 gap-6 mt-8">
-                            <div class="flex flex-col">
-                                <label for="" class="mb-2">Stanje</label>
-                                <select name="state" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
-                                    <option value="0">Novo</option>
-                                    <option value="1">Polovno</option>
-                                    <option value="2">Refurbished</option>
-                                </select>
-                            </div>
-                            
-                            <div class="flex flex-col">
-                                <label for="" class="mb-2">Kategorija</label>
-                                <select name="category" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="flex flex-col">
-                                <label for="" class="mb-2">Aktivnost</label>
-                                <select name="active" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
-                                    <option value="0">Neaktivan</option>
-                                    <option value="1">Aktivan</option>
-                                </select>
-                            </div>
-
-                        </div>
-
-                        {{-- BEFORE INSER --}}
-
-
-                        <div class="mt-8">
-                            <label class="">
-                                Slika proizvoda
-                            </label>
-
-                            <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md bg-gray-50">
-                                <div class="space-y-1 text-center">
-                                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                    <div class="flex text-sm text-gray-600">
-                                        <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                            <span>Upload a file</span>
-                                            <input id="file-upload" name="image_url" type="file" class="sr-only">
-                                        </label>
-                                        <p class="pl-1">or drag and drop</p>
+                                <div class="grid grid-cols-3 gap-6 mt-10">
+                                    <div class="flex flex-col">
+                                        <label for="" class="mb-2 text-sm font-semibold">Stanje</label>
+                                        <select name="state" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
+                                            <option value="0">Novo</option>
+                                            <option value="1">Polovno</option>
+                                            <option value="2">Refurbished</option>
+                                        </select>
                                     </div>
-                                    <p class="text-xs text-gray-500">
-                                        PNG, JPG, GIF up to 10MB
-                                    </p>
+
+                                    <div class="flex flex-col">
+                                        <label for="" class="mb-2 text-sm font-semibold">Aktivnost</label>
+                                        <select name="active" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
+                                            <option value="1">Aktivan</option>
+                                            <option value="0">Neaktivan</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col">
+                                        <label for="" class="mb-2 text-sm font-semibold">Kategorija</label>
+                                        <select name="category" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mt-10">
+                                    <label class="text-sm font-semibold">
+                                        Slika proizvoda
+                                    </label>
+    
+                                    <div class="mt-2 flex justify-center px-6 py-6 border-2 border-gray-300 border-dashed rounded-md bg-gray-50">
+                                        <div class="space-y-1 text-center">
+                                            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <div class="flex text-sm text-gray-600">
+                                                <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                                    <span>Upload a file</span>
+                                                    <input id="file-upload" name="image" type="file" class="sr-only">
+                                                </label>
+                                                <p class="pl-1">or drag and drop</p>
+                                            </div>
+                                            <p class="text-xs text-gray-500">
+                                                PNG, JPG, GIF up to 10MB
+                                            </p>
+                                        </div>
+                                    </div>
+    
+                                    @error('image')
+                                        <div class="mt-2">
+                                            <p class="text-sm text-red-400">{{ $message }}</p>
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
 
-                            @error('image')
-                                <div class="mt-2">
-                                    <p class="text-sm text-red-400">{{ $message }}</p>
-                                </div>
-                            @enderror
+                            <div class="w-4/12 pl-4">
+                                {{-- put something not sure yet --}}
+                            </div>
                         </div>
 
-
-                        {{-- AFTER INSER --}}
-
-                        <div class="grid grid-cols-3 gap-6">
-                            <button type="submit" class="bg-blue-600 border border-gray-400 py-2 px-2 mt-10 rounded-md text-white font-semibold hover:bg-white hover:text-blue-600 hover:border-blue-600">Dodaj proizvod</button>
-                            <a href="/admin-panel/products" class="bg-red-600 border border-gray-400 py-2 px-2 mt-10 rounded-md text-white font-semibold hover:bg-white hover:text-red-600 hover:border-red-600 text-center w-1/2">Odustani</a>
+                        <div class="grid grid-cols-3 gap-6 mt-10">
+                            <button type="submit" class="bg-blue-600 border flex border-gray-600 py-2 px-2 rounded-md text-white font-semibold hover:bg-blue-700  hover:border-blue-700">
+                                <div class="flex mx-auto">
+                                    <p class="mr-1">Dodaj proizvod</p>
+                                    <x-icons.add size="18"></x-icons.add>
+                                </div>
+                            </button>
+                            <a href="/admin-panel/products" class="bg-gray-600 flex border text-white border-gray-600 py-2 px-2 rounded-md font-semibold hover:bg-gray-700 text-center w-1/2">
+                                <div class="flex mx-auto">
+                                    <p class="mr-0.5">Odustani</p>
+                                    <x-icons.cancel size="18"></x-icons.cancel>
+                                </div>
+                            </a>
                         </div>
                     </form>
                 </div>
-
             </div>
-
         </div>
     </div>
 @endsection
