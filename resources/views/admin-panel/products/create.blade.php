@@ -153,7 +153,7 @@
                                     <x-icons.add size="18"></x-icons.add>
                                 </div>
                             </button>
-                            <a href="/admin-panel/products" class="bg-gray-600 flex border text-white border-gray-600 py-2 px-2 rounded-md font-semibold hover:bg-gray-700 text-center w-1/2">
+                            <a href="/admin-panel/product" class="bg-gray-600 flex border text-white border-gray-600 py-2 px-2 rounded-md font-semibold hover:bg-gray-700 text-center w-1/2">
                                 <div class="flex mx-auto">
                                     <p class="mr-1">Odustani</p>
                                     <x-icons.cancel size="18"></x-icons.cancel>

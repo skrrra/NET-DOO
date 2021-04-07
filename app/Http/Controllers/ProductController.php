@@ -91,7 +91,7 @@ class ProductController extends Controller
             ]);
 
             $product->update($validated);
-            return redirect("/admin-panel/products/$product->id/edit")->with('Success', 'Promjene spasene!');
+            return redirect("/admin-panel/product/$product->id/edit")->with('Success', 'Promjene spasene!');
         }else{
 
             $product = Product::find($id);
@@ -115,7 +115,7 @@ class ProductController extends Controller
 
             $product->update($validated);
 
-            return redirect("/admin-panel/products/$product->id/edit")->with('Success', 'Promjene spasene!');
+            return redirect("/admin-panel/product/$product->id/edit")->with('Success', 'Promjene spasene!');
         }
     }
 
@@ -123,7 +123,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->delete();
-        return redirect('/admin-panel/products')->with('delete-success', 'Proizvod izbrisan');
+        return redirect('/admin-panel/product')->with('delete-success', 'Proizvod izbrisan');
     }
 
     public function search(Request $request)

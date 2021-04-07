@@ -15,7 +15,7 @@
                     <x-icons.truck size="20"></x-icons.truck>
                 </x-admin-panel.side-menu.item>
 
-                <x-admin-panel.side-menu.item href="/admin-panel/products" text="Proizvodi" active="true">
+                <x-admin-panel.side-menu.item href="/admin-panel/product" text="Proizvodi" active="true">
                     <x-icons.tv size="20"></x-icons.tv>
                 </x-admin-panel.side-menu.item>
 
@@ -47,7 +47,7 @@
                         Dodaj proizvod
                     </a>
 
-                    <form action="/admin-panel/products/{{ $product->id }}" method="POST" class="ml-6">
+                    <form action="/admin-panel/product/{{ $product->id }}" method="POST" class="ml-6">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-base w-40 border flex border-gray-200 shadow-sm  py-2 px-2 bg-white rounded-md hover:text-red-600">
@@ -72,7 +72,7 @@
                         <h1 class="font-semibold text-3xl ml-2">Uredi proizvod</h1>
                     </div>
 
-                    <form action="/admin-panel/products/{{ $product->id }}" method="POST" class="grid" enctype="multipart/form-data" class="">
+                    <form action="/admin-panel/product/{{ $product->id }}" method="POST" class="grid" enctype="multipart/form-data" class="">
                         @csrf
                         @method('PATCH')
 
@@ -195,7 +195,7 @@
 
                         <div class="grid grid-cols-3 gap-6">
                             <button type="submit" class="bg-blue-600 border border-gray-400 py-2 px-2 mt-10 rounded-md text-white font-semibold hover:bg-white hover:text-blue-600 hover:border-blue-600">Dodaj proizvod</button>
-                            <a href="/admin-panel/products" class="bg-red-600 border border-gray-400 py-2 px-2 mt-10 rounded-md text-white font-semibold hover:bg-white hover:text-red-600 hover:border-red-600 text-center w-1/2">Odustani</a>
+                            <a href="/admin-panel/product" class="bg-red-600 border border-gray-400 py-2 px-2 mt-10 rounded-md text-white font-semibold hover:bg-white hover:text-red-600 hover:border-red-600 text-center w-1/2">Odustani</a>
                         </div>
                     </form>
                 </div>
