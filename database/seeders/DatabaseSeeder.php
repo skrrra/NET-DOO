@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\CategoryParent;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Seeder;
+use App\Models\CategoryProduct;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,5 +21,8 @@ class DatabaseSeeder extends Seeder
             CategoryParentSeeder::class,
             ProductsSeeder::class,
         ]);
+            
+        CategoryProduct::factory()->count(6)->create();
+        User::factory()->count(1)->create();
     }
 }
