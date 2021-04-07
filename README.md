@@ -2,8 +2,8 @@ TODO
 
     MODELS
 
-        1. Not finished | Improve eloquent model relationships
-        2. Not finished | Check and test the realationships
+        1. FINISHED | Improve eloquent model relationships
+        2. FINISHED | Check and test the realationships
 
     CONTROLLERS
 
@@ -86,3 +86,6 @@ EXECUTION
             2. Android
 
         2. Other
+
+
+    MODELS
