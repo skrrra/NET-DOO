@@ -15,7 +15,7 @@
                     <x-icons.truck size="20"></x-icons.truck>
                 </x-admin-panel.side-menu.item>
 
-                <x-admin-panel.side-menu.item href="/admin-panel/products" text="Proizvodi" active="true">
+                <x-admin-panel.side-menu.item href="/admin-panel/product" text="Proizvodi" active="true">
                     <x-icons.tv size="20"></x-icons.tv>
                 </x-admin-panel.side-menu.item>
 
@@ -35,13 +35,13 @@
             
         </div>
         
-        <div class="min-h-screen xl:w-9/12 xl:px-10 2xl:w-10/12 self-end">
+        <div class="min-h-screen xl:w-9/12 xl:px-12 2xl:w-10/12 self-end">
 
-            <div class="min-h-screen w-full pt-10">
+            <div class="min-h-screen w-full pt-12">
 
-                <div class="px-8 py-8 rounded-md border border-gray-200 shadow-sm bg-white">
+                <div class="px-8 py-8 rounded-md border-2 border-gray-200 shadow-sm bg-white">
                     @if (session()->has('Success'))
-                        <div class="bg-green-600 border border-gray-200 text-white absolute top-18 right-14 font-semibold py-2 px-4 rounded-md flex">
+                        <div class="bg-green-600 border border-gray-200 text-white absolute top-18 right-20 font-semibold py-2 px-4 rounded-md flex">
                             <p class="mr-2">{{ session()->get('Success') }}</p>
                             <x-icons.check size="18"></x-icons.check>
                         </div>
@@ -49,15 +49,15 @@
 
                     <div class="mb-12 flex">
                         <h1 class="font-semibold text-2xl mr-2">Dodaj novi proizvod</h1>
-                        <x-icons.tv size="32"></x-icons.tv>
+                        {{-- <x-icons.tv size="28"></x-icons.tv> --}}
                     </div>
 
-                    <form action="/admin-panel/products" method="POST" class="grid" enctype="multipart/form-data">
+                    <form action="/admin-panel/product" method="POST" class="grid" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
 
-                        <div class="flex flex-row">
-                            <div class="w-8/12">
+                        <div>
+                            <div>
                                 <div class=" grid grid-cols-3 gap-6">
                                     <div class="flex flex-col">
                                         <label for="" class="mb-2 text-sm font-semibold">Naziv proizvoda *</label>
@@ -90,7 +90,7 @@
 
                                 <div class="grid grid-cols-3 gap-6 mt-10">
                                     <div class="flex flex-col">
-                                        <label for="" class="mb-2 text-sm font-semibold">Stanje</label>
+                                        <label for="" class="mb-2 text-sm font-semibold">Stanje *</label>
                                         <select name="state" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
                                             <option value="0">Novo</option>
                                             <option value="1">Polovno</option>
@@ -99,26 +99,26 @@
                                     </div>
 
                                     <div class="flex flex-col">
-                                        <label for="" class="mb-2 text-sm font-semibold">Aktivnost</label>
+                                        <label for="" class="mb-2 text-sm font-semibold">Aktivnost *</label>
                                         <select name="active" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
                                             <option value="1">Aktivan</option>
                                             <option value="0">Neaktivan</option>
                                         </select>
                                     </div>
+                                </div>
 
-                                    <div class="flex flex-col">
-                                        <label for="" class="mb-2 text-sm font-semibold">Kategorija</label>
-                                        <select name="category" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                <div class="mt-10">
+                                    <x-forms.multi-select-dropdown :items="$categories"></x-forms.multi-select-dropdown>
+                                    @error('categories')
+                                        <div>
+                                            <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+                                        </div>
+                                    @enderror
                                 </div>
 
                                 <div class="mt-10">
                                     <label class="text-sm font-semibold">
-                                        Slika proizvoda
+                                        Slika proizvoda *
                                     </label>
     
                                     <div class="mt-2 flex justify-center px-6 py-6 border-2 border-gray-300 border-dashed rounded-md bg-gray-50">
@@ -146,10 +146,6 @@
                                     @enderror
                                 </div>
                             </div>
-
-                            <div class="w-4/12 pl-4">
-                                {{-- put something not sure yet --}}
-                            </div>
                         </div>
 
                         <div class="grid grid-cols-3 gap-6 mt-10">
@@ -161,7 +157,7 @@
                             </button>
                             <a href="/admin-panel/products" class="bg-gray-600 flex border text-white border-gray-600 py-2 px-2 rounded-md font-semibold hover:bg-gray-700 text-center w-1/2">
                                 <div class="flex mx-auto">
-                                    <p class="mr-0.5">Odustani</p>
+                                    <p class="mr-1">Odustani</p>
                                     <x-icons.cancel size="18"></x-icons.cancel>
                                 </div>
                             </a>

@@ -17,7 +17,7 @@
               <x-icons.truck size="20"></x-icons.truck>
           </x-admin-panel.side-menu.item>
 
-          <x-admin-panel.side-menu.item href="/admin-panel/products" text="Proizvodi" active="true">
+          <x-admin-panel.side-menu.item href="/admin-panel/product" text="Proizvodi" active="true">
               <x-icons.tv size="20"></x-icons.tv>
           </x-admin-panel.side-menu.item>
 
@@ -48,7 +48,7 @@
         @endif
 
         <div class="flex justify-between">
-          <form action="/admin-panel/products/search" method="POST" class="flex flex-col md:flex-row">
+          <form action="/admin-panel/product/search" method="POST" class="flex flex-col md:flex-row">
             @csrf
             @method('GET')
 
@@ -85,7 +85,7 @@
             </button>
           </form>
 
-          <a href="/admin-panel/products/create" class="text-base w-40 border flex border-gray-200 shadow-sm  py-2 px-2 bg-white rounded-md hover:text-blue-600 justify-center">
+          <a href="/admin-panel/product/create" class="text-base w-40 border flex border-gray-200 shadow-sm  py-2 px-2 bg-white rounded-md hover:text-blue-600 justify-center">
             <div class="mr-1.5 flex">
                 <x-icons.add size="16"></x-icons.add>
             </div>
@@ -218,7 +218,7 @@
       <div class="min-h-screen w-full px-4 py-20 xl:hidden">
         {{-- SEARCH FORM START --}}
         <div class="mb-8 md:mt-2">
-          <form action="/admin-panel/products/search" method="POST" class="flex flex-col md:flex-row">
+          <form action="/admin-panel/product/search" method="POST" class="flex flex-col md:flex-row">
             @csrf
             @method('GET')
 

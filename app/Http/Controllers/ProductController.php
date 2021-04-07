@@ -35,6 +35,7 @@ class ProductController extends Controller
             'amount' => 'bail|required',
             'state' => 'bail|required',
             'active' => 'bail|required',
+            'categories' => 'bail|required',
             'image' => 'bail|required|image|mimes:jpeg,png,jpg,svg|max:1024'
         ]);
 
@@ -48,12 +49,18 @@ class ProductController extends Controller
         $product->save();
         
         $productCategoryAttributes = [
-            'category_id' => (int)$request->category,
+            'categories' => explode(',', $request->categories),
             'product_id' => (int)$product->id
         ];
 
-        $productCategory = new \App\Models\CategoryProduct($productCategoryAttributes);
-        $productCategory->save();
+        foreach($productCategoryAttributes['categories'] as $productCategory)
+        {
+            $productCategory = new \App\Models\CategoryProduct([
+                'category_id' => $productCategory,
+                'product_id' => (int)$product->id
+            ]);
+            $productCategory->save();
+        }
 
         return redirect()->back()->with('Success', 'Proizvod spašen!');
     }
@@ -129,7 +136,7 @@ class ProductController extends Controller
         if(intval($request->category) === 0)
         {
             return view('admin-panel.products.index', [
-                'products' => Product::orderBy($order[0], $order[1])->with('categories')->paginate(intval($request->perPage), ['id', 'name', 'price', 'amount', 'state', 'active', '_url']),
+                'products' => Product::orderBy($order[0], $order[1])->with('categories')->paginate(intval($request->perPage), ['id', 'name', 'price', 'amount', 'state', 'active', 'image']),
                 'categories' => \App\Models\Category::all('id', 'name')
             ]);
         }
