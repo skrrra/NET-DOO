@@ -14,12 +14,12 @@ TODO
 
     VIEWS
 
-        1. Not finished | Transform the prototype into a general layout with components ( can wait )
-        2. Not finished | Start creating a Product@create view where the user can ( start today)
+        1. Not finished | Transform the prototype into a general layout with components ( can wait | not done )
+        2. FINISHED | Start creating a Product@create view where the user can ( start today)
 
                             1. Add multiple categories to the product
-                            2. Can select multiple photos for a product ( can wait )
-                            3. Can set if the product should be featured on the main page, specific category page ( can wait )  
+                            2. Can select multiple photos for a product ( can wait | not done )
+                            3. Can set if the product should be featured on the main page, specific category page ( can wait | not done )  
 
         3. Not finished | Start creating a Product@edit view where the user can ( start today )
 

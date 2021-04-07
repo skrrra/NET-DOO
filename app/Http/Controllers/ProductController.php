@@ -23,7 +23,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('admin-panel.products.create', [
-            'categories' => \App\Models\Category::where('root', 0)->get(['id', 'name'])
+            'categories' => \App\Models\Category::where('root', 0)->orderBy('name', 'ASC')->get(['id', 'name'])
         ]);
     }
 
