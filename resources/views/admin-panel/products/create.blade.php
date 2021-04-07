@@ -91,7 +91,7 @@
                                 <div class="grid grid-cols-3 gap-6 mt-10">
                                     <div class="flex flex-col">
                                         <label for="" class="mb-2 text-sm font-semibold">Stanje <span class="text-blue-600">*</span></label>
-                                        <select name="state" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
+                                        <select name="state" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:border-2 focus:ring-blue-600">
                                             <option value="0">Novo</option>
                                             <option value="1">Polovno</option>
                                             <option value="2">Refurbished</option>
@@ -100,7 +100,7 @@
 
                                     <div class="flex flex-col">
                                         <label for="" class="mb-2 text-sm font-semibold">Aktivnost <span class="text-blue-600">*</span></label>
-                                        <select name="active" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
+                                        <select name="active" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-600">
                                             <option value="1">Aktivan</option>
                                             <option value="0">Neaktivan</option>
                                         </select>
@@ -109,14 +109,9 @@
 
                                 <div class="mt-10">
                                     <x-forms.multi-select-dropdown :items="$categories"></x-forms.multi-select-dropdown>
-                                    @error('categories')
-                                        <div>
-                                            <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
-                                        </div>
-                                    @enderror
                                 </div>
 
-                                <div class="mt-10">
+                                <div class="mt-0">
                                     <label class="text-sm font-semibold">Slika proizvoda <span class="text-blue-600">*</span></label>
     
                                     <div class="mt-2 flex justify-center px-6 py-6 border-2 border-gray-300 border-dashed rounded-md bg-gray-50">
