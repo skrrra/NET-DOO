@@ -60,7 +60,7 @@
                             <div>
                                 <div class=" grid grid-cols-3 gap-6">
                                     <div class="flex flex-col">
-                                        <label for="" class="mb-2 text-sm font-semibold">Naziv proizvoda *</label>
+                                        <label for="" class="mb-2 text-sm font-semibold">Naziv proizvoda <span class="text-blue-600">*</span></label>
                                         <x-forms.input
                                             type="text"
                                             name="name"
@@ -69,7 +69,7 @@
                                     </div>
 
                                     <div class="flex flex-col">
-                                        <label for="" class="mb-2 text-sm font-semibold">Cijena *</label>
+                                        <label for="" class="mb-2 text-sm font-semibold">Cijena <span class="text-blue-600">*</span></label>
                                         <x-forms.input
                                             type="number"
                                             name="price"
@@ -79,7 +79,7 @@
                                     </div>
 
                                     <div class="flex flex-col">
-                                        <label for="" class="mb-2 text-sm font-semibold">Količina *</label>
+                                        <label for="" class="mb-2 text-sm font-semibold">Količina <span class="text-blue-600">*</span></label>
                                         <x-forms.input
                                             type="number"
                                             name="amount"
@@ -90,7 +90,7 @@
 
                                 <div class="grid grid-cols-3 gap-6 mt-10">
                                     <div class="flex flex-col">
-                                        <label for="" class="mb-2 text-sm font-semibold">Stanje *</label>
+                                        <label for="" class="mb-2 text-sm font-semibold">Stanje <span class="text-blue-600">*</span></label>
                                         <select name="state" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
                                             <option value="0">Novo</option>
                                             <option value="1">Polovno</option>
@@ -99,7 +99,7 @@
                                     </div>
 
                                     <div class="flex flex-col">
-                                        <label for="" class="mb-2 text-sm font-semibold">Aktivnost *</label>
+                                        <label for="" class="mb-2 text-sm font-semibold">Aktivnost <span class="text-blue-600">*</span></label>
                                         <select name="active" id="" class="rounded-md bg-gray-50 border border-gray-300 focus:border-blue-600 focus:ring-blue-100">
                                             <option value="1">Aktivan</option>
                                             <option value="0">Neaktivan</option>
@@ -117,9 +117,7 @@
                                 </div>
 
                                 <div class="mt-10">
-                                    <label class="text-sm font-semibold">
-                                        Slika proizvoda *
-                                    </label>
+                                    <label class="text-sm font-semibold">Slika proizvoda <span class="text-blue-600">*</span></label>
     
                                     <div class="mt-2 flex justify-center px-6 py-6 border-2 border-gray-300 border-dashed rounded-md bg-gray-50">
                                         <div class="space-y-1 text-center">
