@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
+use Illuminate\Support\Facades\File;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Validation\Rule;
 
@@ -31,24 +32,14 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         $imageName = '/images/image-' . strtolower('netdoo') . '-' . date('Y') . '-' . time() . '.' . request()->image->extension();        
+
         $product = new \App\Models\Product($request->validated());
         $product->image = $imageName;
         $product->save();
+
         request()->image->move(public_path('images'), $imageName);
 
-        $productCategoryAttributes = [
-            'categories' => explode(',', $request->categories),
-            'product_id' => (int)$product->id
-        ];
-
-        foreach($productCategoryAttributes['categories'] as $productCategory)
-        {
-            $productCategory = new \App\Models\CategoryProduct([
-                'category_id' => $productCategory,
-                'product_id' => (int)$product->id
-            ]);
-            $productCategory->save();
-        }
+        $this->addProductCategories(explode(',', $request->categories), (int)$product->id);
 
         return redirect()->back()->with('Success', 'Proizvod spašen!');
     }
@@ -111,6 +102,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->delete();
+        File::delete(public_path(). $product->image);
         return redirect('/admin-panel/product')->with('delete-success', 'Proizvod izbrisan');
     }
 
@@ -135,5 +127,16 @@ class ProductController extends Controller
             'currentCategory' => Category::find($request->category),
             'categories' => \App\Models\Category::all('id', 'name')->except($request->category),
         ]);
+    }
+
+    protected function addProductCategories($categories, $id){
+        foreach($categories as $productCategory)
+        {
+            $productCategory = new \App\Models\CategoryProduct([
+                'category_id' => $productCategory,
+                'product_id' => $id
+            ]);
+            $productCategory->save();
+        }
     }
 }
