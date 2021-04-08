@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreProductRequest;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Validation\Rule;
 
@@ -27,27 +28,14 @@ class ProductController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'bail|required|unique:products|max:255',
-            'price' => 'bail|required',
-            'amount' => 'bail|required',
-            'state' => 'bail|required',
-            'active' => 'bail|required',
-            'categories' => 'bail|required',
-            'image' => 'bail|required|image|mimes:jpeg,png,jpg,svg|max:1024'
-        ]);
-
-        $imageName = '/images/image-' . strtolower('netdoo') . '-' . date('Y') . '-' . time() . '.' . request()->image->extension();
-
+        $imageName = '/images/image-' . strtolower('netdoo') . '-' . date('Y') . '-' . time() . '.' . request()->image->extension();        
+        $product = new \App\Models\Product($request->validated());
+        $product->image = $imageName;
+        $product->save();
         request()->image->move(public_path('images'), $imageName);
 
-        $validated['image'] = $imageName;
-        
-        $product = new \App\Models\Product($validated);
-        $product->save();
-        
         $productCategoryAttributes = [
             'categories' => explode(',', $request->categories),
             'product_id' => (int)$product->id

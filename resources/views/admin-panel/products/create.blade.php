@@ -27,7 +27,7 @@
                     <x-icons.precent size="20"></x-icons.precent>
                 </x-admin-panel.side-menu.item>
 
-                <x-admin-panel.side-menu.item href="/" text="Logout">
+                <x-admin-panel.side-menu.item href="/logout" text="Logout">
                     <x-icons.logout size="20"></x-icons.logout>
                 </x-admin-panel.side-menu.item>
                 

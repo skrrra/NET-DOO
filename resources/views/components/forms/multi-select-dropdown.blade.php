@@ -12,14 +12,14 @@
     </select>
 </div>
 
-<div x-data="dropdown({{ old('categories') }})" x-init="loadOptions()" class="w-full flex flex-col">
+<div x-data="dropdown()" x-init="loadOptions()" class="w-full flex flex-col">
     <input name="categories" type="hidden" x-bind:value="selectedValues()">
 
     <div>
       <div class="flex flex-col relative">
         <div x-on:click="open" class="w-full mt-2">
           <div class="flex border border-gray-300 bg-gray-50 rounded-md">
-            <input type="search" class="border-gray-300 w-full rounded-l-md bg-gray-50">
+            <input type="search" class="border-gray-300 w-full rounded-l-md bg-gray-50" placeholder="Izaberi kategorije">
 
             <div class="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 svelte-1l8159u">
   
@@ -49,8 +49,9 @@
           @enderror
 
           <div class="flex flex-auto flex-wrap mt-2">
+
             <template x-for="(option,index) in selected" :key="options[option].value">
-              <div class="flex justify-center items-center m-1 font-medium py-1 px-1 bg-white rounded border">
+              <div class="flex justify-center items-center m-1 font-medium py-1 px-1 bg-white rounded-md border">
                 <div class="text-xs font-normal leading-none max-w-full flex-initial x-model=" options[option] x-text="options[option].text"></div>
                 <div class="flex flex-auto flex-row-reverse">
                   <div x-on:click.stop="remove(index,option)">
@@ -60,19 +61,15 @@
                                            l2.651-3.031c0.469-0.469,1.228-0.469,1.697,0s0.469,1.229,0,1.697l-2.758,3.152l2.758,3.15
                                            C14.817,13.62,14.817,14.38,14.348,14.849z" />
                     </svg>
-      
                   </div>
                 </div>
               </div>
             </template>
+
             <div x-show="selected.length == 0" class="flex-1">
               <input class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800" x-bind:value="selectedValues()" disabled>
             </div>
           </div>
-
-          {{-- <div class="bg-red-600">
-            <p id="oldValues">{{ old('categories') }} </p>
-          </div> --}}
 
         </div>
         <div class="w-full px-4 mt-2">
@@ -103,9 +100,8 @@
 
 <script>
 
-    function dropdown(...oldValues) {
+    function dropdown() {
     return {
-        oldValues,
         options: [],
         selected: [],
         show: false,
@@ -113,13 +109,10 @@
         close() { this.show = false },
         isOpen() { return this.show === true },
         select(index, event) {
-
             if (!this.options[index].selected) {
-
                 this.options[index].selected = true;
                 this.options[index].element = event.target;
                 this.selected.push(index);
-
             } else {
                 this.selected.splice(this.selected.lastIndexOf(index), 1);
                 this.options[index].selected = false
@@ -128,8 +121,6 @@
         remove(index, option) {
             this.options[option].selected = false;
             this.selected.splice(index, 1);
-
-
         },
         loadOptions() {
             const options = document.getElementById('select').options;
@@ -139,12 +130,6 @@
                     text: options[i].innerText,
                     selected: options[i].getAttribute('selected') != null ? options[i].getAttribute('selected') : false
                 });
-            }
-
-            if(oldValues.length != 0){
-              console.log('masdmasmdmasmdmasmdas');
-              const found = this.options.some(el => el.value = oldValues[0]);
-              console.log(found);
             }
         },
         selectedValues(){
