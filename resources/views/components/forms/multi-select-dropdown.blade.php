@@ -115,10 +115,10 @@
       //     })
       //   }
       // }
+      let testinjo = document.getElementById('testinjo');
     return {
         search: '',
         oldValues,
-        searchResults: [],
         options: [],
         selected: [],
         show: false,
@@ -134,8 +134,6 @@
                 this.selected.splice(this.selected.lastIndexOf(index), 1);
                 this.options[index].selected = false
             }
-
-
         },
         remove(index, option) {
             this.options[option].selected = false;
