@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\CategoryProduct;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 
@@ -52,51 +53,29 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
-        dd($request);
-        // if(!isset($request->image))
-        // {
-        //     $product = Product::find($id);
-        //     $validated = request()->validate([
-        //         'name' => [
-        //             'required',
-        //             'max:255',
-        //             Rule::unique('products')->ignore($product)
-        //         ],
-        //         'price' => 'required',
-        //         'amount' => 'required',
-        //         'state' => 'required',
-        //         'active' => 'required'
-        //     ]);
+        $product = Product::findOrFail($id);
 
-        //     $product->update($validated);
-        //     return redirect("/admin-panel/product/$product->id/edit")->with('Success', 'Promjene spasene!');
-        // }else{
+        if(!isset($request->image))
+        {
+            $product->update($request->validated());
+            $product->save();
+            $this->updateProductCategories(explode(',', $request->categories), (int)$product->id);
 
-        //     $product = Product::find($id);
-        //     $validated = request()->validate([
-        //         'name' => [
-        //             'required',
-        //             'max:255',
-        //             Rule::unique('products')->ignore($product)
-        //         ],
-        //         'price' => 'required',
-        //         'amount' => 'required',
-        //         'state' => 'required',
-        //         '_url' => 'required|image|mimes:jpeg,png,jpg,svg|max:1024'
-        //     ]);
+            return redirect()->back()->with('Success', 'Promjene spašene!');
+        }else{
+            $imageName = '/images/image-' . strtolower('netdoo') . '-' . date('Y') . '-' . time() . '.' . request()->image->extension();        
+            $oldImage = $product->image;
+            $product->update($request->validated());
+            $product->image = $imageName;
+            $product->save();
+            request()->image->move(public_path('images'), $imageName);
+            File::delete(public_path(). $oldImage);    
+            $this->updateProductCategories(explode(',', $request->categories), (int)$product->id);
 
-        //     $imageName = '/images/image-' . strtolower('net-doo') . '-' . date('Y') . '-' . time() . '.' . request()->_url->extension();
-
-        //     request()->_url->move(public_path('images'), $imageName);
-
-        //     $validated['_url'] = $imageName;
-
-        //     $product->update($validated);
-
-        //     return redirect("/admin-panel/product/$product->id/edit")->with('Success', 'Promjene spasene!');
-        // }
+            return redirect()->back()->with('Success', 'Promjene spašene!');
+        }
     }
 
     public function destroy($id)
@@ -144,6 +123,18 @@ class ProductController extends Controller
 
     protected function updateProductCategories($categories, $id)
     {
+        $currentProductCategories = CategoryProduct::where('product_id', $id)->get();
+        foreach($currentProductCategories as $categoryToDelete){
+            $categoryToDelete->delete();
+        }
 
+        foreach($categories as $productCategory)
+        {
+            $productCategory = new CategoryProduct([
+                'category_id' => $productCategory,
+                'product_id' => $id
+            ]);
+            $productCategory->save();
+        }
     }
 }

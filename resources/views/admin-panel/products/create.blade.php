@@ -48,8 +48,10 @@
                     @endif
 
                     <div class="mb-12 flex">
-                        <h1 class="font-semibold text-2xl mr-2">Dodaj novi proizvod</h1>
-                        {{-- <x-icons.tv size="28"></x-icons.tv> --}}
+                        <h1 class="font-semibold text-2xl mr-2 flex">
+                            <p class="mr-2">Dodaj novi proizvod</p>
+                            <x-icons.add size="22"></x-icons.add>
+                        </h1>
                     </div>
 
                     <form action="/admin-panel/product" method="POST" class="grid" enctype="multipart/form-data">

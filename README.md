@@ -17,18 +17,18 @@ TODO
         1. Not finished | Transform the prototype into a general layout with components ( can wait | not done )
         2. FINISHED | Start creating a Product@create view where the user can ( start today)
 
-                            1. Add multiple categories to the product
+                            1. Add multiple categories to the product ( DONE )
                             2. Can select multiple photos for a product ( can wait | not done )
                             3. Can set if the product should be featured on the main page, specific category page ( can wait | not done )  
 
         3. Not finished | Start creating a Product@edit view where the user can ( start today )
 
-                            1. Can change the name of the product
-                            2. Can change the price of the product
-                            3. Can change the amount of the product
-                            4. Can change the status of the product
-                            5. Can change all current categories of a product ( only one or two or all -> maybe some delete icons and add button that contains available categories( view component candidate | alpine ? ))
-                            6. Can change the photo ( implement first )
+                            1. Can change the name of the product ( DONE )
+                            2. Can change the price of the product ( DONE )
+                            3. Can change the amount of the product ( DONE )
+                            4. Can change the status of the product ( DONE )
+                            5. Can change all current categories of a product ( only one or two or all -> maybe some delete icons and add button that contains available categories( view component candidate | alpine ? )) (DONE)
+                            6. Can change the photo ( implement first ) ( DONE )
                             7. Can change all photos ( only one or tow or all -> same for the product category change )
                             8. Would be nice if you could set the product as discounted in the edit page ( add it to the DiscountedProduct table ??)
 

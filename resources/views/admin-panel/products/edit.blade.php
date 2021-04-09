@@ -47,9 +47,23 @@
                         </div>
                     @endif
 
-                    <div class="mb-12 flex">
-                        <h1 class="font-semibold text-2xl mr-2">Uredi proizvod</h1>
-                        {{-- <x-icons.tv size="28"></x-icons.tv> --}}
+                    <div class="mb-12 flex justify-between">
+                        <h1 class="font-semibold text-2xl mr-2 self-center flex">
+                            <p class="mr-2">Uredi proizvod</p>
+                            <div class="flex items-center">
+                                <x-icons.edit size="22"></x-icons.edit>
+                            </div>
+                        </h1>
+                        <form action="/admin-panel/product/{{ $product->id }}" method="POST" class="self-center">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="font-semibold w-40 border flex border-gray-200 shadow-sm py-1.5 px-2 bg-white rounded-md hover:bg-red-700 hover:text-white">
+                                <div class="mr-2 flex self-center">
+                                    <x-icons.trash size="18"></x-icons.trash>
+                                </div>
+                                Izbriši proizvod
+                            </button>
+                        </form>
                     </div>
 
                     <form action="/admin-panel/product/{{ $product->id }}" method="POST" class="grid" enctype="multipart/form-data">
