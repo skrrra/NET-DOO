@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\CategoryProduct;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use Illuminate\Support\Facades\File;
-use Symfony\Component\Console\Input\Input;
 use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
@@ -54,48 +54,49 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        if(!isset($request->image))
-        {
-            $product = Product::find($id);
-            $validated = request()->validate([
-                'name' => [
-                    'required',
-                    'max:255',
-                    Rule::unique('products')->ignore($product)
-                ],
-                'price' => 'required',
-                'amount' => 'required',
-                'state' => 'required',
-                'active' => 'required'
-            ]);
+        dd($request);
+        // if(!isset($request->image))
+        // {
+        //     $product = Product::find($id);
+        //     $validated = request()->validate([
+        //         'name' => [
+        //             'required',
+        //             'max:255',
+        //             Rule::unique('products')->ignore($product)
+        //         ],
+        //         'price' => 'required',
+        //         'amount' => 'required',
+        //         'state' => 'required',
+        //         'active' => 'required'
+        //     ]);
 
-            $product->update($validated);
-            return redirect("/admin-panel/product/$product->id/edit")->with('Success', 'Promjene spasene!');
-        }else{
+        //     $product->update($validated);
+        //     return redirect("/admin-panel/product/$product->id/edit")->with('Success', 'Promjene spasene!');
+        // }else{
 
-            $product = Product::find($id);
-            $validated = request()->validate([
-                'name' => [
-                    'required',
-                    'max:255',
-                    Rule::unique('products')->ignore($product)
-                ],
-                'price' => 'required',
-                'amount' => 'required',
-                'state' => 'required',
-                '_url' => 'required|image|mimes:jpeg,png,jpg,svg|max:1024'
-            ]);
+        //     $product = Product::find($id);
+        //     $validated = request()->validate([
+        //         'name' => [
+        //             'required',
+        //             'max:255',
+        //             Rule::unique('products')->ignore($product)
+        //         ],
+        //         'price' => 'required',
+        //         'amount' => 'required',
+        //         'state' => 'required',
+        //         '_url' => 'required|image|mimes:jpeg,png,jpg,svg|max:1024'
+        //     ]);
 
-            $imageName = '/images/image-' . strtolower('net-doo') . '-' . date('Y') . '-' . time() . '.' . request()->_url->extension();
+        //     $imageName = '/images/image-' . strtolower('net-doo') . '-' . date('Y') . '-' . time() . '.' . request()->_url->extension();
 
-            request()->_url->move(public_path('images'), $imageName);
+        //     request()->_url->move(public_path('images'), $imageName);
 
-            $validated['_url'] = $imageName;
+        //     $validated['_url'] = $imageName;
 
-            $product->update($validated);
+        //     $product->update($validated);
 
-            return redirect("/admin-panel/product/$product->id/edit")->with('Success', 'Promjene spasene!');
-        }
+        //     return redirect("/admin-panel/product/$product->id/edit")->with('Success', 'Promjene spasene!');
+        // }
     }
 
     public function destroy($id)
@@ -129,14 +130,20 @@ class ProductController extends Controller
         ]);
     }
 
-    protected function addProductCategories($categories, $id){
+    protected function addProductCategories($categories, $id)
+    {
         foreach($categories as $productCategory)
         {
-            $productCategory = new \App\Models\CategoryProduct([
+            $productCategory = new CategoryProduct([
                 'category_id' => $productCategory,
                 'product_id' => $id
             ]);
             $productCategory->save();
         }
+    }
+
+    protected function updateProductCategories($categories, $id)
+    {
+
     }
 }

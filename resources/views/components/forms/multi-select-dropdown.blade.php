@@ -1,7 +1,13 @@
 @props([
     'items',
-    'oldItems'
+    'oldValues' => null,
+    'test' => null,
 ])
+
+<div>
+  {{ gettype($test) }}
+  {{ $test }}
+</div>
 
 <div>
     <label for="select" class="text-sm font-semibold">Kategorije <span class="text-blue-600">*</span></label>
@@ -12,8 +18,8 @@
     </select>
 </div>
 
-<div x-data="dropdown()" x-init="loadOptions()" class="w-full flex flex-col">
-    <input name="categories" type="hidden" x-bind:value="selectedValues()">
+<div x-data="dropdown({{ $oldValues }})" x-init="loadOptions()" class="w-full flex flex-col">
+    <input name="categories" id="testinjo" type="hidden" x-bind:value="selectedValues()">
 
     <div>
       <div class="flex flex-col relative">
@@ -100,8 +106,26 @@
 
 <script>
 
-    function dropdown() {
+    function dropdown(oldValues) {
+
+      if(oldValues != undefined){
+        if(!Array.isArray(oldValues)){
+          oldValues = oldValues.toString();
+          console.log(oldValues);
+          oldValues = oldValues.split(',').map((item) => {
+            return parseInt(item);
+          })
+        }
+      }
+      // if(!Array.isArray(test)){
+      //   console.log(test);
+      //   test = test.split(',').map((item) => {
+      //     return parseInt(item);
+      //   });
+      //   console.log(test);
+      // }
     return {
+        oldValues,
         options: [],
         selected: [],
         show: false,
@@ -131,6 +155,32 @@
                     selected: options[i].getAttribute('selected') != null ? options[i].getAttribute('selected') : false
                 });
             }
+
+            /*
+              This array map is used to select all old values that  were passed from the request old('categories')
+            */
+            if(oldValues != null){
+              this.options.map((element) => {
+              // console.log(this.options.indexOf(element) + ' ' + element.value);
+              // console.log(this.oldValues.includes(parseInt(element.value)));
+              if(this.oldValues.includes(parseInt(element.value))){
+                this.select(this.options.indexOf(element), this.options[this.options.indexOf(element)].selected);
+                // this.selected.map((option)=>{
+                //   console.log('ADD' + this.options[option].value);
+                //   })
+                }
+              });
+            }
+            // this.options.map((element) => {
+            //   // console.log(this.options.indexOf(element) + ' ' + element.value);
+            //   // console.log(this.oldValues.includes(parseInt(element.value)));
+            //   if(this.oldValues.includes(parseInt(element.value))){
+            //     this.select(this.options.indexOf(element), this.options[this.options.indexOf(element)].selected);
+            //     this.selected.map((option)=>{
+            //       console.log('ADD' + this.options[option].value);
+            //     })
+            //   }
+            // });
         },
         selectedValues(){
             return this.selected.map((option)=>{
