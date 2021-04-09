@@ -9,17 +9,23 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Facades\File;
-use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         return view('admin-panel.products.index', [
             'products' => \App\Models\Product::with(['categories' => function($query){
                 $query->select('name');
             }])->paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active', 'image']),
             'categories' => \App\Models\Category::all(['id', 'name'])
+        ]);
+    }
+
+    public function show(Product $id)
+    {
+        return view('admin-panel.products.show', [
+            'product' => $id->load('categories')
         ]);
     }
 

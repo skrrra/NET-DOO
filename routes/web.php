@@ -30,10 +30,11 @@ Route::middleware(['auth'])->group(function(){
     // ADMIN DASHBOARD -> PRODUCTS
     Route::get('/admin-panel/product', 'App\Http\Controllers\ProductController@index');
     Route::post('/admin-panel/product', 'App\Http\Controllers\ProductController@store');
-
+    
     Route::get('/admin-panel/product/search', 'App\Http\Controllers\ProductController@search');
     
     Route::get('/admin-panel/product/create', 'App\Http\Controllers\ProductController@create');
+    Route::get('/admin-panel/product/{id}', 'App\Http\Controllers\ProductController@show');
     Route::patch('/admin-panel/product/{id}', 'App\Http\Controllers\ProductController@update');
     Route::delete('/admin-panel/product/{id}', 'App\Http\Controllers\ProductController@destroy');
     Route::get('/admin-panel/product/{id}/edit', 'App\Http\Controllers\ProductController@edit');

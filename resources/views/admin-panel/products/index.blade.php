@@ -131,7 +131,9 @@
                             </div>
                             <div class="lg:ml-2 xl:ml-4">
                               <div class="text-sm font-medium text-gray-900">
-                                {{ $product->name }}
+                                <a href="/admin-panel/product/{{ $product->id }}">
+                                  {{ $product->name }}
+                                </a>
                               </div>
                               <div class="text-sm text-gray-500">
                                 @switch($product->state)
@@ -158,11 +160,11 @@
                         </td>
                         <td class="px-4 py-2 xl:px-6 xl:py-4 whitespace-nowrap">
                           @if ($product->active)
-                            <span class="px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                            <span class="px-2 inline-flex items-center text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                               Aktivan
                             </span>
                           @else
-                            <span class="px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                            <span class="px-2 inline-flex items-center text-sm leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                               Neaktivan
                             </span>
                           @endif
