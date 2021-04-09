@@ -13,7 +13,7 @@
 </div>
 
 <div x-data="dropdown({{ $oldValues }})" x-init="loadOptions()" class="w-full flex flex-col">
-    <input name="categories" id="testinjo" type="hidden" x-bind:value="selectedValues()">
+    <input name="categories" type="hidden" x-bind:value="selectedValues()">
 
     <div>
       <div class="flex flex-col relative">
@@ -51,7 +51,7 @@
           <div class="flex flex-auto flex-wrap mt-2">
 
             <template x-for="(option,index) in selected" :key="options[option].value">
-              <div class="flex justify-center items-center m-1 font-medium py-1 px-1 bg-white rounded-md border">
+              <div class="flex justify-center items-center m-1 font-medium py-1 px-1 bg-white rounded-md border border-gray-300 shadow-sm">
                 <div class="text-xs font-normal leading-none max-w-full flex-initial x-model=" options[option] x-text="options[option].text"></div>
                 <div class="flex flex-auto flex-row-reverse">
                   <div x-on:click.stop="remove(index,option)">
@@ -116,7 +116,9 @@
       //   }
       // }
     return {
+        search: '',
         oldValues,
+        searchResults: [],
         options: [],
         selected: [],
         show: false,
@@ -132,6 +134,8 @@
                 this.selected.splice(this.selected.lastIndexOf(index), 1);
                 this.options[index].selected = false
             }
+
+
         },
         remove(index, option) {
             this.options[option].selected = false;
