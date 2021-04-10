@@ -11,16 +11,7 @@
         {{-- Mobile navigation with hamburger end --}}
 
         <div class="min-h-screen w-full px-4 py-14">
-            {{-- MAIN CONTENT --}}
-            <div class="bg-green-300 h-screen">
-                <h1>hello</h1>
-            </div>
-            <div class="bg-green-300 h-screen">
-                <h1>hello</h1>
-            </div>
-            <div class="bg-green-300 h-screen">
-                <h1>hello</h1>
-            </div>
+            
         </div>
         
         {{-- Mobile user action menu start --}}
