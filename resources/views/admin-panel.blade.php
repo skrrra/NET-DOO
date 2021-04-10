@@ -9,7 +9,7 @@
             
             <x-desktop.navigation></x-desktop.navigation>
 
-            <x-admin-panel.layout></x-admin-panel.layout>
+            <x-admin-panel.content-layout></x-admin-panel.content-layout>
 
         </div>
         
