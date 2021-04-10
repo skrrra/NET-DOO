@@ -1,7 +1,7 @@
-<div class="w-full  py-4 px-4 fixed bottom-0 left-0 flex items-center justify-between border-t border-gray-300">
+<div class="w-full  py-4 px-4 fixed bottom-0 left-0 z-10 flex justify-between items-center border-t shadow-sm bg-white border-gray-300 md:px-6 lg:hidden lg:px-8 xl:px-10 2xl:px-12">
             
     <div>
-        <x-icons.bell size="20"></x-icons.bell>
+        <x-icons.home size="20"></x-icons.home>
     </div>
     
     <div>
@@ -17,7 +17,7 @@
     </div>
     
     <div>
-        <x-icons.list size="20"></x-icons.list>
+
     </div>
     
 </div>

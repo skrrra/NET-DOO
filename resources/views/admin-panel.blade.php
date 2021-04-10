@@ -1,23 +1,19 @@
 @extends('layouts.app')
 
 @section('content')    
-{{-- Able to extend itself  --}}
     <div class="w-full min-h-screen">
-        {{-- Able to extend itself  --}}
 
-        {{-- Mobile navigation with hamburger start --}}
         <x-mobile.navigation></x-mobile.navigation>
 
-        {{-- Mobile navigation with hamburger end --}}
-
-        <div class="min-h-screen w-full px-4 py-14">
+        <div class="min-h-screen w-full px-4 md:px-6 py-14 lg:px-0 lg:py-0 lg:pt-14 lg:mb-0 lg:flex lg:flex-row lg:pl-56 xl:pl-64 2xl:pl-72">
             
+            <x-desktop.navigation></x-desktop.navigation>
+
+            <x-admin-panel.layout></x-admin-panel.layout>
+
         </div>
-        
-        {{-- Mobile user action menu start --}}
         
         <x-mobile.action-bar></x-mobile.action-bar>
 
-        {{-- Mobile user action menu end --}}
     </div>
-    @endsection
+@endsection
