@@ -19,16 +19,6 @@ class ProductsSeeder extends Seeder
 
         $products = [
             [
-                'name' => 'Računar i5 10400F/ 16GB DDR4/SSD/GTX1050TI Cerberus',
-                'price' => '1330',
-                'amount' => '1',
-                'state' => '0',
-                'active' => '1',
-                'image' => '/images/1.jpg',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
                 'name' => 'Gaming računar Iron i7 4790/8GB/SSD 128GB / GTX1050TI',
                 'price' => '870',
                 'amount' => '1',

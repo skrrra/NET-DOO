@@ -3,8 +3,8 @@
 @section('content')
     <x-admin-panel.layout>
 
+      {{-- ADMIN PANEL ACTION BAR START --}}
       <div class="md:flex md:flex-row-reverse md:justify-between">
-
         <a href="/admin-panel/product/create" class="border font-semibold flex border-gray-200 shadow-sm py-2 px-4 bg-gray-600 text-white rounded-md hover:bg-gray-700 justify-center">
           Dodaj proizvod
           <div class="ml-2 flex">
@@ -35,7 +35,7 @@
             </select>
                 
             <select name="perPage" id="" class="rounded-md border-2 border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-4 md:mb-0 md:mr-2">
-              <option value="30">Po 30</option>
+              <option value="10">Po 10</option>
               <option value="60">Po 60</option>
               <option value="90">Po 90</option>
             </select>
@@ -48,6 +48,83 @@
             </div>
           </button>
         </form>
+      </div>
+
+      <div class="w-full mt-8 lg:mt-6">
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:mb-8 xl:grid-cols-4 xl:gap-6 xl:mb-0 2xl:grid-cols-5">  
+          @foreach ($products as $product)
+            <div class="bg-white border border-gray-200  rounded-md shadow-sm">
+              <div class="flex justify-between px-4 py-4">
+                <div class="flex items-center">
+                  @switch($product)
+                    @case($product->amount == 0)
+                      <div class="bg-red-600 rounded-full h-2.5 w-2.5 mr-1.5"></div>
+                      <p class="text-xs">{{ $product->amount }} na stanju</p>
+                      @break
+                    @case($product->amount > 0 && $product->amount <= 3)
+                      <div class="bg-yellow-600 rounded-full h-2.5 w-2.5 mr-1.5"></div>
+                      <p class="text-xs">{{ $product->amount }} na stanju</p>                        
+                      @break
+                    @case($product->amount > 3)
+                      <div class="bg-green-600 rounded-full h-2.5 w-2.5 mr-1.5"></div>
+                      <p class="text-xs">{{ $product->amount }} na stanju</p> 
+                      @break  
+                    @default
+                  @endswitch
+                </div>
+
+                <div class="flex">
+                  <x-icons.edit size="18"></x-icons.edit>
+                </div>
+              </div>
+
+              <div class="flex px-4">
+                <img src="{{ $product->image }}" class="inline-block h-52 bg-green-300 mx-auto rounded-md">
+              </div>
+
+              <div class="px-4 pt-4 pb-2 w-full">
+                <h3 class="font-semibold text-xl">{{ ucwords($product->name) }}</h3>
+              </div>
+
+              <div class="px-4 pb-4 pt-2 flex justify-between text-sm">
+                <div>
+                  <p>{{ $product->price }} BAM</p>
+                </div>
+
+                @switch($product->state)
+                  @case(0)
+                    <div>
+                      <p>Novo</p>
+                    </div>
+                    @break
+                  @case(1)
+                    <div>
+                      <p>Polovno</p>
+                    </div>
+                    @break
+                  @case(2)
+                    <div>
+                      <p>Refurbished</p>
+                    </div>
+                    @break
+                  @default
+                          
+                @endswitch
+              </div>
+            </div>
+
+            @if ($loop->last)
+              <div class="sm:mb-4">
+              </div>
+            @endif
+          @endforeach
+        </div>
+
+        @if ($products->links())
+          <div class="md:mt-4 md:mb-4">
+            {{ $products->appends(['category' => request()->category, 'order' => request()->order, 'perPage' => request()->perPage])->links() }}
+          </div>
+        @endif              
       </div>
 
     </x-admin-panel.layout>

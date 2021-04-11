@@ -26,7 +26,7 @@ class ProductFactory extends Factory
             'price' => $this->faker->randomFloat(2,1, 5000),
             'amount' => $this->faker->numberBetween(0, 15),
             'state' => $this->faker->numberBetween(0,2),
-            'image_url' => '/images/image-net-doo-2021-1617352735.jpg',
+            'image' => '/images/2.jpg',
             'active' => 1
         ];
     }
