@@ -85,7 +85,7 @@
               </div>
 
               <div class="px-4 pt-4 pb-2 w-full">
-                <h3 class="font-semibold text-xl truncate">{{ ucwords($product->name) }}</h3>
+                <a href="/admin-panel/product/{{ $product->id }}" class="font-semibold text-xl block truncate hover:text-blue-600">{{ ucwords($product->name) }}</a>
               </div>
 
               <div class="px-4 pb-4 pt-2 flex justify-between text-sm">
