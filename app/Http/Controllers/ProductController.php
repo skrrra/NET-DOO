@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -31,6 +32,10 @@ class ProductController extends Controller
 
     public function create()
     {
+        if(! Gate::allows('create-product')){
+            abort(403);
+        }
+
         return view('admin-panel.products.create', [
             'categories' => \App\Models\Category::where('root', 0)->orderBy('name', 'ASC')->get(['id', 'name'])
         ]);
@@ -53,6 +58,10 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        if(! Gate::allows('edit-product')){
+            abort(403);
+        }
+
         return view('admin-panel.products.edit', [
             'product' => \App\Models\Product::find($id)->load('categories'),
             'categories' => \App\Models\Category::all('id', 'name'),
