@@ -34,7 +34,7 @@
         <form action="/logout" method="POST">
             @csrf
             @method('POST')
-            <button type="submit" class="flex flex-row font-semibold py-4 lg:pl-8 xl:pl-10 2xl:pl-12 border-t border-b bg-white border-white hover:text-blue-600">
+            <button type="submit" class="flex flex-row font-semibold py-4 lg:pl-8 xl:pl-10 2xl:pl-12 border-t border-b bg-white border-white hover:text-blue-600 ring-0 outline-none focus:ring-0 focus:outline-white focus:ring-white focus:border-white">
                 <x-icons.logout size="18"></x-icons.logout>
                 Logout
             </button>
