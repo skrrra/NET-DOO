@@ -2,11 +2,17 @@
 
 @section('content')
     <x-admin-panel.layout>
+
+        <div class="bg-green-600 border border-gray-200 text-white text-sm absolute top-14 right-4 z-20 lg:top-3 font-semibold py-2 px-4 rounded-md flex">
+            <p class="mr-2">Promjene spasene</p>
+            <x-icons.check size="18"></x-icons.check>
+        </div>
+
         <div class="w-full">
 
             <div class="px-8 py-8 rounded-md border shadow-sm border-gray-200 bg-white">
                 @if (session()->has('Success'))
-                    <div class="bg-green-600 border border-gray-200 text-white absolute top-20 right-20 font-semibold py-2 px-4 rounded-md flex">
+                    <div class="bg-green-600 border border-gray-200 text-white text-sm absolute top-14 right-4 z-20 lg:top-3 font-semibold py-2 px-4 rounded-md flex">
                         <p class="mr-2">{{ session()->get('Success') }}</p>
                         <x-icons.check size="18"></x-icons.check>
                     </div>
@@ -146,8 +152,8 @@
                     <div class="grid md:grid-cols-3 md:gap-6 mt-10">
                         <button type="submit" class="bg-blue-600 border flex border-gray-600 py-2 px-2 rounded-md text-white font-semibold hover:bg-blue-700  hover:border-blue-700">
                             <div class="flex mx-auto">
-                                <p class="mr-1">Dodaj proizvod</p>
-                                <x-icons.add size="18"></x-icons.add>
+                                <p class="mr-1">Spasi promjene</p>
+                                <x-icons.check size="18"></x-icons.check>
                             </div>
                         </button>
                         <a href="/admin-panel/product" class="bg-gray-600 mt-4 md:mt-0 flex border text-white border-gray-600 py-2 px-2 rounded-md font-semibold hover:bg-gray-700 text-center md:w-1/2">
