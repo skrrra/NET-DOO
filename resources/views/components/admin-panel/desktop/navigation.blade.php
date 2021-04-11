@@ -15,19 +15,19 @@
     </div>
 
     <div class="w-full h-full lg:py-2 text-sm">
-        <x-admin-panel.side-menu.item href="/admin-panel/order" text="Narudžbe">
+        <x-admin-panel.side-menu.item href="/admin-panel/order" text="Narudžbe" active="{{ str_contains(request()->url(), '/order' ) ? true : false }}">
             <x-icons.truck size="18"></x-icons.truck>
         </x-admin-panel.side-menu.item>
     
-        <x-admin-panel.side-menu.item href="/admin-panel/product" text="Proizvodi">
+        <x-admin-panel.side-menu.item href="/admin-panel/product" text="Proizvodi" active="{{ str_contains(request()->url(), '/product' ) ? true : false }}">
             <x-icons.tv size="18"></x-icons.tv>
         </x-admin-panel.side-menu.item>
     
-        <x-admin-panel.side-menu.item href="/admin-panel/category" text="Kategorije">
+        <x-admin-panel.side-menu.item href="/admin-panel/category" text="Kategorije" active="{{ str_contains(request()->url(), '/category' ) ? true : false }}">
           <x-icons.list size="18"></x-icons.list>
         </x-admin-panel.side-menu.item>
     
-        <x-admin-panel.side-menu.item href="/admin-panel/sales" text="Akcije u toku">
+        <x-admin-panel.side-menu.item href="/admin-panel/sales" text="Akcije u toku" active="{{ str_contains(request()->url(), '/sales' ) ? true : false }}">
             <x-icons.precent size="18"></x-icons.precent>
         </x-admin-panel.side-menu.item>
         

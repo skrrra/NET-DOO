@@ -28,16 +28,16 @@ Route::middleware(['auth'])->group(function(){
     });
 
     // ADMIN DASHBOARD -> PRODUCTS
-    Route::get('/admin-panel/product', 'App\Http\Controllers\ProductController@index');
+    Route::get('/admin-panel/product', 'App\Http\Controllers\ProductController@index')->name('admin-panel-product-index');
     Route::post('/admin-panel/product', 'App\Http\Controllers\ProductController@store');
     
-    Route::get('/admin-panel/product/search', 'App\Http\Controllers\ProductController@search');
+    Route::get('/admin-panel/product/search', 'App\Http\Controllers\ProductController@search')->name('admin-panel-product-search');
     
-    Route::get('/admin-panel/product/create', 'App\Http\Controllers\ProductController@create');
-    Route::get('/admin-panel/product/{id}', 'App\Http\Controllers\ProductController@show');
+    Route::get('/admin-panel/product/create', 'App\Http\Controllers\ProductController@create')->name('admin-panel-product-create');
+    Route::get('/admin-panel/product/{id}', 'App\Http\Controllers\ProductController@show')->name('admin-panel-product-show');
     Route::patch('/admin-panel/product/{id}', 'App\Http\Controllers\ProductController@update');
     Route::delete('/admin-panel/product/{id}', 'App\Http\Controllers\ProductController@destroy');
-    Route::get('/admin-panel/product/{id}/edit', 'App\Http\Controllers\ProductController@edit');
+    Route::get('/admin-panel/product/{id}/edit', 'App\Http\Controllers\ProductController@edit')->name('admin-panel-product-edit');
 
 });
 
