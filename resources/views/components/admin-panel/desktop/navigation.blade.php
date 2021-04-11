@@ -15,7 +15,7 @@
     </div>
 
     <div class="w-full h-full lg:py-2 text-sm">
-        <x-admin-panel.side-menu.item href="/" text="Narudžbe">
+        <x-admin-panel.side-menu.item href="/admin-panel/order" text="Narudžbe">
             <x-icons.truck size="18"></x-icons.truck>
         </x-admin-panel.side-menu.item>
     
@@ -23,11 +23,11 @@
             <x-icons.tv size="18"></x-icons.tv>
         </x-admin-panel.side-menu.item>
     
-        <x-admin-panel.side-menu.item href="/" text="Kategorije">
+        <x-admin-panel.side-menu.item href="/admin-panel/category" text="Kategorije">
           <x-icons.list size="18"></x-icons.list>
         </x-admin-panel.side-menu.item>
     
-        <x-admin-panel.side-menu.item href="/" text="Akcije u toku">
+        <x-admin-panel.side-menu.item href="/admin-panel/sales" text="Akcije u toku">
             <x-icons.precent size="18"></x-icons.precent>
         </x-admin-panel.side-menu.item>
         
