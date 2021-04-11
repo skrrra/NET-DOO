@@ -5,7 +5,9 @@
     <div class="w-full min-h-screen xl:flex xl:flex-col bg-gray-100">
 
       {{-- DESKTOP SECTION XL and further START --}}
-      <div class="h-screen hidden fixed top-0 left-0 xl:block xl:w-3/12 xl:bg-gray-50 2xl:w-2/12 border-r-2 border-gray-200 ">
+
+      {{-- ALREADY INCLUDED  --}}
+      {{-- <div class="h-screen hidden fixed top-0 left-0 xl:block xl:w-3/12 xl:bg-gray-50 2xl:w-2/12 border-r-2 border-gray-200 ">
 
         <div class="xl:py-12 xl:px-10 font-semibold">
             <h3 class="text-2xl">Admin panel</h3>
@@ -35,7 +37,7 @@
           
         </div>
       
-      </div>
+      </div> --}}
 
 
       <div class="min-h-screen w-9/12 hidden xl:block xl:w-9/12 xl:px-10 xl:py-10 2xl:w-10/12 xl:self-end">
