@@ -81,7 +81,7 @@
               </div>
 
               <div class="flex px-4">
-                <img src="{{ $product->image }}" class="inline-block h-52 bg-green-300 mx-auto rounded-md">
+                <img src="{{ $product->image }}" class="inline-block h-52 mx-auto rounded-md">
               </div>
 
               <div class="px-4 pt-4 pb-2 w-full">
