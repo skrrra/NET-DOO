@@ -1,14 +1,14 @@
-<div class="hidden lg:flex lg:flex-col h-screen w-56 xl:w-64 2xl:w-72 fixed top-14 left-0 bg-white border-r border-gray-200">
+<div class="hidden lg:flex lg:flex-col h-screen w-56 xl:w-64 2xl:w-72 fixed top-14 left-0 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700">
 
-    <div class="pt-6 pb-4 flex lg:pl-8 xl:pl-10 2xl:pl-12 border-b">
-        <div class="flex hover:text-yellow-300">
+    <div class="pt-6 pb-4 flex lg:pl-8 xl:pl-10 2xl:pl-12 border-b dark:border-gray-700">
+        <div class="flex hover:text-yellow-300 dark:text-yellow-300">
             <a href="#" class="flex">
                 <x-icons.moon size="18"></x-icons.moon>
             </a>
         </div>
 
         <div class="flex ml-4">
-            <a href="#" class="hover:text-blue-600">
+            <a href="#" class="hover:text-blue-600 dark:hover:text-blue-300">
                 <x-icons.bell size="18"></x-icons.bell>
             </a>
         </div>
@@ -34,7 +34,7 @@
         <form action="/logout" method="POST">
             @csrf
             @method('POST')
-            <button type="submit" class="flex flex-row font-semibold py-4 lg:pl-8 xl:pl-10 2xl:pl-12 border-t border-b bg-white border-white hover:text-blue-600 ring-0 outline-none focus:ring-0 focus:outline-white focus:ring-white focus:border-white">
+            <button type="submit" class="flex flex-row font-semibold py-4 lg:pl-8 xl:pl-10 2xl:pl-12 bg-white dark:bg-gray-900 border-white hover:text-blue-600 dark:hover:text-blue-300 ring-0 outline-none focus:ring-0 focus:outline-white focus:ring-white focus:border-white">
                 <x-icons.logout size="18"></x-icons.logout>
                 Logout
             </button>

@@ -7,8 +7,8 @@
     <title>NET doo</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
-<body class="bg-gray-50">
-    <div class="min-h-screen w-full font-normal text-gray-600 text-base">
+<body class="dark" id="toggleDarkMode">
+    <div class="min-h-screen w-full font-normal text-gray-600 dark:text-gray-400 text-base bg-gray-50 dark:bg-gray-800">
         @yield('content')
     </div>
     <script src="{{ asset('js/app.js') }}"></script>

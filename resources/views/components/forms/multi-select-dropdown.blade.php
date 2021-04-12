@@ -4,7 +4,7 @@
 ])
 
 <div>
-    <label for="select" class="text-sm font-semibold">Kategorije <span class="text-blue-600">*</span></label>
+    <label for="select" class="text-sm font-semibold">Kategorije <span class="text-blue-600 dark:text-blue-300">*</span></label>
     <select x-cloak id="select">
         @foreach ($items as $item)
             <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -18,10 +18,10 @@
     <div>
       <div class="flex flex-col relative">
         <div x-on:click="open" class="w-full mt-2">
-          <div class="flex border border-gray-300 bg-gray-50 rounded-md">
-            <input type="search" class="border-gray-300 w-full rounded-l-md bg-gray-50" placeholder="Izaberi kategorije">
+          <div class="flex border border-gray-300 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 rounded-md">
+            <input type="search" class="border-gray-300 w-full rounded-l-md bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:focus:border-blue-300" placeholder="Izaberi kategorije">
 
-            <div class="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 svelte-1l8159u">
+            <div class="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 dark:bg-gray-800 dark:border-gray-700 svelte-1l8159u">
   
               <button type="button" x-show="isOpen() === true" x-on:click="open" class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none">
                 <svg version="1.1" class="fill-current h-4 w-4" viewBox="0 0 20 20">
@@ -51,7 +51,7 @@
           <div class="flex flex-auto flex-wrap mt-2">
 
             <template x-for="(option,index) in selected" :key="options[option].value">
-              <div class="flex justify-center items-center m-1 font-medium py-1 px-1 bg-white rounded-md border border-gray-300 shadow-sm">
+              <div class="flex justify-center items-center m-1 font-medium py-1 px-1 bg-white dark:text-blue-300 dark:bg-gray-800 dark:border-blue-300 rounded-md border border-gray-300 shadow-sm">
                 <div class="text-xs font-normal leading-none max-w-full flex-initial x-model=" options[option] x-text="options[option].text"></div>
                 <div class="flex flex-auto flex-row-reverse">
                   <div x-on:click.stop="remove(index,option)">
@@ -73,12 +73,12 @@
 
         </div>
         <div class="w-full px-4 mt-2">
-          <div x-show.transition.origin.top="isOpen()" class="absolute shadow top-100 bg-white z-40 w-full left-0 rounded max-h-select" x-on:click.away="close">
+          <div x-show.transition.origin.top="isOpen()" class="absolute shadow top-100 bg-white dark:bg-gray-800 dark:border-gray-700 z-40 w-full left-0 rounded max-h-select" x-on:click.away="close">
             <div class="flex flex-col w-full overflow-y-auto h-64">
               <template x-for="(option,index) in options" :key="option" class="overflow-auto">
-                <div class="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-gray-100" @click="select(index,$event)">
+                <div class="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-900" @click="select(index,$event)">
                   <div class="flex w-full items-center p-2 pl-2 border-transparent border-l-2 relative">
-                    <div class="w-full items-center flex justify-between">
+                    <div class="w-full items-center flex justify-between dak:text-blue-300">
                       <div class="mx-2 leading-6" x-model="option" x-text="option.text"></div>
                       <div x-show="option.selected">
                         <svg class="svg-icon" viewBox="0 0 20 20">

@@ -1,4 +1,4 @@
-<div class="w-full  py-4 px-4 fixed top-0 left-0 z-20 flex justify-between items-center border-b bg-white border-gray-200 md:px-6 lg:px-8 xl:px-10 2xl:px-12">
+<div class="w-full  py-4 px-4 fixed top-0 left-0 z-20 flex justify-between items-center border-b bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 md:px-6 lg:px-8 xl:px-10 2xl:px-12">
 
     <div>
         <a href="/admin-panel" class="font-semibold lg:text-lg">Admin panel</a>

@@ -5,7 +5,7 @@
 
       {{-- ADMIN PANEL ACTION BAR START --}}
       <div class="md:flex md:flex-row-reverse md:justify-between">
-        <a href="/admin-panel/product/create" class="border font-semibold flex border-gray-200 shadow-sm py-2 px-4 bg-gray-600 text-white rounded-md hover:bg-gray-700 justify-center">
+        <a href="/admin-panel/product/create" class="border font-semibold flex border-gray-200 shadow-sm py-2 px-4 bg-gray-600 text-white dark:text-gray-400 dark:border-gray-600 dark:bg-gray-900 dark:hover:text-blue-300 dark:hover:border-blue-300 rounded-md hover:bg-gray-700 justify-center">
           Dodaj proizvod
           <div class="ml-2 flex">
             <x-icons.add size="18"></x-icons.add>
@@ -17,7 +17,7 @@
           @method('GET')
 
           <div class="flex flex-col md:flex-row">
-            <select name="category" id="" class="rounded-md border border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2 md:mb-0 md:mr-2">
+            <select name="category" id="" class="rounded-md border border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2 md:mb-0 md:mr-2 dark:bg-gray-900 dark:text-gray-400 dark:border-gray-700">
               @isset($currentCategory)
                 <option value="{{ $currentCategory->id }}">{{ $currentCategory->name }}</option>
               @endisset
@@ -27,21 +27,21 @@
               @endforeach
             </select>
 
-            <select name="order" id="" class="rounded-md border-gray-200 border focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2 md:mb-0 md:mr-2">
+            <select name="order" id="" class="rounded-md border-gray-200 border focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2 md:mb-0 md:mr-2 dark:bg-gray-900 dark:text-gray-400 dark:border-gray-700">
               <option value="created_at,DESC">Najnovije</option>
               <option value="created_at,ASC">Najstarije</option>
               <option value="price,DESC">Cijena najvisa</option>
               <option value="price,ASC">Cijena najniza</option>
             </select>
                 
-            <select name="perPage" id="" class="rounded-md border border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-4 md:mb-0 md:mr-2">
+            <select name="perPage" id="" class="rounded-md border border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-4 md:mb-0 md:mr-2 dark:bg-gray-900 dark:text-gray-400 dark:border-gray-700">
               <option value="10">Po 10</option>
               <option value="60">Po 60</option>
               <option value="90">Po 90</option>
             </select>
           </div>
 
-          <button type="submit" class="bg-blue-600 text-white py-2 font-semibold border border-gray-200 rounded-md w-full flex flex-1 md:max-w-xs md:px-4 hover:bg-blue-700">
+          <button type="submit" class="bg-blue-600 text-white py-2 font-semibold border border-gray-200 rounded-md w-full flex flex-1 md:max-w-xs md:px-4 hover:bg-blue-700 dark:bg-blue-300 dark:text-gray-800 dark:border-gray-700">
             <div class="mx-auto flex items-center">
               <p class="mr-1">Traži</p>
               <x-icons.search size="18"></x-icons.search>
@@ -53,7 +53,7 @@
       <div class="w-full mt-8 lg:mt-6">
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:mb-8 xl:grid-cols-4 xl:gap-6 xl:mb-0 2xl:grid-cols-5">  
           @foreach ($products as $product)
-            <div class="bg-white border border-gray-200  rounded-md shadow-sm">
+            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700  rounded-md shadow-sm">
               <div class="flex justify-between px-4 py-4">
                 <div class="flex items-center">
                   @switch($product)
@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="flex">
-                  <a href="/admin-panel/product/{{ $product->id }}/edit" class="hover:text-blue-600" target="_blank">
+                  <a href="/admin-panel/product/{{ $product->id }}/edit" class="hover:text-blue-600 dark:hover:text-blue-300" target="_blank">
                     <x-icons.edit size="18"></x-icons.edit>
                   </a>
                 </div>
@@ -85,7 +85,7 @@
               </div>
 
               <div class="px-4 pt-4 pb-2 w-full">
-                <a href="/admin-panel/product/{{ $product->id }}" class="font-semibold text-xl block truncate hover:text-blue-600">{{ ucwords($product->name) }}</a>
+                <a href="/admin-panel/product/{{ $product->id }}" class="font-semibold text-xl block truncate hover:text-blue-600 dark:hover:text-blue-300">{{ ucwords($product->name) }}</a>
               </div>
 
               <div class="px-4 pb-4 pt-2 flex justify-between text-sm">
