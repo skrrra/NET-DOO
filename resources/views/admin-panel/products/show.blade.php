@@ -5,7 +5,7 @@
     <x-admin-panel.layout>
         <div class="w-full">
 
-            <div class="px-8 py-8 rounded-md border border-gray-200 shadow-sm bg-white">
+            <div class="px-8 py-8 rounded-md border border-gray-200 shadow-sm bg-white dark:bg-gray-900 dark:border-gray-700">
                 <div class="flex pb-4">
                     <h1 class="mr-2 font-semibold text-2xl">{{ $product->name }}</h1>
                     @if ($product->active)
@@ -20,7 +20,7 @@
                 </div>
                 <div class="grid grid-cols-2">
                     <div>
-                        <img src="{{ $product->image }}" alt="" class="rounded-md">
+                        <img src="{{ $product->image }}" alt="" class="rounded-md border border-white dark:border-gray-700">
                     </div>
                     <div class="px-12">
                         <div class="flex">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="flex mt-2">
                             @foreach ($product->categories as $category)
-                                <p class="bg-white border text-sm border-gray-300 rounded-md py-1 px-2 mr-2">{{ $category->name }}</p>
+                                <p class="bg-white dark:bg-gray-900 dark:text-blue-300 dark:border-blue-300 border text-sm border-gray-300 rounded-md py-1 px-2 mr-2">{{ $category->name }}</p>
                             @endforeach
                         </div>
                         <div>
