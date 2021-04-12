@@ -27,6 +27,8 @@ Route::middleware(['auth'])->group(function(){
         return view('admin-panel');
     });
 
+    Route::post('/admin-panel/theme', 'App\Http\Controllers\UserController@theme');
+
     // ADMIN DASHBOARD -> PRODUCTS
     Route::get('/admin-panel/product', 'App\Http\Controllers\ProductController@index')->name('admin-panel-product-index');
     Route::post('/admin-panel/product', 'App\Http\Controllers\ProductController@store');

@@ -6,7 +6,7 @@
     
     <div class="flex lg:hidden">
 
-        <div class="flex mr-4 xl:mr-4 hover:text-yellow-300">
+        <div class="flex mr-4 xl:mr-4 hover:text-yellow-300" id="moonTwo">
             <a href="#">
                 <x-icons.moon size="18"></x-icons.moon>
             </a>

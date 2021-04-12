@@ -3802,6 +3802,23 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
+var moonOne = document.getElementById('moonOne');
+var moonTwo = document.getElementById('moonTwo');
+moonOne.addEventListener('click', toggleDarkMode);
+moonTwo.addEventListener('click', toggleDarkMode);
+
+function toggleDarkMode() {
+  console.log('clicked');
+
+  if (document.body.classList.value != "dark") {
+    document.body.classList.value = "dark";
+    axios.post('http://localhost:3000/admin-panel/theme');
+  } else {
+    document.body.classList.value = "";
+    axios.post('http://localhost:3000/admin-panel/theme');
+  }
+}
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

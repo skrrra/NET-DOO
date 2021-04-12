@@ -7,10 +7,11 @@
     <title>NET doo</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
-<body class="dark" id="toggleDarkMode">
+<body class="{{ auth()->user()->theme == 1 ? 'dark' : '' }}">
     <div class="min-h-screen w-full font-normal text-gray-600 dark:text-gray-400 text-base bg-gray-50 dark:bg-gray-900">
         @yield('content')
     </div>
+    {{-- {{ str_contains(request()->url(), '/order' ) ? true : false }} --}}
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

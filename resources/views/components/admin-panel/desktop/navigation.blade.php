@@ -1,10 +1,8 @@
 <div class="hidden lg:flex lg:flex-col h-screen w-56 xl:w-64 2xl:w-72 fixed top-14 left-0 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700">
 
     <div class="pt-6 pb-4 flex lg:pl-8 xl:pl-10 2xl:pl-12 border-b dark:border-gray-700">
-        <div class="flex hover:text-yellow-300 dark:text-yellow-300">
-            <a href="#" class="flex">
-                <x-icons.moon size="18"></x-icons.moon>
-            </a>
+        <div class="flex hover:text-yellow-300 dark:text-yellow-300 cursor-pointer" id="moonOne">
+            <x-icons.moon size="18"></x-icons.moon>
         </div>
 
         <div class="flex ml-4">
