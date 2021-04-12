@@ -15,11 +15,15 @@ class Product extends Model
         'amount',
         'state',
         'active',
-        'image'
     ];
 
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'category_products');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class, 'product_id', 'id');
     }
 }

@@ -10,6 +10,8 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
+use App\Models\ProductImage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -18,7 +20,7 @@ class ProductController extends Controller
         return view('admin-panel.products.index', [
             'products' => \App\Models\Product::with(['categories' => function($query){
                 $query->select('name');
-            }])->paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active', 'image']),
+            }, 'images'])->paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active']),
             'categories' => \App\Models\Category::all(['id', 'name'])
         ]);
     }
@@ -26,7 +28,7 @@ class ProductController extends Controller
     public function show(Product $id)
     {
         return view('admin-panel.products.show', [
-            'product' => $id->load('categories')
+            'product' => $id->load('categories', 'images')
         ]);
     }
 
@@ -43,13 +45,19 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        $imageName = '/images/image-' . strtolower('netdoo') . '-' . date('Y') . '-' . time() . '.' . request()->image->extension();        
 
         $product = new \App\Models\Product($request->validated());
-        $product->image = $imageName;
         $product->save();
-
-        request()->image->move(public_path('images'), $imageName);
+        
+        foreach($request->image as $image){
+            $imageName = '/images/image-' . strtolower('netdoo') . '-' . date('Y') . '-' . time() . Str::random() .  '.' . $image->extension();
+            $productImage = new ProductImage([
+                'product_id' => $product->id,
+                'image_url' => $imageName
+            ]);
+            $productImage->save();
+            $image->move(public_path('images'), $imageName);
+        }
 
         $this->addProductCategories(explode(',', $request->categories), (int)$product->id);
 
@@ -63,7 +71,7 @@ class ProductController extends Controller
         }
 
         return view('admin-panel.products.edit', [
-            'product' => \App\Models\Product::find($id)->load('categories'),
+            'product' => \App\Models\Product::find($id)->load('categories', 'images'),
             'categories' => \App\Models\Category::all('id', 'name'),
         ]);
     }
@@ -111,7 +119,7 @@ class ProductController extends Controller
         if(intval($request->category) === 0)
         {
             return view('admin-panel.products.index', [
-                'products' => Product::orderBy($order[0], $order[1])->with('categories')->paginate(intval($request->perPage), ['id', 'name', 'price', 'amount', 'state', 'active', 'image']),
+                'products' => Product::orderBy($order[0], $order[1])->with('categories', 'images')->paginate(intval($request->perPage), ['id', 'name', 'price', 'amount', 'state', 'active']),
                 'categories' => \App\Models\Category::all('id', 'name')
             ]);
         }

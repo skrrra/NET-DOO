@@ -20,7 +20,12 @@
                 </div>
                 <div class="grid grid-cols-2">
                     <div>
-                        <img src="{{ $product->image }}" alt="" class="rounded-md border border-white dark:border-gray-700">
+                        <img src="{{ $product->images[0]->image_url }}" alt="" class="rounded-md border border-white dark:border-gray-700">
+                        <div class="flex">
+                            @foreach ($product->images as $image)
+                                <img src="{{ $image->image_url }}" class="rounded-md border mr-4 h-40 border-white dark:border-gray-700">
+                            @endforeach
+                        </div>
                     </div>
                     <div class="px-12">
                         <div class="flex">
