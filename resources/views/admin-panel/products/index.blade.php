@@ -5,7 +5,7 @@
 
       {{-- ADMIN PANEL ACTION BAR START --}}
       <div class="md:flex md:flex-row-reverse md:justify-between">
-        <a href="/admin-panel/product/create" class="border font-semibold flex border-gray-200 shadow-sm py-2 px-4 bg-gray-600 text-white dark:text-gray-400 dark:border-gray-600 dark:bg-gray-900 dark:hover:text-blue-300 dark:hover:border-blue-300 rounded-md hover:bg-gray-700 justify-center">
+        <a href="/admin-panel/product/create" class="border font-semibold flex border-gray-200 shadow-sm py-2 px-4 bg-gray-600 text-white dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:hover:text-blue-300 dark:hover:border-blue-300 rounded-md hover:bg-gray-700 justify-center">
           Dodaj proizvod
           <div class="ml-2 flex">
             <x-icons.add size="18"></x-icons.add>
@@ -17,7 +17,7 @@
           @method('GET')
 
           <div class="flex flex-col md:flex-row">
-            <select name="category" id="" class="rounded-md border border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2 md:mb-0 md:mr-2 dark:bg-gray-900 dark:text-gray-400 dark:border-gray-700">
+            <select name="category" id="" class="rounded-md border border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2 md:mb-0 md:mr-2 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700 dark:focus:ring-blue-300">
               @isset($currentCategory)
                 <option value="{{ $currentCategory->id }}">{{ $currentCategory->name }}</option>
               @endisset
@@ -27,14 +27,14 @@
               @endforeach
             </select>
 
-            <select name="order" id="" class="rounded-md border-gray-200 border focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2 md:mb-0 md:mr-2 dark:bg-gray-900 dark:text-gray-400 dark:border-gray-700">
+            <select name="order" id="" class="rounded-md border-gray-200 border focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-2 md:mb-0 md:mr-2 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700 dark:focus:ring-blue-300">
               <option value="created_at,DESC">Najnovije</option>
               <option value="created_at,ASC">Najstarije</option>
               <option value="price,DESC">Cijena najvisa</option>
               <option value="price,ASC">Cijena najniza</option>
             </select>
                 
-            <select name="perPage" id="" class="rounded-md border border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-4 md:mb-0 md:mr-2 dark:bg-gray-900 dark:text-gray-400 dark:border-gray-700">
+            <select name="perPage" id="" class="rounded-md border border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-4 md:mb-0 md:mr-2 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700 dark:focus:ring-blue-300">
               <option value="10">Po 10</option>
               <option value="20">Po 20</option>
               <option value="30">Po 30</option>
@@ -59,7 +59,7 @@
       <div class="w-full mt-8 lg:mt-6">
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:mb-8 xl:grid-cols-4 xl:gap-6 xl:mb-0 2xl:grid-cols-5">  
           @foreach ($products as $product)
-            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700  rounded-md shadow-sm">
+            <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700  rounded-md shadow-sm">
               <div class="flex justify-between px-4 py-4">
                 <div class="flex items-center">
                   @switch($product)

@@ -13,7 +13,7 @@
 @guest        
     <body>
 @endguest
-    <div class="min-h-screen w-full font-normal text-gray-600 dark:text-gray-400 text-base bg-gray-50 dark:bg-gray-800">
+    <div class="min-h-screen w-full font-normal text-gray-600 dark:text-gray-400 text-base bg-gray-50 dark:bg-gray-900">
         @yield('content')
     </div>
     {{-- {{ str_contains(request()->url(), '/order' ) ? true : false }} --}}
