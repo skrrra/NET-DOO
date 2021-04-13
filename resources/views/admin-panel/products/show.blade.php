@@ -5,7 +5,7 @@
     <x-admin-panel.layout>
         <div class="w-full">
 
-            <div class="px-8 py-8 rounded-md border border-gray-200 shadow-sm bg-white dark:bg-gray-900 dark:border-gray-700">
+            <div class="px-8 py-8 rounded-md border border-gray-200 shadow-sm bg-white dark:bg-gray-800 dark:border-gray-700">
                 <div class="flex pb-4">
                     <h1 class="mr-2 font-semibold text-2xl">{{ $product->name }}</h1>
                     @if ($product->active)
