@@ -19,6 +19,7 @@ class RolesSeeder extends Seeder
         $roles = [
             ['name' => 'Editor'],
             ['name' => 'Admin'],
+            ['name' => 'Basic user'],
         ];
 
         DB::table('roles')->insert($roles);

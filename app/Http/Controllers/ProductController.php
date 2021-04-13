@@ -49,6 +49,10 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
+        if(! Gate::allows('create-product')){
+            abort(403);
+        }
+
         $product = new \App\Models\Product($request->validated());
         $product->save();
         
@@ -81,6 +85,10 @@ class ProductController extends Controller
 
     public function update(UpdateProductRequest $request, $id)
     {
+        if(! Gate::allows('edit-product')){
+            abort(403);
+        }
+
         $product = Product::findOrFail($id);
         $product->fill($request->validated());
 
@@ -112,6 +120,10 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
+        if(! Gate::allows('delete-product')){
+            abort(403);
+        }
+
         $product = Product::find($id);
         foreach ($product->images as $image) {
             File::delete(public_path() . $image->image_url);

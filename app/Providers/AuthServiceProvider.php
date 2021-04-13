@@ -30,10 +30,14 @@ class AuthServiceProvider extends ServiceProvider
         // PRODUCT GATES START
 
         Gate::define('create-product', function (User $user){
-            return $user->role->id === 2;
+            return $user->role->id === 2 || $user->role->id === 1;
         });
 
         Gate::define('edit-product', function(User $user){
+            return $user->role->id === 2 || $user->role->id === 1;
+        });
+
+        Gate::define('delete-product', function(User $user){
             return $user->role->id === 2;
         });
 
