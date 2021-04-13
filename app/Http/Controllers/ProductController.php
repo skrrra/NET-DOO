@@ -146,30 +146,30 @@ class ProductController extends Controller
 
     protected function addProductCategories($categories, $id)
     {
-        foreach($categories as $productCategory)
-        {
-            $productCategory = new CategoryProduct([
+        $casts = [];
+
+        foreach($categories as $productCategory){
+            $casts[] = [
                 'category_id' => $productCategory,
                 'product_id' => $id
-            ]);
-            $productCategory->save();
+            ];
         }
+        CategoryProduct::insert($casts);
     }
 
     protected function updateProductCategories($categories, $id)
     {
-        $currentProductCategories = CategoryProduct::where('product_id', $id)->get();
-        foreach($currentProductCategories as $categoryToDelete){
-            $categoryToDelete->delete();
-        }
+        $currentProductCategories = CategoryProduct::where('product_id', $id)->delete();
+
+        $casts = [];
 
         foreach($categories as $productCategory)
         {
-            $productCategory = new CategoryProduct([
+            $casts[] = [
                 'category_id' => $productCategory,
                 'product_id' => $id
-            ]);
-            $productCategory->save();
+            ];
         }
+        CategoryProduct::insert($casts);
     }
 }
