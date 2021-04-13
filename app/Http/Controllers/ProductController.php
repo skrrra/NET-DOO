@@ -17,11 +17,15 @@ class ProductController extends Controller
 {
     public function index()
     {
+        $products = Product::with(['categories' => function($query){
+            $query->select('name');
+        }, 'images' => function($query){
+            $query->select('id', 'product_id', 'image_url');
+        }])->orderBy('id', 'DESC')->paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active']);
+
         return view('admin-panel.products.index', [
-            'products' => \App\Models\Product::with(['categories' => function($query){
-                $query->select('name');
-            }, 'images'])->paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active']),
-            'categories' => \App\Models\Category::all(['id', 'name'])
+            'products' => $products, 
+            'categories' => Category::all(['id', 'name'])
         ]);
     }
 
@@ -45,7 +49,6 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-
         $product = new \App\Models\Product($request->validated());
         $product->save();
         
@@ -79,33 +82,42 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, $id)
     {
         $product = Product::findOrFail($id);
+        $product->fill($request->validated());
 
-        if(!isset($request->image))
-        {
-            $product->update($request->validated());
-            $product->save();
-            $this->updateProductCategories(explode(',', $request->categories), (int)$product->id);
+        if(isset($request->image)){
 
-            return redirect()->back()->with('Success', 'Promjene spašene!');
-        }else{
-            $imageName = '/images/image-' . strtolower('netdoo') . '-' . date('Y') . '-' . time() . '.' . request()->image->extension();        
-            $oldImage = $product->image;
-            $product->update($request->validated());
-            $product->image = $imageName;
-            $product->save();
-            request()->image->move(public_path('images'), $imageName);
-            File::delete(public_path(). $oldImage);    
-            $this->updateProductCategories(explode(',', $request->categories), (int)$product->id);
+            $oldImages = $product->images;
 
-            return redirect()->back()->with('Success', 'Promjene spašene!');
+            foreach($request->image as $image){
+                $imageName = '/images/image-' . strtolower('netdoo') . '-' . date('Y') . '-' . time() . Str::random() .  '.' . $image->extension();
+                $productImage = new ProductImage([
+                    'product_id' => $product->id,
+                    'image_url' => $imageName
+                ]);
+                $productImage->save();
+                $image->move(public_path('images'), $imageName);
+            }
+
+            foreach ($oldImages as $oldImage) {
+                File::delete(public_path() . $oldImage->image_url);
+                $oldImage->delete();
+            }
+
         }
+
+        $product->save();
+        $this->updateProductCategories(explode(',', $request->categories), (int)$product->id);
+        return redirect()->back()->with('Success', 'Promjene spašene!');
     }
 
     public function destroy($id)
     {
         $product = Product::find($id);
+        foreach ($product->images as $image) {
+            File::delete(public_path() . $image->image_url);
+            $image->delete();
+        }
         $product->delete();
-        File::delete(public_path(). $product->image);
         return redirect('/admin-panel/product')->with('delete-success', 'Proizvod izbrisan');
     }
 

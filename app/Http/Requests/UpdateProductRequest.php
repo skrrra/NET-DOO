@@ -37,7 +37,8 @@ class UpdateProductRequest extends FormRequest
             'amount' => 'bail|required',
             'state' => 'bail|required',
             'active' => 'bail|required',
-            'image' => 'bail|image|mimes:jpeg,png,jpg,svg|max:1024',
+            'image' => 'bail|array',
+            'image.*' => 'bail|image|mimes:jpeg,png,jpg,svg|max:1024',
             'categories' => 'bail|required'
         ];
     }

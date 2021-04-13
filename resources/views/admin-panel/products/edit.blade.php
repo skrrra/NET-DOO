@@ -129,7 +129,7 @@
                                         <div class="flex text-sm text-gray-600">
                                             <label for="file-upload" class="relative cursor-pointer bg-white dark:bg-gray-800 dark:border-gray-700 dark:text-blue-300 dark:hover:text-blue-400 rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                                 <span>Upload a file</span>
-                                                <input id="file-upload" name="image" type="file" class="sr-only">
+                                                <input id="file-upload" name="image[]" type="file" class="sr-only" multiple>
                                             </label>
                                             <p class="pl-1">or drag and drop</p>
                                         </div>

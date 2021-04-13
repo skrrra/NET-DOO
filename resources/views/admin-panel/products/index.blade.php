@@ -36,7 +36,13 @@
                 
             <select name="perPage" id="" class="rounded-md border border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-4 md:mb-0 md:mr-2 dark:bg-gray-900 dark:text-gray-400 dark:border-gray-700">
               <option value="10">Po 10</option>
+              <option value="20">Po 20</option>
+              <option value="30">Po 30</option>
+              <option value="40">Po 40</option>
+              <option value="50">Po 50</option>
               <option value="60">Po 60</option>
+              <option value="70">Po 70</option>
+              <option value="80">Po 80</option>
               <option value="90">Po 90</option>
             </select>
           </div>
@@ -74,23 +80,23 @@
                 </div>
 
                 <div class="flex">
-                  <a href="/admin-panel/product/{{ $product->id }}/edit" class="hover:text-blue-600 dark:hover:text-blue-300" target="_blank">
+                  <a href="/admin-panel/product/{{ $product->id }}/edit" class="hover:text-blue-600 dark:hover:text-blue-300">
                     <x-icons.edit size="18"></x-icons.edit>
                   </a>
                 </div>
               </div>
 
               <div class="flex px-4">
-                <img src="{{ $product->images[0]->image_url }}" class="inline-block h-52 mx-auto rounded-md">
+                <img src="{{ $product->images[0]->image_url }}" class="inline-block h-48 mx-auto rounded-md">
               </div>
 
-              <div class="px-4 pt-4 pb-2 w-full">
-                <a href="/admin-panel/product/{{ $product->id }}" class="font-semibold text-xl block truncate hover:text-blue-600 dark:hover:text-blue-300">{{ ucwords($product->name) }}</a>
+              <div class="px-4 py-2 w-full">
+                <a href="/admin-panel/product/{{ $product->id }}" class="font-semibold text-lg block truncate hover:text-blue-600 dark:hover:text-blue-300">{{ ucwords($product->name) }}</a>
               </div>
 
-              <div class="px-4 pb-4 pt-2 flex justify-between text-sm">
+              <div class="px-4 pb-4 flex justify-between text-sm">
                 <div>
-                  <p>{{ $product->price }} BAM</p>
+                  <p class="font-semibold">{{ $product->price }} BAM</p>
                 </div>
 
                 @switch($product->state)
