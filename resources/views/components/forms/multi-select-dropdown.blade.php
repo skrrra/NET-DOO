@@ -19,7 +19,7 @@
       <div class="flex flex-col relative">
         <div x-on:click="open" class="w-full mt-2">
           <div class="flex border border-gray-300 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 rounded-md">
-            <input type="search" class="border-gray-300 w-full rounded-l-md bg-gray-50 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-blue-300" placeholder="Izaberi kategorije">
+            <input x-model="search" @keyup="searchCategories()" type="search" class="border-gray-300 w-full rounded-l-md bg-gray-50 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-blue-300" placeholder="Izaberi kategorije">
 
             <div class="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 dark:bg-gray-800 dark:border-gray-700 svelte-1l8159u">
   
@@ -75,8 +75,8 @@
         <div class="w-full px-4 mt-2">
           <div x-show.transition.origin.top="isOpen()" class="absolute shadow top-100 bg-white dark:bg-gray-800 dark:border-gray-700 z-40 w-full left-0 rounded max-h-select" x-on:click.away="close">
             <div class="flex flex-col w-full overflow-y-auto h-64">
-              <template x-for="(option,index) in options" :key="option" class="overflow-auto">
-                <div class="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-gray-100 dark:bg-gray-700 dark:border-gray-700 dark:hover:bg-gray-900" @click="select(index,$event)">
+              <template x-for="(option,index) in searchCategories()" :key="option" class="overflow-auto">
+                <div class="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-gray-100 dark:bg-gray-700 dark:border-gray-700 dark:hover:bg-gray-900" @click="select(index,$event,option)">
                   <div class="flex w-full items-center p-2 pl-2 border-transparent border-l-2 relative">
                     <div class="w-full items-center flex justify-between dak:text-blue-300">
                       <div class="mx-2 leading-6" x-model="option" x-text="option.text"></div>
@@ -115,7 +115,6 @@
       //     })
       //   }
       // }
-      let testinjo = document.getElementById('testinjo');
     return {
         search: '',
         oldValues,
@@ -125,7 +124,19 @@
         open() { this.show = true },
         close() { this.show = false },
         isOpen() { return this.show === true },
-        select(index, event) {
+        select(index, event, option) {
+
+          if(this.search != ''){
+            index = this.options.indexOf(option);
+            if(!this.options[option.index].selected){
+              this.options[option.index].selected = true;
+              this.options[option.index].element = event.target;
+              this.selected.push(option.index);
+            }else{
+              this.selected.splice(this.selected.lastIndexOf(option.index), 1);
+              this.options[option.index].selected = false
+            }
+          }else{
             if (!this.options[index].selected) {
                 this.options[index].selected = true;
                 this.options[index].element = event.target;
@@ -134,6 +145,7 @@
                 this.selected.splice(this.selected.lastIndexOf(index), 1);
                 this.options[index].selected = false
             }
+          }
         },
         remove(index, option) {
             this.options[option].selected = false;
@@ -165,6 +177,20 @@
                 return this.options[option].value;
             })
         },
+        searchCategories(){
+          if(this.search == ''){
+            return this.options;
+          }
+
+          return filteredSearch = this.options.filter(element => {
+            if(element.text.toLowerCase().includes(this.search.toLocaleLowerCase())){
+              element.index = this.options.indexOf(element);
+              return element;
+            }
+
+            return;
+          });
+        }
     }
 }
 </script>

@@ -21,7 +21,7 @@ class ProductController extends Controller
             $query->select('name');
         }, 'images' => function($query){
             $query->select('id', 'product_id', 'image_url');
-        }])->orderBy('id', 'DESC')->paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active']);
+        }])->orderBy('id', 'DESC')->paginate(10, ['id', 'name', 'price', 'amount', 'state', 'active']);
 
         return view('admin-panel.products.index', [
             'products' => $products, 
