@@ -5,7 +5,7 @@
 
       {{-- ADMIN PANEL ACTION BAR START --}}
       <div class="md:flex md:flex-row-reverse md:justify-between">
-        <a href="/admin-panel/product/create" class="border font-semibold flex border-gray-200 shadow-sm py-2 px-4 bg-blue-600 text-white dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:hover:text-blue-300 dark:hover:border-blue-300 rounded-md hover:bg-gray-700 justify-center">
+        <a href="/admin-panel/product/create" class="border font-semibold flex border-gray-200 shadow-sm py-2 px-4 bg-blue-600 text-white dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:hover:text-blue-300 dark:hover:border-blue-300 rounded-md hover:bg-blue-700 justify-center">
           Dodaj proizvod
           <div class="ml-2 flex">
             <x-icons.add size="18"></x-icons.add>
