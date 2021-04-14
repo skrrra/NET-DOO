@@ -5,7 +5,7 @@
 
       {{-- ADMIN PANEL ACTION BAR START --}}
       <div class="md:flex md:flex-row-reverse md:justify-between">
-        <a href="/admin-panel/product/create" class="border font-semibold flex border-gray-200 shadow-sm py-2 px-4 bg-gray-600 text-white dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:hover:text-blue-300 dark:hover:border-blue-300 rounded-md hover:bg-gray-700 justify-center">
+        <a href="/admin-panel/product/create" class="border font-semibold flex border-gray-200 shadow-sm py-2 px-4 bg-blue-600 text-white dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:hover:text-blue-300 dark:hover:border-blue-300 rounded-md hover:bg-gray-700 justify-center">
           Dodaj proizvod
           <div class="ml-2 flex">
             <x-icons.add size="18"></x-icons.add>
@@ -47,9 +47,9 @@
             </select>
           </div>
 
-          <button type="submit" class="bg-blue-600 text-white py-2 font-semibold border border-gray-200 rounded-md w-full flex flex-1 md:max-w-xs md:px-4 hover:bg-blue-700 dark:bg-blue-300 dark:text-gray-800 dark:border-gray-700">
+          <button type="submit" class="bg-gray-600 text-white py-2 font-semibold border border-gray-200 rounded-md w-full flex flex-1 md:max-w-xs md:px-4 hover:bg-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700 dark:hover:text-blue-300 dark:hover:border-blue-300">
             <div class="mx-auto flex items-center">
-              <p class="mr-1">Traži</p>
+              <p class="mr-2">Traži</p>
               <x-icons.search size="18"></x-icons.search>
             </div>
           </button>

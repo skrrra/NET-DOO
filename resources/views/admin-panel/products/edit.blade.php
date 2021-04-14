@@ -155,7 +155,7 @@
                                 <x-icons.check size="18"></x-icons.check>
                             </div>
                         </button>
-                        <a href="/admin-panel/product" class="bg-gray-600 dark:bg-gray-700 dark:hover:bg-gray-800 mt-4 md:mt-0 flex border text-white border-gray-600 py-2 px-2 rounded-md font-semibold hover:bg-gray-700 text-center md:w-1/2">
+                        <a href="/admin-panel/product" class="bg-gray-600 dark:bg-gray-700 dark:hover:text-blue-300 dark:hover:border-blue-300 mt-4 md:mt-0 flex border text-white border-gray-600 py-2 px-2 rounded-md font-semibold hover:bg-gray-700 text-center md:w-1/2">
                             <div class="flex mx-auto">
                                 <p class="mr-1">Odustani</p>
                                 <x-icons.cancel size="18"></x-icons.cancel>

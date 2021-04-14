@@ -6,7 +6,7 @@
 
             <div class="px-8 py-8 rounded-md border border-gray-200 shadow-sm bg-white dark:bg-gray-800 dark:border-gray-700">
                 @if (session()->has('Success'))
-                    <div class="bg-green-600 border border-gray-200 text-white absolute top-18 right-20 font-semibold py-2 px-4 rounded-md flex">
+                    <div class="bg-green-600 border border-gray-200 text-white text-sm absolute top-14 right-4 z-20 lg:top-3 font-semibold py-2 px-4 rounded-md flex">
                         <p class="mr-2">{{ session()->get('Success') }}</p>
                         <x-icons.check size="18"></x-icons.check>
                     </div>

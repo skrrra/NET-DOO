@@ -51,9 +51,9 @@
           <div class="flex flex-auto flex-wrap mt-2">
 
             <template x-for="(option,index) in selected" :key="options[option].value">
-              <div class="flex justify-center items-center m-1 font-medium py-1 px-1 bg-white dark:text-blue-300 dark:bg-gray-800 dark:border-blue-300 rounded-md border border-gray-300 shadow-sm">
+              <div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white dark:text-blue-300 dark:bg-gray-700 dark:border-blue-300 rounded-md border border-gray-300 shadow-sm dark:hover:bg-gray-800">
                 <div class="text-xs font-normal leading-none max-w-full flex-initial x-model=" options[option] x-text="options[option].text"></div>
-                <div class="flex flex-auto flex-row-reverse">
+                <div class="flex flex-auto flex-row-reverse ml-1">
                   <div x-on:click.stop="remove(index,option)">
                     <svg class="fill-current dark:text-blue-300 h-4 w-4 " role="button" viewBox="0 0 20 20">
                       <path d="M14.348,14.849c-0.469,0.469-1.229,0.469-1.697,0L10,11.819l-2.651,3.029c-0.469,0.469-1.229,0.469-1.697,0
@@ -76,13 +76,13 @@
           <div x-show.transition.origin.top="isOpen()" class="absolute shadow top-100 bg-white dark:bg-gray-800 dark:border-gray-700 z-40 w-full left-0 rounded max-h-select" x-on:click.away="close">
             <div class="flex flex-col w-full overflow-y-auto h-64">
               <template x-for="(option,index) in searchCategories()" :key="option" class="overflow-auto">
-                <div class="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-gray-100 dark:bg-gray-700 dark:border-gray-700 dark:hover:bg-gray-900" @click="select(index,$event,option)">
+                <div class="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-gray-100 dark:bg-gray-700 dark:border-gray-700 dark:hover:bg-gray-800" @click="select(index,$event,option)">
                   <div class="flex w-full items-center p-2 pl-2 border-transparent border-l-2 relative">
                     <div class="w-full items-center flex justify-between dak:text-blue-300">
                       <div class="mx-2 leading-6" x-model="option" x-text="option.text"></div>
                       <div x-show="option.selected">
                         <svg class="svg-icon fill-current dark:text-blue-300" viewBox="0 0 20 20">
-                          <path class="fill-current dark:text-blue-300" d="M7.197,16.963H7.195c-0.204,0-0.399-0.083-0.544-0.227l-6.039-6.082c-0.3-0.302-0.297-0.788,0.003-1.087
+                          <path class="fill-current stroke-current dark:text-blue-300" d="M7.197,16.963H7.195c-0.204,0-0.399-0.083-0.544-0.227l-6.039-6.082c-0.3-0.302-0.297-0.788,0.003-1.087
                               C0.919,9.266,1.404,9.269,1.702,9.57l5.495,5.536L18.221,4.083c0.301-0.301,0.787-0.301,1.087,0c0.301,0.3,0.301,0.787,0,1.087
                               L7.741,16.738C7.596,16.882,7.401,16.963,7.197,16.963z"></path>
                         </svg>

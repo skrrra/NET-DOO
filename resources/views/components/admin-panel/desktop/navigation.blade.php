@@ -32,7 +32,7 @@
         <form action="/logout" method="POST">
             @csrf
             @method('POST')
-            <button type="submit" class="flex flex-row font-semibold py-4 lg:pl-8 xl:pl-10 2xl:pl-12 bg-white dark:bg-gray-800 border-white hover:text-blue-600 dark:hover:text-blue-300 ring-0 outline-none focus:ring-0 focus:outline-white focus:ring-white focus:border-white">
+            <button type="submit" class="flex flex-row font-semibold py-4 lg:pl-8 xl:pl-10 2xl:pl-12 bg-white dark:bg-gray-800 border-white hover:text-blue-600 dark:hover:text-blue-300 ring-0 outline-none focus:ring-0 focus:outline-white focus:ring-white dark:focus:ring-gray-800 focus:border-white dark:focus:border-gray-800">
                 <div class="mr-2">
                     <x-icons.logout size="18"></x-icons.logout>
                 </div>
