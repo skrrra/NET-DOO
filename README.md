@@ -1,0 +1,1 @@
+1. Finish product@show mobile first with darkmode, image gallery ( click to switch image )
