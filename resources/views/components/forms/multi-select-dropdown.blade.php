@@ -19,7 +19,7 @@
       <div class="flex flex-col relative">
         <div x-on:click="open" class="w-full mt-2">
           <div class="flex border border-gray-300 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 rounded-md">
-            <input x-model="search" @keyup="searchCategories()" type="search" class="border-gray-300 w-full rounded-l-md bg-gray-50 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-blue-300" placeholder="Izaberi kategorije">
+            <input x-model="search" @keyup="searchCategories()" @keydown="open" type="search" class="border-gray-300 w-full rounded-l-md bg-gray-50 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-blue-300" placeholder="Izaberi kategorije">
 
             <div class="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 dark:bg-gray-800 dark:border-gray-700 svelte-1l8159u">
   
@@ -102,19 +102,6 @@
 
     function dropdown(oldValues) {
 
-      /*
-        Saving this in case we have type errors
-      */
-
-      // if(oldValues != undefined){
-      //   if(!Array.isArray(oldValues)){
-      //     oldValues = oldValues.toString();
-      //     console.log(oldValues);
-      //     oldValues = oldValues.split(',').map((item) => {
-      //       return parseInt(item);
-      //     })
-      //   }
-      // }
     return {
         search: '',
         oldValues,
