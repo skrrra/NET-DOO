@@ -20,6 +20,8 @@ class CreateProductsTable extends Migration
             $table->integer('amount');
             $table->integer('state');
             $table->boolean('active');
+            $table->mediumText('short-details');
+            $table->longText('long-details');
             // $table->string('image')->nullable();
             $table->timestamps();
         });

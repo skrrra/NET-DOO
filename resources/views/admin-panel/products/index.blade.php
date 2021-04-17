@@ -47,16 +47,18 @@
             </select>
           </div>
 
-          <button type="submit" class="text-sm bg-gray-600 text-white py-2 font-semibold border border-gray-200 rounded-md w-full flex flex-1 md:max-w-xs md:px-4 hover:bg-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700 dark:hover:text-blue-300 dark:hover:border-blue-300">
-            <p class="mr-2 self-center">Traži</p>
-            <x-icons.search size="16"></x-icons.search>
+          <button type="submit" class="text-sm bg-gray-600 text-white py-2 font-semibold border border-gray-200 rounded-md w-full flex justify-center md:max-w-xs md:px-4 hover:bg-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700 dark:hover:text-blue-300 dark:hover:border-blue-300">
+            <div class="flex">
+              <p class="mr-2 self-center">Traži</p>
+              <x-icons.search size="16"></x-icons.search>
+            </div>
           </button>
         </form>
       </div>
 
       {{-- grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:mb-8 xl:grid-cols-4 xl:gap-6 xl:mb-0  2xl:grid-flow-row --}}
       <div class="w-full mt-8 lg:mt-6">
-        <div class="grid lg:grid-cols-3 lg:gap-x-4 lg:gap-y-4 xl:grid-cols-4 2xl:grid-cols-5">  
+        <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-4 lg:gap-y-4 xl:grid-cols-4 2xl:grid-cols-5">  
           @foreach ($products as $product)
             <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700  rounded-md shadow-sm px-4 py-4">
               <div class="flex justify-between mb-4">
@@ -128,7 +130,7 @@
         </div>
 
         @if ($products->links())
-          <div class="md:mt-4 md:mb-4">
+          <div class="mt-6 md:mt-4 md:mb-4">
             {{ $products->appends(['category' => request()->category, 'order' => request()->order, 'perPage' => request()->perPage])->links() }}
           </div>
         @endif              

@@ -15,6 +15,8 @@ class Product extends Model
         'amount',
         'state',
         'active',
+        'short-details',
+        'long-details'
     ];
 
     public function categories()

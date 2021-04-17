@@ -25,7 +25,7 @@
 
                     <div>
                         <div>
-                            <div class="md:grid md:grid-cols-3 md:gap-6">
+                            <div class="lg:grid lg:grid-cols-2 lg:gap-4 2xl:grid-cols-3">
                                 <div class="flex flex-col">
                                     <label for="" class="mb-2 text-sm font-semibold">Naziv proizvoda <span class="text-blue-600 dark:text-blue-300">*</span></label>
                                     <x-forms.input
@@ -36,7 +36,7 @@
                                     ></x-forms.input>
                                 </div>
 
-                                <div class="flex flex-col mt-4 md:mt-0">
+                                <div class="flex flex-col mt-4 lg:mt-0">
                                     <label for="" class="mb-2 text-sm font-semibold">Cijena <span class="text-blue-600 dark:text-blue-300">*</span></label>
                                     <x-forms.input
                                         type="number"
@@ -47,7 +47,7 @@
                                     ></x-forms.input>
                                 </div>
 
-                                <div class="flex flex-col mt-4 md:mt-0">
+                                <div class="flex flex-col mt-4 lg:mt-2 2xl:mt-0">
                                     <label for="" class="mb-2 text-sm font-semibold">Količina <span class="text-blue-600 dark:text-blue-300">*</span></label>
                                     <x-forms.input
                                         type="number"
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
 
-                            <div class="grid md:grid-cols-3 md:gap-6 mt-10">
+                            <div class="mt-10 lg:grid lg:grid-cols-2 lg:gap-4 2xl:grid-cols-3">
                                 <div class="flex flex-col">
                                     <label for="" class="mb-2 text-sm font-semibold">Stanje <span class="text-blue-600 dark:text-blue-300">*</span></label>
                                     <select name="state" id="" class="rounded-md bg-gray-50 dark:bg-gray-700 dark:border-gray-700 border border-gray-300 focus:border-blue-600 focus:border-2 focus:ring-blue-600 dark:focus:border-blue-300">
@@ -68,7 +68,7 @@
                                     </select>
                                 </div>
 
-                                <div class="flex flex-col mt-4 md:mt-0">
+                                <div class="flex flex-col mt-4 lg:mt-0">
                                     <label for="" class="mb-2 text-sm font-semibold">Aktivnost <span class="text-blue-600 dark:text-blue-300">*</span></label>
                                     <select name="active" id="" class="rounded-md bg-gray-50 dark:bg-gray-700 dark:border-gray-700 border border-gray-300 focus:border-blue-600 focus:ring-blue-600 dark:focus:border-blue-300">
                                         <option value="1">Aktivan</option>
@@ -82,7 +82,7 @@
                             </div>
 
                             <div class="mt-0">
-                                <label class="text-sm font-semibold">Slika proizvoda <span class="text-blue-600 dark:text-blue-300">*</span></label>
+                                <label class="text-sm font-semibold">Slike proizvoda <span class="text-blue-600 dark:text-blue-300">*</span></label>
 
                                 <div class="mt-2 flex justify-center px-6 py-6 border-2 border-gray-300 border-dashed rounded-md bg-gray-50 dark:bg-gray-700 dark:border-gray-700">
                                     <div class="space-y-1 text-center">
@@ -108,17 +108,34 @@
                                     </div>
                                 @enderror
                             </div>
+
+                            <div class="mt-10">
+                                <label for="" class="font-semibold text-sm">Kratki opis <span class="text-blue-600 dark:text-blue-300">*</span></label>
+                                <x-forms.textarea
+                                name="short-details"
+                                placeholder="Kratki opis proizvoda"
+                                ></x-forms.textarea>
+                            </div>
+
+                            <div class="mt-10">
+                                <label for="" class="font-semibold text-sm">Detaljni opis <span class="text-blue-600 dark:text-blue-300">*</span></label>
+                                <x-forms.textarea
+                                name="long-details"
+                                rows="16"
+                                placeholder="Detaljni opis proizvoda"
+                                ></x-forms.textarea>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="grid md:grid-cols-3 md:gap-6 mt-10">
+                    <div class="grid lg:grid-cols-3 md:gap-4 mt-10">
                         <button type="submit" class="bg-blue-600 border flex border-gray-600 py-2 px-2 rounded-md text-white font-semibold hover:bg-blue-700  hover:border-blue-700 dark:bg-blue-300 dark:text-gray-900 dark:hover:bg-blue-400">
                             <div class="flex mx-auto">
                                 <p class="mr-1">Dodaj proizvod</p>
                                 <x-icons.add size="18"></x-icons.add>
                             </div>
                         </button>
-                        <a href="/admin-panel/product" class="bg-gray-600 dark:bg-gray-700 dark:hover:text-blue-300 dark:hover:border-blue-300 mt-4 md:mt-0 flex border text-white border-gray-600 py-2 px-2 rounded-md font-semibold hover:bg-gray-700 text-center md:w-1/2">
+                        <a href="/admin-panel/product" class="bg-gray-600 dark:bg-gray-700 dark:hover:text-blue-300 dark:hover:border-blue-300 mt-4 md:mt-0 flex border text-white border-gray-600 py-2 px-2 rounded-md font-semibold hover:bg-gray-700 text-center 2xl:w-1/2">
                             <div class="flex mx-auto">
                                 <p class="mr-1">Odustani</p>
                                 <x-icons.cancel size="18"></x-icons.cancel>

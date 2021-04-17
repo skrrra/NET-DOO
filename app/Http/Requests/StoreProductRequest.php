@@ -31,7 +31,9 @@ class StoreProductRequest extends FormRequest
             'active' => 'bail|required',
             'categories' => 'bail|required',
             'image' => 'bail|array',
-            'image.*' => 'bail|required|image|mimes:jpeg,png,jpg,svg|max:1024'
+            'image.*' => 'bail|required|image|mimes:jpeg,png,jpg,svg|max:1024',
+            'short-details' => 'bail|required|max:5000',
+            'long-details' => 'bail|required|max:10000',
         ];
     }
 }
