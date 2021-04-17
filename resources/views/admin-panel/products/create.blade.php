@@ -112,7 +112,7 @@
                             <div class="mt-10">
                                 <label for="" class="font-semibold text-sm">Kratki opis <span class="text-blue-600 dark:text-blue-300">*</span></label>
                                 <x-forms.textarea
-                                name="short-details"
+                                name="short_details"
                                 placeholder="Kratki opis proizvoda"
                                 ></x-forms.textarea>
                             </div>
@@ -120,7 +120,7 @@
                             <div class="mt-10">
                                 <label for="" class="font-semibold text-sm">Detaljni opis <span class="text-blue-600 dark:text-blue-300">*</span></label>
                                 <x-forms.textarea
-                                name="long-details"
+                                name="long_details"
                                 rows="16"
                                 placeholder="Detaljni opis proizvoda"
                                 ></x-forms.textarea>
