@@ -24,7 +24,7 @@ class ProductImageFactory extends Factory
     {
         return [
             'product_id' => Product::all()->random()->id,
-            'image_url' => '/images/nobg.jpg' 
+            'image_url' => '/images/2.jpg' 
         ];
     }
 }

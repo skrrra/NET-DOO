@@ -25,7 +25,7 @@ class ProductController extends Controller
 
         return view('admin-panel.products.index', [
             'products' => $products, 
-            'categories' => Category::all(['id', 'name'])
+            'categories' => Category::withCount('products')->get()
         ]);
     }
 
@@ -144,7 +144,7 @@ class ProductController extends Controller
         {
             return view('admin-panel.products.index', [
                 'products' => Product::orderBy($order[0], $order[1])->with('categories', 'images')->paginate(intval($request->perPage), ['id', 'name', 'price', 'amount', 'state', 'active']),
-                'categories' => \App\Models\Category::all('id', 'name')
+                'categories' => \App\Models\Category::withCount('products')->get()
             ]);
         }
 
@@ -152,7 +152,7 @@ class ProductController extends Controller
         return view('admin-panel.products.index', [
             'products' => Category::find($request->category)->products()->orderBy($order[0], $order[1])->paginate(intval($request->perPage)),
             'currentCategory' => Category::find($request->category),
-            'categories' => \App\Models\Category::all('id', 'name')->except($request->category),
+            'categories' => \App\Models\Category::withCount('products')->get()->except($request->category),
         ]);
     }
 

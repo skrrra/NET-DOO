@@ -23,7 +23,7 @@
               @endisset
                 <option value="0">Sve kategorije</option>  
               @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>                      
+                <option value="{{ $category->id }}">{{ $category->name }} ({{ $category->products_count}})</option>                      
               @endforeach
             </select>
 
