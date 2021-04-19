@@ -19,8 +19,8 @@ class ProductsSeeder extends Seeder
 
         $products = [
             [
-                'name' => 'Gaming računar Iron i7 4790/8GB/SSD 128GB / GTX1050TI',
-                'price' => '870',
+                'name' => 'Rowenta usisivač RO4853EA',
+                'price' => '180',
                 'amount' => '1',
                 'state' => '1',
                 'active' => '1',
