@@ -23,9 +23,7 @@ class DatabaseSeeder extends Seeder
             // ProductsSeeder::class,
             RolesSeeder::class,
         ]);
-            
-        // Product::factory()->has(ProductImage::factory()->count(3), 'images')->count(3)->create();
-        // CategoryProduct::factory()->count(4)->create();
+        
         User::factory()->create(['role_id' => 2]);
         User::factory()->create(['role_id' => 3]);
         User::factory()->create();

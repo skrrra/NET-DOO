@@ -58,7 +58,7 @@
 
       {{-- grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:mb-8 xl:grid-cols-4 xl:gap-6 xl:mb-0  2xl:grid-flow-row --}}
       <div class="w-full mt-8 lg:mt-6">
-        <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-4 lg:gap-y-4 xl:grid-cols-4 2xl:grid-cols-5">  
+        <div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-2 md:gap-y-2 lg:grid-cols-3 lg:gap-x-4 lg:gap-y-4 xl:grid-cols-4 2xl:grid-cols-5">  
           @foreach ($products as $product)
             <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700  rounded-md shadow-sm px-4 py-4">
               <div class="flex justify-between mb-4">
@@ -88,7 +88,11 @@
               </div>
 
               <div class="flex mb-4">
-                <img src="{{ $product->images[0]->image_url }}" class="w-full rounded-md object-contain h-40">
+                @if (count($product->images) != 0)
+                    <img src="{{ $product->images[0]->image_url }}" class="w-full rounded-md object-contain h-40">
+                @else  
+                  <p>Nema slike na piku</p>
+                @endif
               </div>
 
               <div class="w-full mb-2">

@@ -20,7 +20,7 @@ class ProductController extends Controller
         $products = Product::with(['categories' => function($query){
             $query->select('name');
         }, 'images' => function($query){
-            $query->select('id', 'product_id', 'image_url')->orderBy('id', 'DESC');
+            $query->select('id', 'product_id', 'image_url')->orderBy('id', 'ASC');
         }])->orderBy('id', 'DESC')->paginate(10, ['id', 'name', 'price', 'amount', 'state', 'active']);
 
         return view('admin-panel.products.index', [
