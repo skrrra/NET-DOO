@@ -35,6 +35,48 @@ class RacunariSeeder extends Seeder
             ['name' => 'Tastature i miš kompleti', 'root' => 0],
             ['name' => 'Tastature', 'root' => 0],
             ['name' => 'Miševi', 'root' => 0],
+            ['name' => 'Acme miševi', 'root' => 0],
+            ['name' => 'Apple miševi', 'root' => 0],
+            ['name' => 'BASIC XL miševi', 'root' => 0],
+            ['name' => 'BORG miševi', 'root' => 0],
+            ['name' => 'AULA miševi', 'root' => 0],
+            ['name' => 'Kingston miševi', 'root' => 0],
+            ['name' => 'Canyon miševi', 'root' => 0],
+            ['name' => 'DELL miševi', 'root' => 0],
+            ['name' => 'Steelseries miševi', 'root' => 0],
+            ['name' => 'Cooler Master miševi', 'root' => 0],
+            ['name' => 'Genius miševi', 'root' => 0],
+            ['name' => 'HP miševi', 'root' => 0],
+            ['name' => 'Kingston miševi', 'root' => 0],
+            ['name' => 'Konig miševi', 'root' => 0],
+            ['name' => 'Lenovo miševi', 'root' => 0],
+            ['name' => 'Logitech miševi', 'root' => 0],
+            ['name' => 'Microsoft miševi', 'root' => 0],
+            ['name' => 'MS miševi', 'root' => 0],
+            ['name' => 'Razer miševi', 'root' => 0],
+            ['name' => 'Rampage miševi', 'root' => 0],
+            ['name' => 'Marvo miševi', 'root' => 0],
+            ['name' => 'Steelseries miševi', 'root' => 0],
+            ['name' => 'Trust miševi', 'root' => 0],
+            ['name' => 'Zowie miševi', 'root' => 0],
+            ['name' => 'Redragon miševi', 'root' => 0],
+            ['name' => 'Rampage miševi', 'root' => 0],
+            
+            // Podloge za miš
+            ['name' => 'Podloge za miš', 'root' => 0],
+            ['name' => 'Asus podloge za miš', 'root' => 0],
+            ['name' => 'Canyon podloge za miš', 'root' => 0],
+            ['name' => 'Connect XL podloge za miš', 'root' => 0],
+            ['name' => 'Marvo podloge za miš', 'root' => 0],
+            ['name' => 'Kingston podloge za miš', 'root' => 0],
+            ['name' => 'Acme podloge za miš', 'root' => 0],
+            ['name' => 'MS podloge za miš', 'root' => 0],
+            ['name' => 'Razer podloge za miš', 'root' => 0],
+            ['name' => 'SAL podloge za miš', 'root' => 0],
+            ['name' => 'Steelseries podloge za miš', 'root' => 0],
+            ['name' => 'Trust podloge za miš', 'root' => 0],
+            ['name' => 'Satechi podloge za miš', 'root' => 0],
+            ['name' => 'Redragon podloge za miš', 'root' => 0],
 
             // Komponente and children
             ['name' => 'Komponente', 'root' => 0],
@@ -111,7 +153,6 @@ class RacunariSeeder extends Seeder
             ['name' => 'Seagate SSD diskovi', 'root' => 0],
             ['name' => 'Lenovo SSD diskovi', 'root' => 0],
 
-
             // Kućista za pc and children
             ['name' => 'Kućišta za PC', 'root' => 0],
             ['name' => 'ANS kućišta za PC', 'root' => 0],
@@ -127,7 +168,18 @@ class RacunariSeeder extends Seeder
             ['name' => 'MS kućišta za PC', 'root' => 0],
             ['name' => 'Inner-tech kućišta za PC', 'root' => 0],
 
+            // Hladnjaci i kuleri and children
             ['name' => 'Hladnjaci i kuleri', 'root' => 0],
+            ['name' => 'Artic hladnjaci i kuleri', 'root' => 0],
+            ['name' => 'Asus hladnjaci i kuleri', 'root' => 0],
+            ['name' => 'Intel hladnjaci i kuleri', 'root' => 0],
+            ['name' => 'UBIT hladnjaci i kuleri', 'root' => 0],
+            ['name' => 'Cooler master hladnjaci i kuleri', 'root' => 0],
+            ['name' => 'Fractal design hladnjaci i kuleri', 'root' => 0],
+            ['name' => 'LC power hladnjaci i kuleri', 'root' => 0],
+            ['name' => 'Legend hladnjaci i kuleri', 'root' => 0],
+            ['name' => 'Marvo hladnjaci i kuleri', 'root' => 0],
+            ['name' => 'Thermaltake hladnjaci i kuleri', 'root' => 0],
 
             ['name' => 'Zvučne kartice', 'root' => 0],
 
@@ -142,6 +194,15 @@ class RacunariSeeder extends Seeder
             ['name' => 'Transcend eksterni hard diskovi', 'root' => 0],
 
             ['name' => 'Kućišta za hard diskove', 'root' => 0],
+
+            // Monitori and children
+            ['name' => 'Monitori', 'root' => 0],
+            ['name' => 'Benq monitori', 'root' => 0],
+            ['name' => 'DELL monitori', 'root' => 0],
+            ['name' => 'HP monitori', 'root' => 0],
+            ['name' => 'Samsung monitori', 'root' => 0],
+            ['name' => 'Tesla monitori', 'root' => 0],
+            ['name' => 'Acer monitori', 'root' => 0],
         ];
 
         DB::table('categories')->insert($racunari);
