@@ -40,7 +40,6 @@ class RacunariSeeder extends Seeder
             ['name' => 'BASIC XL miševi', 'root' => 0],
             ['name' => 'BORG miševi', 'root' => 0],
             ['name' => 'AULA miševi', 'root' => 0],
-            ['name' => 'Kingston miševi', 'root' => 0],
             ['name' => 'Canyon miševi', 'root' => 0],
             ['name' => 'DELL miševi', 'root' => 0],
             ['name' => 'Steelseries miševi', 'root' => 0],
@@ -54,13 +53,10 @@ class RacunariSeeder extends Seeder
             ['name' => 'Microsoft miševi', 'root' => 0],
             ['name' => 'MS miševi', 'root' => 0],
             ['name' => 'Razer miševi', 'root' => 0],
-            ['name' => 'Rampage miševi', 'root' => 0],
             ['name' => 'Marvo miševi', 'root' => 0],
-            ['name' => 'Steelseries miševi', 'root' => 0],
             ['name' => 'Trust miševi', 'root' => 0],
             ['name' => 'Zowie miševi', 'root' => 0],
             ['name' => 'Redragon miševi', 'root' => 0],
-            ['name' => 'Rampage miševi', 'root' => 0],
             
             // Podloge za miš
             ['name' => 'Podloge za miš', 'root' => 0],
