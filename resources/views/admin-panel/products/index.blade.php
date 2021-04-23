@@ -5,7 +5,7 @@
 
       {{-- ADMIN PANEL ACTION BAR START --}}
       <div class="md:flex md:flex-row-reverse md:justify-between">
-        <a href="/admin-panel/product/create" class="text-sm border font-semibold flex border-gray-200 shadow-sm py-2 px-4 bg-blue-600 text-white dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:hover:text-blue-300 dark:hover:border-blue-300 rounded-md hover:bg-blue-700 justify-center">
+        <a href="/admin-panel/product/create" class="text-xs lg:text-sm border font-semibold flex items-center border-gray-200 shadow-sm py-2 px-4 bg-blue-600 text-white dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:hover:text-blue-300 dark:hover:border-blue-300 rounded-md hover:bg-blue-700 justify-center">
           Dodaj proizvod
           <div class="ml-2 flex">
             <x-icons.add size="18"></x-icons.add>
@@ -47,7 +47,7 @@
             </select>
           </div>
 
-          <button type="submit" class="text-sm bg-gray-600 text-white py-2 font-semibold border border-gray-200 rounded-md w-full flex justify-center md:max-w-xs md:px-4 hover:bg-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700 dark:hover:text-blue-300 dark:hover:border-blue-300">
+          <button type="submit" class="text-xs lg:text-sm bg-gray-600 text-white py-2 font-semibold border border-gray-200 rounded-md w-full flex items-center justify-center md:max-w-xs md:px-4 hover:bg-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700 dark:hover:text-blue-300 dark:hover:border-blue-300">
             <div class="flex">
               <p class="mr-2 self-center">Traži</p>
               <x-icons.search size="16"></x-icons.search>
