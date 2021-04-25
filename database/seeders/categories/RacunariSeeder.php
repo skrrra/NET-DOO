@@ -74,12 +74,14 @@ class RacunariSeeder extends Seeder
             ['name' => 'Satechi podloge za miš', 'root' => 0],
             ['name' => 'Redragon podloge za miš', 'root' => 0],
 
+            // Slušalice and children
+            ['name' => 'Slušalice', 'root' => 0],
+
             // Komponente and children
             ['name' => 'Komponente', 'root' => 0],
 
             // Procesori and children
             ['name' => 'Procesori', 'root' => 0],
-            // kompletna ponuda
             ['name' => 'Intel procesori', 'root' => 0],
             ['name' => 'AMD procesori', 'root' => 0],
 
