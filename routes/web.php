@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin-panel/category', 'App\Http\Controllers\CategoryController@index');
     Route::post('/admin-panel/category', 'App\Http\Controllers\CategoryController@store');
     Route::post('/admin-panel/category/create', 'App\Http\Controllers\CategoryController@create');
-    Route::post('/admin-panel/category/{name}', 'App\Http\Controllers\CategoryController@show');
+    Route::get('/admin-panel/category/{name}', 'App\Http\Controllers\CategoryController@show');
     Route::patch('/admin-panel/category/{name}', 'App\Http\Controllers\CategoryController@update');
     Route::delete('/admin-panel/category/{name}', 'App\Http\Controllers\CategoryController@destroy');
     Route::get('/admin-panel/category/{name}/edit', 'App\Http\Controllers\CategoryController@edit');
