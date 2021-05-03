@@ -8,11 +8,12 @@
                     <input x-model="search" type="search" @keyup="searchCategories()" @keydown="open" class="w-full rounded-md border-2 border-gray-200 dark:bg-gray-700 dark:border-gray-700 dark:placeholder-gray-400" placeholder="Traži kategorije">
                     <p class="mt-4 text-sm">Trenutni broj kategorija: {{ count($categories) }}</p>
                 </div>
-                <div class="mt-8 lg:mt-6 grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-4 md:gap-y-4 lg:grid-cols-3 lg:gap-x-4 lg:gap-y-4 xl:grid-cols-4 2xl:grid-cols-5">
+                <div class="mt-8 lg:mt-6 grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-4 md:gap-y-4 lg:grid-cols-3 lg:gap-x-4 lg:gap-y-4 xl:grid-cols-3 2xl:grid-cols-4">
                     <template x-for="element in searchCategories()">
                         <div class="bg-white dark:bg-gray-800 dark:border-gray-700 py-4 px-4 rounded-md border border-gray-200 shadow-sm">
-                            <div class="flex">
-                                <a class="text-base" x-text="element.name" x-bind:href="'category/' + element.name"></a>
+                            <div class="flex flex-col">
+                                <a class="text-base font-semibold hover:text-blue-600" x-text="element.name" x-bind:href="'category/' + element.name"></a>
+                                <p x-text="'Broj proizvoda: ' + element.products_count" class="text-sm mt-2"></p>
                             </div>
                         </div>
                     </template>
