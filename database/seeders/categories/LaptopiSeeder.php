@@ -31,7 +31,6 @@ class LaptopiSeeder extends Seeder
             ['name' => 'Panasonic laptopi', 'root' => 0],
             ['name' => 'Toshiba laptopi', 'root' => 0],
             ['name' => 'Samsung laptopi', 'root' => 0],
-
             ['name' => 'Polovni laptopi', 'root' => 0],
         ];
 
