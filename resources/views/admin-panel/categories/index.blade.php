@@ -13,7 +13,9 @@
                         <div class="bg-white dark:bg-gray-800 dark:border-gray-700 py-4 px-4 rounded-md border border-gray-200 shadow-sm">
                             <div class="flex flex-col">
                                 <a class="text-base font-semibold hover:text-blue-600" x-text="element.name" x-bind:href="'category/' + element.name"></a>
-                                <p x-text="'Broj proizvoda: ' + element.products_count" class="text-sm mt-2"></p>
+                                <p x-text="'Broj proizvoda: ' + element.products_count" class="text-sm mt-4"></p>
+                                <p x-text="'Pripada kategorijama: ' + element.category_count" class="text-sm mt-2"></p>
+                                <p x-text="'Podkategorije: ' + element.categories_count" class="text-sm mt-2"></p>
                             </div>
                         </div>
                     </template>
