@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Output\BufferedOutput;
 
 class AutomatedMigration extends Command
 {
@@ -37,6 +39,15 @@ class AutomatedMigration extends Command
      */
     public function handle()
     {
-        echo "Custom command executed";
+        // First we want to call the existing php artisan migrate:fresh --seed command to get all tables and seed the pre defined categories
+        $this->output = new BufferedOutput();
+        $this->call('migrate:fresh');
+        $this->call('db:seed');
+        /*
+            After the db is created and seeded we want to import the products and product-images sql file
+            in order to get all the products and images(url's included) that we scraped with the pik-tracker
+        */
+        DB::unprepared(file_get_contents('C:/Users/halfamomo/Desktop/productsandimages3.sql'));
+        echo "Created database, seeded categories and imported SQL file!";
     }
 }
