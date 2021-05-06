@@ -22,7 +22,6 @@ class GamingSeeder extends Seeder
             ['name' => 'Gaming miševi', 'root' => 0],
             ['name' => 'Gaming stolice', 'root' => 0],
             ['name' => 'Gaming headseti', 'root' => 0],
-            ['name' => 'Gaming stolice', 'root' => 0],
             ['name' => 'Polovna gaming oprema', 'root' => 0],
         ];
         DB::table('categories')->insert($gaming);
