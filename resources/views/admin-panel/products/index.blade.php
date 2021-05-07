@@ -89,7 +89,7 @@
 
               <div class="flex mb-4 cursor-pointer">
                 @if (count($product->images) != 0)
-                    <img src="{{ $product->images[0]->image_url }}" class="w-full rounded-md object-contain h-40">
+                    <img src="{{ $product->first_image[0]->image_url }}" class="w-full rounded-md object-contain h-40">
                 @else  
                   <p>Nema slike na piku</p>
                 @endif

@@ -23,6 +23,10 @@ class CategoryController extends Controller
 
     public function create()
     {
+        if(! Gate::allows('create-category')){
+            abort(403);
+        }
+
         return view('admin-panel.categories.create', [
             'categories' => Category::all(['id', 'name'])
         ]);
@@ -41,16 +45,22 @@ class CategoryController extends Controller
 
     public function edit()
     {
-
+        if(! Gate::allows('edit-category')){
+            abort(403);
+        }
     }
 
     public function update()
     {
-
+        if(! Gate::allows('edit-category')){
+            abort(403);
+        }
     }
 
     public function destroy()
     {
-
+        if(! Gate::allows('delete-category')){
+            abort(403);
+        }
     }
 }
