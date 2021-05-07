@@ -14,35 +14,37 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        return view('admin-panel.categories.create', [
-            'categories' => Category::where('root', 0)->orderBy('name', 'ASC')->get(['id', 'name'])
-        ]);
+    public function create(){
+        echo "CREATE";
     }
 
-    public function store()
-    {
+    // public function show()
+    // {
 
-    }
+    // }
 
-    public function show()
-    {
-        return view('admin-panel.categories.show');
-    }
+    // public function create()
+    // {
 
-    public function edit()
-    {
+    // }
 
-    }
+    // public function store()
+    // {
 
-    public function update()
-    {
+    // }
 
-    }
+    // public function edit()
+    // {
 
-    public function destroy()
-    {
+    // }
 
-    }
+    // public function update()
+    // {
+
+    // }
+
+    // public function destroy()
+    // {
+
+    // }
 }

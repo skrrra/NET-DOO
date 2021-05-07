@@ -5,7 +5,7 @@
 
         <div class="bg-white px-4 py-4 border border-gray-200 shadown-sm rounded-md">
             {{-- <p class="text-sm mb-4">Trenutni broj kategorija: {{ count($categories) }}</p> --}}
-            <a href="/admin-panel/category/create" class="bg-gray-600 text-white py-2 px-4 rounded-md font-semibold hover:bg-gray-700">Dodaj kategoriju</a>
+            <a href="category/create" class="bg-gray-600 text-white py-2 px-4 rounded-md font-semibold hover:bg-gray-700">Dodaj kategoriju</a>
         </div>
 
         {{-- SEARCH INPUT AND CATEGORIES COMPONENT --}}
@@ -18,7 +18,7 @@
                     <template x-for="element in searchCategories()">
                         <div class="bg-white dark:bg-gray-800 dark:border-gray-700 py-4 px-4 rounded-md border border-gray-200 shadow-sm">
                             <div class="flex flex-col">
-                                <a class="text-base font-semibold hover:text-blue-600" x-text="element.name" x-bind:href="'/admin-panel/category/' + element.name"></a>
+                                {{-- <a class="text-base font-semibold hover:text-blue-600" x-text="element.name" x-bind:href="'/admin-panel/category/' + element.name"></a> --}}
                                 <p x-text="'Broj proizvoda: ' + element.products_count" class="text-sm mt-4"></p>
                                 <p x-text="'Pripada kategorijama: ' + element.category_count" class="text-sm mt-2"></p>
                                 <p x-text="'Podkategorije: ' + element.categories_count" class="text-sm mt-2"></p>
