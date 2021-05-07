@@ -1,7 +1,8 @@
 @props([
     'items',
     'oldValues' => null,
-    'text' => 'Name here'
+    'text' => 'Name here',
+    'name' => ''
 ])
 
 <div>
@@ -14,7 +15,7 @@
 </div>
 
 <div x-data="dropdown({{ $oldValues }})" x-init="loadOptions()" class="w-full flex flex-col">
-    <input name="categories" type="hidden" x-bind:value="selectedValues()">
+    <input name="{{ $name }}" type="hidden" x-bind:value="selectedValues()">
 
     <div>
       <div class="flex flex-col relative">
@@ -43,7 +44,7 @@
             </div>
           </div>
 
-          @error('categories')
+          @error($name)
             <div>
               <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
             </div>

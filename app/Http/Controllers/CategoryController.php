@@ -34,6 +34,7 @@ class CategoryController extends Controller
 
     public function store(StoreCategoryRequest $request)
     {
+        dd($request);
         if(! Gate::allows('create-category')){
             abort(403);
         }
