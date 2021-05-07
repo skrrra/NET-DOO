@@ -9,6 +9,11 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'root'
+    ];
+
     /*
         Calling the category relationship on a Category:class model
         returns the parent Category::class

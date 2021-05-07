@@ -1,10 +1,11 @@
 @props([
     'items',
     'oldValues' => null,
+    'text' => 'Name here'
 ])
 
 <div>
-    <label for="select" class="text-sm font-semibold">Kategorije <span class="text-blue-600 dark:text-blue-300">*</span></label>
+    <label for="select" class="text-sm font-semibold">{{ $text }} <span class="text-blue-600 dark:text-blue-300">*</span></label>
     <select x-cloak id="select">
         @foreach ($items as $item)
             <option value="{{ $item->id }}">{{ $item->name }}</option>
