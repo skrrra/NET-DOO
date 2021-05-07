@@ -16,7 +16,9 @@ class CategoryController extends Controller
 
     public function create()
     {
-
+        return view('admin-panel.categories.create', [
+            'categories' => Category::where('root', 0)->orderBy('name', 'ASC')->get(['id', 'name'])
+        ]);
     }
 
     public function store()
@@ -26,7 +28,7 @@ class CategoryController extends Controller
 
     public function show()
     {
-
+        return view('admin-panel.categories.show');
     }
 
     public function edit()
