@@ -13,7 +13,7 @@ class AutomatedMigration extends Command
      *
      * @var string
      */
-    protected $signature = 'migrate:complete-automation';
+    protected $signature = 'migrate:fresh-automation';
 
     /**
      * The console command description.
