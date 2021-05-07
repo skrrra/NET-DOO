@@ -14,37 +14,33 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function create(){
-        echo "CREATE";
+    public function show()
+    {
+        echo "SHOW";
     }
 
-    // public function show()
-    // {
+    public function create()
+    {
+        echo "CREATE";
+    }   
 
-    // }
+    public function store()
+    {
 
-    // public function create()
-    // {
+    }
 
-    // }
+    public function edit()
+    {
 
-    // public function store()
-    // {
+    }
 
-    // }
+    public function update()
+    {
 
-    // public function edit()
-    // {
+    }
 
-    // }
+    public function destroy()
+    {
 
-    // public function update()
-    // {
-
-    // }
-
-    // public function destroy()
-    // {
-
-    // }
+    }
 }
