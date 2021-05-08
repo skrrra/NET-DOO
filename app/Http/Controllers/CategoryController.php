@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('admin-panel.categories.index', [
-            'categories' => Category::withCount(['products', 'parent_categories', 'child_categories'])->get(['id', 'name']) 
+            'categories' => Category::withCount(['products', 'parent_categories', 'child_categories'])->get(['id', 'name', 'image_url']) 
         ]);
     }
 

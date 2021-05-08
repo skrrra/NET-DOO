@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->boolean('root')->default(false);
+            $table->string('image_url')->default('/images/no-picture.jpg');
             $table->timestamps();
         });
     }
