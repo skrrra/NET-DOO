@@ -25,7 +25,7 @@
                     <div class="flex text-sm text-gray-600">
                         <label for="file-upload" class="relative cursor-pointer bg-gray-50 dark:bg-gray-700 dark:border-gray-700 dark:hover:text-blue-300 rounded-md font-medium text-blue-600 dark:text-blue-300 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                             <span>Upload a file</span>
-                            <input id="file-upload" name="image[]" type="file" class="sr-only" multiple>
+                            <input id="file-upload" name="image" type="file" class="sr-only" multiple>
                         </label>
                         <p class="pl-1">or drag and drop</p>
                     </div>
@@ -35,10 +35,10 @@
                 </div>
             </div>
         </template>
-        @error('image[')
+    </div>
+    @error('image')
         <div>
             <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
         </div>
     @enderror
-    </div>
 </div>

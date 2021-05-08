@@ -50,11 +50,11 @@
                                 <x-forms.multi-select-dropdown :items="$categories" oldValues="[{{ old('categories') }}]" text="Matične kategorije" name="parent_categories"></x-forms.multi-select-dropdown>
                             </div>
 
-                            <div>
+                            <div class="mt-2">
                                 <x-forms.multi-select-dropdown :items="$categories" oldValues="[{{ old('categories') }}]" text="Podkategorije" name="child_categories"></x-forms.multi-select-dropdown>
                             </div>
 
-                            <div class="mt-0">
+                            <div class="mt-2">
                                 <label class="text-sm font-semibold">Slike kategorije <span class="text-blue-600 dark:text-blue-300">*</span></label>
 
                                 <x-forms.drag-drop-files></x-forms.drag-drop-files>

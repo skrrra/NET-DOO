@@ -26,8 +26,10 @@ class StoreCategoryRequest extends FormRequest
         return [
             'name' => 'bail|required|unique:categories|max:255',
             'root' => 'bail|required',
-            'parent_categories' => 'bail|required|array',
-            'child_categories' => 'bail|required|array',
+            'parent_categories' => 'bail|required',
+            'child_categories' => 'bail|required',
+            'image' => 'bail|required',
+            'image.*' => 'bail|required|image|mimes:jpeg,png,jpg,svg|max:1024',
         ];
     }
 }
