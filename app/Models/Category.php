@@ -19,7 +19,7 @@ class Category extends Model
         returns the parent Category::class
     */
 
-    public function category()
+    public function parent_categories()
     {
         return $this->belongsToMany(Category::class, 'category_parents', 'category_id', 'parent_id');
     }
@@ -29,7 +29,7 @@ class Category extends Model
         returns all the child Category::class 
     */
 
-    public function categories()
+    public function child_categories()
     {
         return $this->belongsToMany(Category::class, 'category_parents', 'parent_id');
     }

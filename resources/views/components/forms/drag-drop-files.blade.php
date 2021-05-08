@@ -35,7 +35,7 @@
                 </div>
             </div>
         </template>
-        @error('image')
+        @error('image[')
         <div>
             <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
         </div>

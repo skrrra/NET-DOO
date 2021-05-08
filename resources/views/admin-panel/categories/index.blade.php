@@ -20,8 +20,8 @@
                             <div class="flex flex-col">
                                 <a class="text-base font-semibold hover:text-blue-600" x-text="element.name" x-bind:href="'/admin-panel/category/' + element.name"></a>
                                 <p x-text="'Broj proizvoda: ' + element.products_count" class="text-sm mt-4"></p>
-                                <p x-text="'Pripada kategorijama: ' + element.category_count" class="text-sm mt-2"></p>
-                                <p x-text="'Podkategorije: ' + element.categories_count" class="text-sm mt-2"></p>
+                                <p x-text="'Pripada kategorijama: ' + element.parent_categories_count" class="text-sm mt-2"></p>
+                                <p x-text="'Podkategorije: ' + element.child_categories_count" class="text-sm mt-2"></p>
                             </div>
                         </div>
                     </template>
