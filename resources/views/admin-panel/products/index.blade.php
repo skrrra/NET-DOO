@@ -35,8 +35,6 @@
             </select>
                 
             <select name="perPage" id="" class="text-sm rounded-md border border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none focus:outline-none focus:border-transparent mb-4 md:mb-0 md:mr-2 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700 dark:focus:ring-blue-300">
-              <option value="10">Po 10</option>
-              <option value="20">Po 20</option>
               <option value="30">Po 30</option>
               <option value="40">Po 40</option>
               <option value="50">Po 50</option>

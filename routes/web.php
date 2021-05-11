@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome', [
-        'categories' => Category::where('root', true)->with('categories.products', 'products')->get()
-    ]);
+    return view('welcome', []);
 });
 
 // ADMIN DASHBOARD
