@@ -30,15 +30,15 @@ class AuthServiceProvider extends ServiceProvider
         // PRODUCT GATES START
 
         Gate::define('create-product', function (User $user){
-            return $user->role->id === 2 || $user->role->id === 1;
+            return $user->role_id === 2 || $user->role_id === 1;
         });
 
         Gate::define('edit-product', function(User $user){
-            return $user->role->id === 2 || $user->role->id === 1;
+            return $user->role_id === 2 || $user->role_id === 1;
         });
 
         Gate::define('delete-product', function(User $user){
-            return $user->role->id === 2;
+            return $user->role_id === 2;
         });
 
         // PRODUCT GATES END
@@ -46,15 +46,15 @@ class AuthServiceProvider extends ServiceProvider
         // CATEGORY GATES START
 
         Gate::define('create-category', function(User $user){
-            return $user->role->id === 2 || $user->role->id === 1;
+            return $user->role_id === 2 || $user->role_id === 1;
         });
 
         Gate::define('edit-category', function(User $user){
-            return $user->role->id === 2 || $user->role->id === 1;
+            return $user->role_id === 2 || $user->role_id === 1;
         });
 
         Gate::define('delete-category', function(User $user){
-            return $user->role->id === 2;
+            return $user->role_id === 2;
         });
 
         // CATEGORY GATES END

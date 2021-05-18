@@ -29,16 +29,36 @@
             <x-icons.precent size="18"></x-icons.precent>
         </x-admin-panel.side-menu.item>
         
-        <form action="/logout" method="POST">
-            @csrf
-            @method('POST')
-            <button type="submit" class="flex flex-row font-semibold py-4 lg:pl-8 xl:pl-10 2xl:pl-12 bg-white dark:bg-gray-800 border-white hover:text-blue-600 dark:hover:text-blue-300 ring-0 outline-none focus:ring-0 focus:outline-white focus:ring-white dark:focus:ring-gray-800 focus:border-white dark:focus:border-gray-800">
-                <div class="mr-2">
-                    <x-icons.logout size="18"></x-icons.logout>
-                </div>
-                Logout
-            </button>
-        </form>
+        <x-admin-panel.side-menu.item href="/admin-panel/my-profile" text="Moj profil" active="{{ str_contains(request()->url(), '/my-profile' ) ? true : false }}">
+            <x-icons.user size="18"></x-icons.user>
+        </x-admin-panel.side-menu.item>
+
+        <x-admin-panel.side-menu.item href="/admin-panel/logout" text="Logout">
+            <x-icons.logout size="18"></x-icons.logout>
+        </x-admin-panel.side-menu.item>
+    
+        {{-- <div class="">
+            <div class="flex flex-row ">
+                <button class="flex flex-row font-semibold lg:pl-8 xl:pl-10 2xl:pl-12 bg-white dark:bg-gray-800 border-white hover:text-blue-600 dark:hover:text-blue-300 ring-0 outline-none focus:ring-0 focus:outline-white focus:ring-white dark:focus:ring-gray-800 focus:border-white dark:focus:border-gray-800">
+                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    <a href="/my-profile">Moj profil</a>
+                </button>
+            </div>
+            <div class="">
+                <form action="/logout" method="POST">
+                    @csrf
+                    @method('POST')
+                    <button type="submit" class="flex flex-row font-semibold py-4 lg:pl-8 xl:pl-10 2xl:pl-12 bg-white dark:bg-gray-800 border-white hover:text-blue-600 dark:hover:text-blue-300 ring-0 outline-none focus:ring-0 focus:outline-white focus:ring-white dark:focus:ring-gray-800 focus:border-white dark:focus:border-gray-800">
+                        <div class="mr-2">
+                            <x-icons.logout size="18"></x-icons.logout>
+                        </div>
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div> --}}
     </div>
 
 </div>

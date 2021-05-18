@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->boolean('active');
             $table->mediumText('short_details');
             $table->longText('long_details');
+            $table->integer('on_sale')->nullable();
             // $table->string('image')->nullable();
             $table->timestamps();
         });

@@ -17,14 +17,14 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with(['categories' => function($query){
+        $products = Product::with(['first_image', 'categories' => function($query){
             $query->select('name');
         }, 'images' => function($query){
             $query->select('id', 'product_id', 'image_url')->orderBy('id', 'ASC');
         }])->orderBy('id', 'DESC')->paginate(30, ['id', 'name', 'price', 'amount', 'state', 'active']);
 
         return view('admin-panel.products.index', [
-            'products' => $products, 
+            'products' => $products,
             'categories' => Category::withCount('products')->get()
         ]);
     }

@@ -16,7 +16,8 @@ class Product extends Model
         'state',
         'active',
         'short_details',
-        'long_details'
+        'long_details',
+        'on_sale'
     ];
 
     public function categories()
@@ -29,7 +30,9 @@ class Product extends Model
         return $this->hasMany(ProductImage::class, 'product_id', 'id');
     }
 
-    public function first_image(){
-        return $this->images()->take(1);
+    public function first_image()
+    {
+        return $this->hasOne(ProductImage::class, 'product_id', 'id');
     }
+
 }

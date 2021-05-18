@@ -15,7 +15,7 @@
 
                 <div class="mb-12 flex justify-between">
                     <h1 class="font-semibold text-2xl mr-2 self-center flex">
-                        <p class="mr-2">Uredi proizvod</p>
+                        <p class="mr-2">Uredi kategoriju</p>
                         <div class="flex items-center">
                             <x-icons.edit size="22"></x-icons.edit>
                         </div>
@@ -112,7 +112,9 @@
                                         @endif
                                     </select>
                                 </div>
+                                
                             </div>
+                            
 
                             <div class="mt-10">
                                 <x-forms.multi-select-dropdown :items="$categories" :oldValues="$product->categories->pluck('id')"></x-forms.multi-select-dropdown>

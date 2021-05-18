@@ -78,16 +78,23 @@
                   @endswitch
                 </div>
 
-                <div class="flex">
-                  <a href="/admin-panel/product/{{ $product->id }}/edit" class="hover:text-blue-600 dark:hover:text-blue-300">
-                    <x-icons.edit size="18"></x-icons.edit>
-                  </a>
+                <div class="flex flex-row">
+                  <div class="mr-2 hover:bg-gray-200 rounded-md py-1 px-1">
+                    <a href="/admin-panel/sales/create/{{ $product->id }}" class="hover:text-blue-600 dark:hover:text-blue-300">
+                      <x-icons.precent size="18"></x-icons.precent>
+                    </a>
+                  </div>
+                  <div class="hover:bg-gray-200 rounded-md py-1 px-1">
+                    <a href="/admin-panel/product/{{ $product->id }}/edit" class="hover:text-blue-600 dark:hover:text-blue-300">
+                      <x-icons.edit size="18"></x-icons.edit>
+                    </a>
+                  </div>
                 </div>
               </div>
 
               <div class="flex mb-4 cursor-pointer">
-                @if (count($product->images) != 0)
-                    <img src="{{ $product->first_image[0]->image_url }}" class="w-full rounded-md object-contain h-40">
+                @if ($product->first_image != null)
+                    <img src="{{ $product->image_url }}" class="w-full rounded-md object-contain h-40">
                 @else  
                   <p>Nema slike na piku</p>
                 @endif

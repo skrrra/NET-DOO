@@ -77,7 +77,7 @@
                                 </div>
                             </div>
 
-                            <div class="mt-10">
+                            <div class="mt-10 z-50">
                                 <x-forms.multi-select-dropdown :items="$categories" oldValues="[{{ old('categories') }}]" text="Kategorije proizvoda" name="categories"></x-forms.multi-select-dropdown>
                             </div>
 
